@@ -26,6 +26,9 @@
   \renewcommand{\paging}{oneside}
 }
 
+% Bilde i title page
+\usepackage{titlepic}
+
 % Title Page
 \DeclareOption{titlepage}{
     \AtBeginDocument{
