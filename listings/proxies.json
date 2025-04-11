@@ -1,0 +1,5 @@
+{
+  "forestryroads": "https://wms.geonorge.no/skwms1/wms.traktorveg_skogsbilveger",
+  "senorgewms": "https://nve.geodataonline.no/arcgis/services/seNorgeGrid_png/ImageServer/WMSServer",
+  ...
+}

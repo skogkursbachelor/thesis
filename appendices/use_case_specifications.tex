@@ -1,0 +1,368 @@
+\chapter{Use Case Specifications}
+\label{appendix:use_case_specifications}
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor{gray!20}
+        \textbf{Use Case Name} & Toggle Map Layer \\
+        \hline
+        \textbf{Actor(s)} & User \\
+        \hline
+        \textbf{Description} & The user can toggle specific map layers to control the visibility of different map layers. This functionality allows users to select from various map layers. The selected layer is then displayed, and relevant information is shown in the map legend sidebar. \\
+        \hline
+        \textbf{Priority} & High \\
+        \hline
+        \textbf{Pre-Condition(s)} & The user must have a stable internet connection and the website open. The website and server and map server must be deployed and running.\\
+        \hline
+        \textbf{Post-Condition(s)} & The map will be updated with the specific map layer that was toggled. The map legend will also be visible in the legend sidebar. \\
+        \hline
+        \textbf{Basic Path} &  
+        \begin{enumerate}[label=,left=0pt]
+            \item 1. User presses the map layer ("kartlag") button to open the map layer sidebar.
+            \item 2. User clicks the toggle button for the specific map layer to toggle.
+            \item 3. The system updates the map with the selected layer.
+        \end{enumerate} \\
+        \hline
+        \textbf{Exception Path} & 
+        \begin{enumerate}[label=,left=0pt]
+            \item 0. User does not have a stable internet connection and can not connect to the website.
+            \item 2a. Either the backend server or the map server is not responding, and no map data is received.
+        \end{enumerate} \\
+        \hline
+    \end{tabularx}
+    \caption[Use Case Specification: Toggle Map Layer]{Use case for toggling a map layer.}
+    \label{tab:use_case_toggle_layer_appendix}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor{gray!20}
+        \textbf{Use Case Name} & Show Map Legend \\
+        \hline
+        \textbf{Actor(s)} & User \\
+        \hline
+        \textbf{Description} & The user can show legends for the map layers that are toggled on. \\
+        \hline
+        \textbf{Priority} & Medium \\
+        \hline
+        \textbf{Pre-Condition(s)} & The user must have a stable internet connection and the website open. The website and server and map server must be deployed and running. The map layer for the specific legend must be toggled before the legend is visible. \\
+        \hline
+        \textbf{Post-Condition(s)} & The legend sidebar will contain the legend for the toggled map layers. If no map layer is toggled, it will be empty. \\
+        \hline
+        \textbf{Basic Path} &  
+        \begin{enumerate}[label=,left=0pt]
+            \item 1. User presses the map layer ("kartlag") button to open the map layer sidebar.
+            \item 2. User clicks the toggle button for the specific map layer to toggle.
+            \item 3. The system updates the map with the selected layer.
+            \item 4. User presses the map legend ("tegnforklaring") button to open the legend sidebar showing all the legends for the toggled map layers.
+        \end{enumerate} \\
+        \hline
+        \textbf{Alternative Path} & 
+        \begin{enumerate}[label=,left=0pt]
+            \item 1. User presses the map legend ("tegnforklaring") button to open the legend sidebar.
+            \item 2. User presses the map layer ("kartlag") button to open the map layer sidebar.
+            \item 3. User clicks the toggle button for the specific map layer to toggle.
+            \item 4. The opened legend sidebar is updated with the legend for the toggled map layer.
+        \end{enumerate} \\
+        \hline
+        \textbf{Exception Path} & 
+        \begin{enumerate}[label=,left=0pt]
+            \item 0. User does not have a stable internet connection.
+            \item 1. Either the backend server or the map server is not responding, and no map data is received.
+            \item 2. No / The incorrect map layer is toggled.
+        \end{enumerate} \\
+        \hline
+    \end{tabularx}
+    \caption[Use Case Specification: Show Map Legend]{Use case for showing the map legends.}
+    \label{tab:use_case_show_legend_appendix}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor{gray!20}
+        \textbf{Use Case Name} & Center on User Location \\
+        \hline
+        \textbf{Actor(s)} & User \\
+        \hline
+        \textbf{Description} & The user can center the map on their current location. The system requires permission from the user to access their location. \\
+        \hline
+        \textbf{Priority} & Medium \\
+        \hline
+        \textbf{Pre-Condition(s)} & The user must have a stable internet connection and the website open. The server and map server must be deployed and running. \\
+        \hline
+        \textbf{Post-Condition(s)} & The map view will center on the user's current location. If permission is denied, the map will not center on their location. \\
+        \hline
+        \textbf{Basic Path} &  
+        \begin{enumerate}[label=,left=0pt]
+            \item 1. User clicks the "Center on User Location" button.
+            \item 2. System requests permission to access the user's location.
+            \item 3. User grants permission.
+            \item 4. System retrieves the user's current location and centers the map on it.
+        \end{enumerate} \\
+        \hline
+        \textbf{Alternative Path} & 
+        \begin{enumerate}[label=,left=0pt]
+            \item 1. User clicks the "Center on User Location" button.
+            \item 2. The user has already granted permission.
+            \item 3. System retrieves the user's current location and centers the map on it.
+        \end{enumerate} \\
+        \hline
+        \textbf{Exception Path} & 
+        \begin{enumerate}[label=,left=0pt]
+            \item 0. User does not have a stable internet connection.
+            \item 1. The user does not grant permission to share location.
+        \end{enumerate} \\
+        \hline
+    \end{tabularx}
+    \caption[Use Case Specification: Center on User Location]{Use case for centering on the user's location.}
+    \label{tab:use_case_center_location_appendix}
+\end{table}
+
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor{gray!20}
+        \textbf{Use Case Name} & Zoom In/Out \\
+        \hline
+        \textbf{Actor(s)} & User \\
+        \hline
+        \textbf{Description} & The user can zoom in or out on the map, which will in turn update the map accordingly. \\
+        \hline
+        \textbf{Priority} & High \\
+        \hline
+        \textbf{Pre-Condition(s)} & The user must have a stable internet connection and the website open. The server and map server must be deployed and running. \\
+        \hline
+        \textbf{Post-Condition(s)} & The map will be zoomed in or out. \\
+        \hline
+        \textbf{Basic Path} &  
+        \begin{enumerate}[label=,left=0pt]
+            \item 1. User clicks the zoom in or zoom out button.
+            \item 2. The map updates to reflect the new zoom level.
+        \end{enumerate} \\
+        \hline
+        \textbf{Alternative Path} & 
+        \begin{enumerate}[label=,left=0pt]
+            \item 1. User zooms in or out using the scroll wheel.
+            \item 2. The map updates accordingly.
+        \end{enumerate} \\
+        \hline
+        \textbf{Exception Path} & 
+        \begin{enumerate}[label=,left=0pt]
+            \item 0. User does not have a stable internet connection.
+            \item 1. The user attempts to zoom beyond the allowed range.
+            \item 2. The system restricts further zooming and maintains the current zoom level.
+        \end{enumerate} \\
+        \hline
+    \end{tabularx}
+    \caption[Use Case Specification: Zoom In/Out]{Use case for zooming in/out on map.}
+    \label{tab:use_case_zoom_appendix}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor{gray!20}
+        \textbf{Use Case Name} & Pan/Drag Map \\
+        \hline
+        \textbf{Actor(s)} & User \\
+        \hline
+        \textbf{Description} & The user interacts with the map by clicking and dragging to move the view in different directions, allowing them to navigate to different areas. \\ 
+        \hline
+        \textbf{Priority} & High \\
+        \hline
+        \textbf{Pre-Condition(s)} & The user must have a stable internet connection and the website open. The server and map server must be deployed and running. The user is using a device that supports click-and-drag or touch gestures.\\
+        \hline
+        \textbf{Post-Condition(s)} & The map view updates to reflect the user's movement. If the user reaches the map boundaries, further panning is restricted. \\
+        \hline
+        \textbf{Basic Path} &  
+        \begin{enumerate}[label=,left=0pt]
+            \item 1. The user clicks and holds the left mouse button (or touches the screen on a touch device).
+            \item 2. The user drags the cursor (or moves their finger) to pan the map.
+            \item 3. The map moves in the corresponding direction.
+        \end{enumerate} \\
+        \hline
+        \textbf{Exception Path} & 
+        \begin{enumerate}[label=,left=0pt]
+            \item 0. User does not have a stable internet connection.
+            \item 1. The user tries to pan beyond the available map boundaries.
+            \item 2. The system prevents further movement in that direction.
+        \end{enumerate} \\
+        \hline
+    \end{tabularx}
+    \caption[Use Case Specification: Pan/Drag Map]{Use case for panning/dragging map.}
+    \label{tab:use_case_drag_map_appendix}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor{gray!20}
+        \textbf{Use Case Name} & Adjust Map Layer Opacity \\
+        \hline
+        \textbf{Actor(s)} & User \\
+        \hline
+        \textbf{Description} & The user adjusts the opacity of a selected map layer to control its visibility, allowing better comparison with other layers or the base map. \\\hline
+        \textbf{Priority} & Low \\
+        \hline
+        \textbf{Pre-Condition(s)} & The user must have a stable internet connection and the website open. The server and map server must be deployed and running. The specific map layer must be toggled on for opacity adjustments to be visible. \\
+        \hline
+        \textbf{Post-Condition(s)} & The selected map layer’s opacity is updated in real time. The visual representation of the layer changes on the map. \\
+        \hline
+        \textbf{Basic Path} &  
+        \begin{enumerate}[label=,left=0pt]
+            \item 1. User presses the map layer ("kartlag") button to open the map layer sidebar.
+            \item 2. User clicks the toggle button for the specific map layer to toggle.
+            \item 3. The system updates the map with the selected layer.
+            \item 4. The user adjusts the opacity using the opacity slider.
+            \item 5. The system updates the opacity of the selected map layer in real time. 
+        \end{enumerate} \\
+        \hline
+        \textbf{Exception Path} & 
+        \begin{enumerate}[label=,left=0pt]
+            \item 0. User does not have a stable internet connection.
+            \item 1. The map layer is not toggled and the opacity change is not visible.
+        \end{enumerate} \\
+        \hline
+    \end{tabularx}
+    \caption[Use Case Specification: Adjust Map Layer Opacity]{Use case for changing map opacity.}
+    \label{tab:use_case_map_opacity_appendix}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor{gray!20}
+        \textbf{Use Case Name} & Query a Map Layer \\
+        \hline
+        \textbf{Actor(s)} & User \\
+        \hline
+        \textbf{Description} & The user queries a specific map layer to retrieve detailed information about a selected feature. This allows the user to interact with and understand the data represented on the map. \\        \hline
+        \textbf{Priority} & Medium \\
+        \hline
+        \textbf{Pre-Condition(s)} & The user must have a stable internet connection and the website open. The server and map server must be deployed and running. The specific map layer must be toggled on for opacity adjustments to be visible. \\
+        \hline
+        \textbf{Post-Condition(s)} & Information about the selected feature is displayed to the user. \\
+        \hline
+        \textbf{Basic Path} &  
+        \begin{enumerate}[label=,left=0pt]
+            \item 1. The user clicks on a feature within an active map layer.
+            \item 2. The system queries the relevant data associated with the feature.
+            \item 3. The system displays the retrieved information in a popup or sidebar.
+        \end{enumerate} \\
+        \hline
+        \textbf{Alternative Path} & 
+        \begin{enumerate}[label=,left=0pt]
+            \item 1. The user selects a different feature, triggering a new query.
+        \end{enumerate} \\
+        \hline
+        \textbf{Exception Path} & 
+        \begin{enumerate}[label=,left=0pt]
+            \item 0. User does not have a stable internet connection.
+            \item 1. No map layer is toggled on.
+            \item 2. The selected feature does not contain queryable data.
+        \end{enumerate} \\
+        \hline
+    \end{tabularx}
+    \caption[Use Case Specification: Query a Map Layer]{Use case for querying a map layer.}
+    \label{tab:use_case_query_map_appendix}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor{gray!20}
+        \textbf{Use Case Name} & Select Map Date \\
+        \hline
+        \textbf{Actor(s)} & User \\
+        \hline
+        \textbf{Description} & The user selects a date to view map data from a specific time period. This allows the user to look at either historical data or a forecast. \\
+        \hline
+        \textbf{Priority} & High \\
+        \hline
+        \textbf{Pre-Condition(s)} & The user must have a stable internet connection and the website open. The server and map server must be deployed and running. Time-based map data must be available for selected map layer. \\
+        \hline
+        \textbf{Post-Condition(s)} & The map updates to display data corresponding to the selected date. \\
+        \hline
+        \textbf{Basic Path} &  
+        \begin{enumerate}[label=,left=0pt]
+            \item 1. The user opens the date selection menu.
+            \item 2. The user selects a specific date.
+            \item 3. The system loads the corresponding map data.
+            \item 4. The map updates to reflect the chosen date.
+        \end{enumerate} \\
+        \hline
+        \textbf{Alternative Path} & 
+        \begin{enumerate}[label=,left=0pt]
+            \item 1. The user changed the date by using the next/previous day, week, or year buttons.
+            \item 2. The system loads the corresponding map data.
+            \item 3. The map updates to reflect the chosen date.
+        \end{enumerate} \\
+        \hline
+        \textbf{Exception Path} & 
+        \begin{enumerate}[label=,left=0pt]
+            \item 0. User does not have a stable internet connection.
+            \item 1. No map layer is active.
+            \item 2a. The active map layer does not support the selected date.
+            \item 2b. The map is not shown for that selected date.
+            \item 3a. A invalid date is selected.
+            \item 3b. The date does not change to the invalid date.
+        \end{enumerate} \\
+        \hline
+    \end{tabularx}
+    \caption[Use Case Specification: Select Map Date]{Use case for selecting the date of the map.}
+    \label{tab:use_case_date_map_appendix}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor{gray!20}
+        \textbf{Use Case Name} & Change Base Map Layer \\
+        \hline
+        \textbf{Actor(s)} & User \\
+        \hline
+        \textbf{Description} & The user changes the base map layer to adjust the visual presentation of the map. This allows switching between terrain maps, or street maps for better context. \\
+        \hline
+        \textbf{Priority} & Low \\
+        \hline
+        \textbf{Pre-Condition(s)} & The user must have a stable internet connection and the website open. The server and map server must be deployed and running. \\
+        \hline
+        \textbf{Post-Condition(s)} & The map updates to display the selected base layer. \\
+        \hline
+        \textbf{Basic Path} &  
+        \begin{enumerate}[label=,left=0pt]
+            \item 1. The user presses the button to change to the selected base layer.
+            \item 2. The system loads and applies the new base map layer.
+        \end{enumerate} \\
+        \hline
+        \textbf{Exception Path} & 
+        \begin{enumerate}[label=,left=0pt]
+            \item 0. User does not have a stable internet connection.
+        \end{enumerate} \\
+        \hline
+    \end{tabularx}
+    \caption[Use Case Specification: Change Base Map Layer]{Use case for changing the base layer of the map.}
+    \label{tab:use_case_base_layer_appendix}
+\end{table}
