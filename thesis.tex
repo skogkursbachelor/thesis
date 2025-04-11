@@ -1,11 +1,15 @@
 \documentclass[british,titlepage]{ntnuthesis}
 
-\title{
+
+%  Lumber Transport: Digital Forecasting System for Forestry Road Trafficability
+% Forestry Road Trafficability: A Digital Forecasting System for Sustainable Lumber Logistics
+% Forecasting and Analysis of Road Trafficability: (FART)
+\begin{comment}
+    \title{
 \includegraphics[width=0.40\textwidth]{images/ntnu_logo.png}
 \includegraphics[width=0.40\textwidth]{images/skogkurs_logo_text.png}
 \vspace{10pt}\newline
-Lumber transport \\ Development of new tools for varying weather and road conditions}
-\shorttitle{Lumber transport}
+Lumber Transport \\ Development of New Tools for Varying Weather and Road Conditions}
 \author{
 Authors: \\
 Erik Bjørnsen \\ 
@@ -14,10 +18,19 @@ Simon Husås Houmb \\
 Supervisor: \\
 Peter Stefan Nussbaum
 }
-\shortauthor{erbj\&simonhou$@$NTNU}
+
+\shorttitle{Lumber transport}
+\shortauthor{E. Bjørnsen, S. Houmb}
+
+\end{comment}
+
+% FOR TITTEL, SE PÅ DAG FJELD SIN RAPPORT KANSKJE?
+\title{TEMP TITLEPAGE - Skogkurs Bachelor}
+\date{\today}
+
 %\titlepic{\includegraphics[width=100]{images/ntnu_logo.png}}
 % funk itj
-\date{\today}
+
 
 \addbibresource{thesis.bib}
 
@@ -37,9 +50,14 @@ Peter Stefan Nussbaum
 \printglossary                    % Print glossary
 
 \input{chapters/1-introduction}
-\input{chapters/2-usage.tex}
-\input{chapters/3-structure.tex}
-\input{chapters/4-conclusion.tex}
+\input{chapters/2-requirements}
+\input{chapters/3-technical-design}
+\input{chapters/4-development-process}
+\input{chapters/5-implementation}
+\input{chapters/6-deployment}
+\input{chapters/7-testing-and-user-feedback}
+\input{chapters/8-discussion}
+\input{chapters/9-conclusion}
 
 \chapter*{\bibname}
 \printbibliography[heading=none]
@@ -47,6 +65,12 @@ Peter Stefan Nussbaum
 \input{chapters/papers.tex}
 
 \appendix
-\input{appendices/a-appendix.tex}
+\input{appendices/Skogkurs_Bachelor_Project_Plan_noAppendix}
+\input{appendices/bachelor_skogkurs_samarbeidsavtale}
+\input{appendices/standardavtale_skogkurs_bachelor}
+\input{appendices/SKOGKURS_BACHELOROPPGAVE}
+\input{appendices/meeting-minutes}
+\input{appendices/use_case_specifications}
+\input{appendices/losmasse_kodeliste}
 
 \end{document}

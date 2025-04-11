@@ -166,7 +166,7 @@
     labelfont=bf,
     margin=\parindent
 ]{subcaption}
-\RequirePackage{xcolor}                     % selecting text color
+\RequirePackage[table, xcdraw]{xcolor}                     % selecting text color
 \RequirePackage{emptypage}                  % empty pages should be blank
 \RequirePackage{csquotes}                   % recommended for biblatex
 \RequirePackage[
@@ -190,6 +190,14 @@
     \RequirePackage[noabbrev]{cleveref}
 \fi
 \RequirePackage[acronym]{glossaries}        % create a glossary and acronym list
+\RequirePackage{array}
+\RequirePackage{tabularx}
+\renewcommand{\arraystretch}{1.3} % Increase row height
+
+\RequirePackage{enumitem}  % for better list control
+\RequirePackage{float}
+\RequirePackage{longtable}
+\RequirePackage{threeparttable} % for table footnotes
 
 %% CUSTOMISATION
 
@@ -249,7 +257,7 @@
 \def\ps@ntnuheadings{%
     \let\@evenfoot\@empty
     \let\@oddfoot\@empty
-    \def\@evenhead{\small\thepage\hfil\textit{\@shortauthor: \@shorttitle}}
+    \def\@evenhead{\small\thepage\hfil\textit{\@shortauthor \@shorttitle}}
     \def\@oddhead{\small\textit{\ch@ptermark}\hfil\thepage}
     \def\chaptermark##1{\def\ch@ptermark{\chaptername\ \thechapter: ##1}}
 }
@@ -282,6 +290,9 @@
     commentstyle=\color{thesisgreen},
     identifierstyle=\color{black},
     numberstyle=\fontsize{7}{8}\selectfont,
+    tabsize=2,
+    numbers=left,
+    captionpos=b,
     literate=
         {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
         {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
@@ -308,7 +319,7 @@
     linkcolor=black,        % internal links (change box color with linkbordercolor)
     citecolor=black,        % links to bibliography
     filecolor=black,        % file links
-    urlcolor=black,         % external links
+    urlcolor=magenta,         % external links
     bookmarksnumbered=true  % include chapter, section and subsection numbers in bookmarks
 }
 
@@ -325,3 +336,10 @@
        \@starttoc{lol}%
        \endgroup%
        }%
+
+% Remove indent from new paragraphs
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+% Power of two (opphøye km)
+\usepackage{siunitx}
