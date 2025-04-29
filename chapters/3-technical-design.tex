@@ -1,23 +1,27 @@
 \chapter{Technical Design}
+
 \begin{comment}
     # Universal Design (Universal Utforming)
     # OpenLayers vs Leaflet (or others)
     # Openlayers TileWMS vs ImageWMS (optimalisering av kartet)
 \end{comment}
+\textcolor{orange}{NOE TEKST}
 
 \section{System Architecture}\label{sec:systemarchitecture}
+
 % client-server model, microservices, layers of the application ? 
+\textcolor{orange}{NOE TEKST}
 
 \section{Data Flow} % e.g., how user requests move through the system).
 
-TEMP LOKASJON
+\textcolor{orange}{KANSKJE TEMP LOKASJON}
 
 % KANSKJE ENDRE "ocean and fjord" og "Glacial river" til "Marine" og "glaciofluvial" slik det er brukt i introduksjon.
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\linewidth]{figures/roadclassification.pdf}
-    \caption[Diagram visualizing the forest road classification.]{xx}
-    \label{fig:forestroadclassification}
+    \caption{Diagram visualizing the forestry road classification}
+    \label{fig:forestry_road_classification}
 \end{figure}
 % (fra diagram) How much soil moisture, kommer an på permeability
 
@@ -42,6 +46,7 @@ TEMP LOKASJON
 \end{enumerate}
 
 \section{Website}
+
 The website serves as the user interface of the system, allowing users to visualize and interact with data related to forestry road conditions and weather-based forecasts using a dynamic map.
 
 The system follows a client-server architecture, where the website acts as a client and communicates with a backend server via a REST API. The processing of meteorological and geological data is handled on the server side. The frontend is responsible for requesting data, rendering maps, and presenting relevant information to the user.
@@ -58,88 +63,12 @@ Choosing to implement the frontend as a web application provides several benefit
 
 Overall, the design of the website emphasizes a clean separation of concerns, efficiency in data handling, and accessibility, which together form a robust and user-friendly frontend component for the system.
 
-\subsection{Map Layers}
-% KANKJE GLOSSARY FOR "COMPOSITE MAP"
-The interactive map on the website supports multiple layers, allowing the user to build a composite map with various types of data. These layers include both meteorological and geological information relevant to assessing road conditions and the surrounding environment.
 
-\subsubsection*{Base Layers}
-The user has the option to change the base layer of the map. In the current version, two options are available: the standard map from \Gls{openstreetmap}\footnote{\url{https://www.openstreetmap.org}} and the terrain map from OpenTopoMap\footnote{\url{https://opentopomap.org}}.
-% KANSKJE GI GRUNN TIL HVORFOR DET IKKE KUN ER ETT BASE LAYER VALG
 
-\begin{figure}[h]
-     \centering
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{figures/base_layer_standard.pdf}
-         \caption{Standard base layer}
-         \label{fig:base_layer_standard}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{figures/base_layer_topo.pdf}
-         \caption{Terrain base layer}
-         \label{fig:base_layer_topo}
-     \end{subfigure}
-    \caption{Base map layer options}
-    \label{fig:base_layers}
-\end{figure}
-
-\subsubsection*{Superficial Deposits}
-% LEGGE INN FARGE KODER FOR LØSMASSETYPE. TRENGER IKKE FOR ALLE? KANSKJE VEDLEGG?
-The map layer showing superficial deposits is provided by \acrshort{ngu}. The superficial deposits data provide information on the distribution of surface sediments covering bedrock, mainly formed during and after the last Ice Age. It represents the dominant soil type in the upper layers, but does not account for deeper variations. These soil types include stones, gravel, sand, clay, peat, and moraine material \cite{geonorge_losmasser}. 
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=1\linewidth]{figures/losmasse_eksempel.pdf}
-    \caption{Example of the superficial deposits map layer}
-    \label{fig:superficial_deposit_example}
-\end{figure}
-
-\subsubsection*{Frost Depth}
-% Kanskje nevn GWB modellen? https://www.senorge.no/WaterMap
-The frost depth map layer is provided by \acrshort{nve}. It shows the frost depth as a raster-based map ranging from very deep frost (dark blue) to no frost (light green). Looking at frost depth can make it easy to determine the trafficability of forestry roads. As long as there is frost, i.e. 10 cm or deeper (see \hyperref[tab:frost_depth_classification]{Table \ref*{tab:frost_depth_classification}}) all roads good to drive on. Therefore most of the forestry roads during the Norwegian winter would have good trafficability.
-
-% KANSKJE GI EKSEMPLER PÅ NÅR (OG HVOR) DET ER VANLIG MED DE FORSKJELLIGE DYBDENE
-\begin{table}[h]
-    \centering
-    \begin{tabular}{|l|l|l|}
-        \hline  
-        Color & Frost Depth & Depth in cm \\
-        \hline
-        \cellcolor[HTML]{00009c} & Very Deep Frost & > 75 cm \\
-        \hline
-        \cellcolor[HTML]{0018ff} & Deep Frost & 30-75 cm \\
-        \hline
-        \cellcolor[HTML]{009aff} & Frost & 10-30 cm \\
-        \hline
-        \cellcolor[HTML]{84ebff} & Shallow Frost & 5-10 cm \\
-        \hline
-        \cellcolor[HTML]{deffff} & Partially Frost-free & 0-5 cm \\
-        \hline
-        \cellcolor[HTML]{cef77b} & No Frost & 0 cm \\
-        \hline
-    \end{tabular}
-    \caption{Frost depth classification and corresponding colors \cite{nve2025waterdata}}
-    \label{tab:frost_depth_classification}
-\end{table}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=1\linewidth]{figures/teledyp_eksempel.pdf}
-    \caption{Example of the frost depth map layer}
-    \label{fig:frost_depth_example}
-\end{figure}
-
-\subsubsection*{Soil Saturation}
-
-\subsubsection*{Forestry Roads}
-The forestry roads map layer is a vector layer which is retrieved from a WFS, provided by GeoNorge and Kartverket. The roads are shown in the colors, green, yellow, or red, depending on their trafficability, which is calculated using meteorological and geological data as factors. 
-
-\subsubsection*{Sources of Uncertainty}
-There are some sources of error in the water maps, i.e. the frost depth and soil saturation maps. Errors may arise from inaccuracies in the interpolation of these variables or from the model interpreting conditions differently than they actually are. This is especially critical when the temperature is around 0\textdegree C, where small differences can determine whether precipitation falls as rain or snow, or whether snow melts. Local rain showers that aren't captured by weather stations may also be missed. Furthermore, factors like wind, humidity, and solar radiation— which aren't included in the model—can lead to significantly more snowmelt in reality. The maps in SeNorge and Xgeo typically show daily averages, which means they may miss short-term variations like heavy rain or temperature swings within a day. However, Xgeo also provides 3-hourly maps that better reflect intraday changes. Forecast maps extend up to nine days ahead, based on the same weather models as those used on Yr, with increasing uncertainty the further ahead they go. Additionally, the model may not perfectly represent vegetation or soil conditions, potentially leading to over- or underestimation of water saturation and groundwater levels. \cite{senorge_watermap}
 
 \subsection{Folder Structure}
+
+\textcolor{orange}{NOE TEKST}
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\linewidth]{figures/website_folder_structure.pdf}
@@ -148,11 +77,23 @@ There are some sources of error in the water maps, i.e. the frost depth and soil
 \end{figure}
 
 \section{Server}
+
+\textcolor{orange}{NOE TEKST}
+
 \subsection{Golang?/Libraries}
+
+\textcolor{orange}{NOE TEKST}
+
 \subsection{Map and Weather Services} % endre navn?
+
 % Lag tabell e.l. av alle services som brukes (WMS/API) ?
 Multiple map services were used in this project to ultimately determine the trafficability of forestry roads. Retrieving data from WMS and WFS was made easy with OpenLayers as it includes functions for this. 
+
+\textcolor{orange}{LITT USIKRE OM VI SKAL HA DETTE MED? TAR MYE PLASS}
+
 \subsubsection*{Frost Depth}
+
+\textcolor{orange}{NOE TEKST}
 % KANSKJE HA ENDA MED DETALJER? WMS PARAMETER (LAYERS, etc.)
 % SPESIFISER LOKASJON 
 \begin{table}[h]
@@ -178,8 +119,9 @@ Multiple map services were used in this project to ultimately determine the traf
     \label{tab:frost_map_service}
 \end{table}
 
-
 \subsubsection*{Soil Moisture}
+
+\textcolor{orange}{NOE TEKST}
 \begin{table}[h]
     \centering
     \begin{tabularx}{\linewidth}{|l|X|}
@@ -204,6 +146,8 @@ Multiple map services were used in this project to ultimately determine the traf
 \end{table}
 
 \subsubsection*{Superficial Deposits}
+
+\textcolor{orange}{NOE TEKST}
 \begin{table}[h]
     \centering
     \begin{tabularx}{\linewidth}{|l|X|}
@@ -228,6 +172,8 @@ Multiple map services were used in this project to ultimately determine the traf
 \end{table}
 
 \subsubsection*{Forestry Roads}
+
+\textcolor{orange}{NOE TEKST}
 \begin{table}[h]
     \centering
     \begin{tabularx}{\linewidth}{|l|X|}
@@ -253,6 +199,8 @@ Multiple map services were used in this project to ultimately determine the traf
 
 
 \subsection{Map Data Processing}
+
+\textcolor{orange}{NOE TEKST}
 \begin{comment}
     # Concurrency (works with multiple cores, might be slower with one core?)
 \end{comment}

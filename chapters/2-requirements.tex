@@ -1,12 +1,17 @@
 \chapter{Requirements}
 
-% noe tekst
+\textcolor{orange}{NOE TEKST}
 
 \section{Project Goals}
-This section outlines the project's goals, which include product, impact, and learning goals.
+
+This section outlines the overall goal of the project, categorized into product goals, impact goals, and learning goals. Together, these objectives defines the purpose, intended outcomes, and the knowledge expected to be gained through the project process.
 
 \subsection{Product Goals}
-The primary goal of the project is to develop and test a prototype system for fully digital modeling of forestry road load-bearing capacity under varying conditions throughout the year. The solution will incorporate various geological and meteorological parameters, such as soil type and moisture, weather forecasts, and precipitation data, to generate an accurate classification of forest roads. This classification will be presented through an interactive map-based website. The roads will be color-coded using a traffic-light system, where green indicates safe roads, yellow signals caution, and red highlights unsafe roads. The system will provide users with a forecast for road conditions at least a week into the future, enabling better planning and decision-making. Furthermore, the system will prioritize ease of use, with an intuitive interface designed for transport managers, allowing them to make informed route choices based on real-time data and forecasts. 
+
+The primary goal of the project is to develop and test a \textbf{prototype system for fully digital modeling of forestry road load-bearing capacity under varying conditions throughout the year.} The solution will incorporate various geological and meteorological parameters, such as soil type and moisture, weather forecasts, and precipitation data, to generate an accurate classification of forest roads. This classification will be presented through an interactive map-based website. Furthermore, the system will prioritize ease of use, with an intuitive interface designed for transport managers, allowing them to make informed route choices based on real-time data and forecasts. 
+
+\textcolor{orange}{DETTE UNDER ER IKKE NØDVENDIG HER}
+The roads will be color-coded using a traffic-light system, where green indicates safe roads, yellow signals caution, and red highlights unsafe roads. The system will provide users with a forecast for road conditions at least a week into the future, enabling better planning and decision-making. 
 
 \subsection{Impact Goals}
 % Bærekraft ?
@@ -49,7 +54,11 @@ The primary goal of the project is to develop and test a prototype system for fu
 
 \section{Constraints}
 
+\textcolor{orange}{NOE TEKST}
+
 \subsection{Temporal Constraints}
+
+\textcolor{orange}{NOE TEKST}
 
 \begin{itemize}
     \item The set deadline for the final report is 20th of May.
@@ -58,25 +67,29 @@ The primary goal of the project is to develop and test a prototype system for fu
 
 \subsection{Product Constraints}
 
+\textcolor{orange}{NOE TEKST}
+
 \begin{itemize}
     \item The product requires a stable network connection to be used.
     \item The product uses \acrshort{html} 5, which requires newer versions of browsers.
     \item The product needs to be deployed either locally or on a server to run.
 \end{itemize}
 
-\subsection{Legal Constraints}
+\begin{comment}
+    \subsection{Legal Constraints}
 % VET IKKE OM DETTE SKAL VÆRE MED
 % ENDRE TIL NÅTID (THE PRODUCT COMPLIES WITH....) ?
 \begin{itemize}
     \item The product must comply with the licensing terms and conditions of all third-party services, including map distributors, external APIs, and any code libraries, frameworks, or tools used in its development and deployment.
 \end{itemize}
+\end{comment}
 
-\section{Task Description} % ENDRE NAVN SIDEN ET VEDLEGG HETER DET SAMME?
+\section{Project Tasks}
 % VET IKKE OM DETTE SKAL VÆRE MED (KANSKJE FJERNE DELER ELLER PEK TIL PROSJEKT PLANEN)
 The project aims to develop and test a prototype system for fully digital modeling of forest road load-bearing capacity under varying conditions throughout the year. The development process can be divided into the following areas:
 
 \begin{enumerate}
-    \item \textbf{Data collection and Integration:}
+    \item \textbf{Data Collection and Integration:}
     \begin{itemize}
         \item Decide and gather relevant geological and meteorological data, which may include:
         \begin{itemize}
@@ -115,11 +128,14 @@ The project aims to develop and test a prototype system for fully digital modeli
         \item Suggest potential improvements, such as machine learning model enhancements, additional data sources, mobile application integration, optimization, or further improvements of the app interface.
     \end{itemize}
 \end{enumerate}
+
 \section{Target Audience}
-% Spørr Dag Fjeld eller usertest
-The primary target audience for this product is transport managers in the forestry industry. They will use the application to plan routes and determine which forest roads should be used by drivers. Since the user group spans a wide age range, it is essential that the application is intuitive and easy to use, ensuring accessibility for all users regardless of their technical proficiency.
+
+The primary target audience for this application is transport managers in the Norwegian forestry industry. They will use the application to plan routes and determine which forest roads should be used by drivers. Since the user group spans a wide age range, it is essential that the application is intuitive and easy to use, ensuring accessibility for all users regardless of their technical proficiency.
 
 \section{Universal Design}
+
+\textcolor{orange}{NOE TEKST}
 \begin{comment}
     Kanskje ikke nødvendig med eget kapittel og kanskje ha det et annet sted? Passer med overgang fra Target Audience ^. SIDEN NOE OM DETTE IKKE BLE NEVNT AV SKOGKURS SÅ BURDE DET KANSKJE STÅ I DISCUSSION I STEDET.
 \end{comment}
@@ -128,7 +144,7 @@ The primary target audience for this product is transport managers in the forest
 
 Use cases provide a clear overview of what a system will and will not do. They enable effective scope management and incremental development, making them well-suited for agile methodologies \cite{jacobson_use_case}. 
 
-This chapter will present the use case diagram of the system and provide an example of a use case specification.
+This section will present the use case diagram of the system and provide an example of a use case specification.
 
 \subsection{Use Case Diagram}
 % DOBBELSJEKK AT SERVEREN IKKE SKAL KOBLES TIL USE CASENE I DIAGRAMMET
@@ -165,7 +181,7 @@ A high priority use case for the website is the ability to toggle a map layer, w
         \hline
         \textbf{Priority} & High \\
         \hline
-        \textbf{Pre-Condition(s)} & The user must have a stable internet connection and the website open. The website and server and map server must be deployed and running.\\
+        \textbf{Pre-Condition(s)} & The user must have a stable internet connection and the website open. The website, server and external map servers must be deployed and running.\\
         \hline
         \textbf{Post-Condition(s)} & The map will be updated with the specific map layer that was toggled. The map legend will also be visible in the legend sidebar. \\
         \hline
@@ -183,6 +199,6 @@ A high priority use case for the website is the ability to toggle a map layer, w
         \end{enumerate} \\
         \hline
     \end{tabularx}
-    \caption[Use Case Specification: Toggle Map Layer]{Use case for toggling a map layer.}
+    \caption[Use Case Specification: Toggle Map Layer]{Use case for toggling a map layer}
     \label{tab:use_case_toggle_layer}
 \end{table}
