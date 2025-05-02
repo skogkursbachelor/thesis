@@ -1,4 +1,4 @@
-\chapter{Implementation}
+\chapter{Implementation}\label{chap:implementation}
 \begin{comment}
     - Github? forskjellige repo?
     - External data / sources used for map, etc.
@@ -13,13 +13,13 @@ This section provides a structured overview of the technologies employed in the 
 \subsection{TypeScript}
 
 % https://www.typescriptlang.org/docs/handbook/intro.html
-TypeScript is a statically typed superset of JavaScript that adds optional type annotations and other features to improve code quality and maintainability. While JavaScript is popular for both frontend and backend development, it lacks built-in mechanisms to express relationships between components as applications grow. This often leads to runtime errors, many of which are related to incorrect or unexpected types. TypeScript addresses these issues by providing a static type system that checks for such errors during development, before the code is executed. By catching mistakes early and offering better tooling and autocomplete support, TypeScript makes large-scale JavaScript applications easier to develop, refactor, and maintain \cite{typescript_handbook}. 
+TypeScript is a statically typed superset of JavaScript that adds type annotations and other features to improve code quality and maintainability. While JavaScript is popular for both frontend and backend development, it lacks built-in mechanisms to express relationships between components as applications grow. This often leads to runtime errors, many of which are related to incorrect or unexpected types. TypeScript addresses these issues by providing a static type system that checks for such errors during development, before the code is executed. By catching mistakes early and offering better tooling and autocomplete support, TypeScript makes large-scale JavaScript applications easier to develop, refactor, and maintain \cite{typescript_handbook}. 
 
 For these reasons TypeScript was chosen to implement the website. All libraries written in JavaScript like OpenLayers and React could be used, but with the added type-safety of TypeScript.
 
-\subsection{React}
+\subsection{React}\label{subsec:implementation:technologies:react}
 
-React is a JavaScript library designed for rendering user interfaces (UI), where everything on the screen, from buttons to images, can be broken down into small, reusable components. These components are the building blocks of React, allowing you to create, customize, and conditionally display content across your application \cite{react_component}. As your application scales, it becomes increasingly important to manage the state effectively and ensure that data flows smoothly between components. Poorly organized or redundant state can lead to bugs, so React encourages a structured approach to state management. React makes it easy to share states between components \cite{react_state}. 
+React is a JavaScript library designed for rendering user interfaces (UI), where everything on the screen, from buttons to images, can be broken down into small, reusable components. These components are the building blocks of React, allowing you to create, customize, and conditionally display content across your application \cite{react_component}. As your application scales, it becomes increasingly important to manage the state effectively and ensure that data flows smoothly between components. Poorly organized or redundant state can lead to bugs, so React encourages a structured approach to state management. React makes it easy to share states between components \cite{react_managing_state}. 
 
 Using React when developing the website made it much easier and time-efficient which was important for this project. 
 
@@ -34,13 +34,32 @@ The website uses OpenLayers to render image layers for \gls{superficial deposit}
 % NEVNE SPESIFIKKE FUNKSJONER (GetFeatureInfo / GetMap) ?
 Web Map Service (\Gls{wms}) and Web Feature Service (\Gls{wfs}) are both standards developed by the Open Geospatial Consortium to facilitate the distribution of geographic information over the web. A WMS generates dynamic maps from spatially referenced data, rendering them as digital images in formats such as PNG, GIF, and JPEG. WMS allows users to request maps that specify geographic regions, desired coordinate systems, and map dimensions. There are also queryable WMS services that enable users to retrieve metadata about the map and its features at specific coordinates. Additionally, \Gls{wms} supports the creation of composite maps by layering different map images, with transparency in formats like PNG and GIF, allowing the underlying maps to be visible \cite{ogc2006wms}.
 
-In contrast, a WFS enables the retrieval of raw geographic data, such as vector features, from a web server. Unlike \Gls{wms}, which provides static map images, \Gls{wfs} allows users to request feature-level data in formats like \Gls{geojson}, enabling more interactive and detailed analyses. WFS supports spatial queries and provides access to vector-based geographic features, such as points, lines, and polygons, which can be used for advanced geospatial analysis and integration into other systems. While WMS is ideal for visualizing spatial data, WFS is better suited for manipulating raw geospatial data \cite{ogc2005wfs}.
+In contrast, a \Gls{wfs} enables the retrieval of raw geographic data, such as vector features, from a web server. Unlike \Gls{wms}, which provides static map images, \Gls{wfs} allows users to request feature-level data in formats like \Gls{geojson}, enabling more interactive and detailed analyses. \Gls{wfs} supports spatial queries and provides access to vector-based geographic features, such as points, lines, and polygons, which can be used for advanced geospatial analysis and integration into other systems. While \Gls{wms} is ideal for visualizing spatial data, \Gls{wfs} is better suited for manipulating raw geospatial data \cite{ogc2005wfs}.
 
-In the implementation of this product, both WMS and WFS are used to visualize and interact with geospatial data. For example, the superficial deposits and frost depth layers utilize WMS to display these datasets as map images on the web interface. On the other hand, the forestry road layer is implemented using WFS, providing access to vector-based geographic features as lines. This allows further processing, such as determining \gls{trafficability} or road conditions. Additionally, when querying a single coordinate, the Superficial Deposits layer uses the query operation to retrieve information about the specific location, ensuring that users can obtain feature data at precise geographic points.
+In the implementation of this product, both \Gls{wms} and \Gls{wfs} are used to visualize and interact with geospatial data. For example, the superficial deposits and frost depth layers utilize \Gls{wms} to display these datasets as map images on the web interface. On the other hand, the forestry road layer is implemented using \Gls{wfs}, providing access to vector-based geographic features as lines. This allows further processing, such as determining \gls{trafficability} or road conditions. Additionally, when querying a single coordinate, the Superficial Deposits layer uses the query operation to retrieve information about the specific location, ensuring that users can obtain feature data at precise geographic points.
+
+\subsection{Go}
+
+Go is a high-level general purpose programming language that is statically typed and compiled, and offers built-in memory safety, garbage collection, structural typing and concurrency. Go aims to improve programming productivity by combining the efficiency of C\footnote{\url{https://www.c-language.org/}} with the readability and usability of Python\footnote{\url{https://www.python.org/}}. Goroutines, the foundation of concurrency in Go, are lightweight execution threads that run asynchronously and are distributed across multiple CPUs, enabling parallelism in well-structured programs \cite{goproglanguage}.
+
+The implementation of the server in written in Go. Go was chosen due the great concurrency support and group members' personal experiences with the language. Go is particularly well-suited for processing large datasets, such as forest roads, because each road can be processed independently, making it a natural fit for Go’s concurrency model. The implementation of the server will be detailed in \autoref{sec:implementation:server}.
+
+\subsection{Docker}
+
+Docker\footnote{\url{https://www.docker.com/}} 
+
+\cite{containerizationwikipedia}
+\cite{dockerwikipedia}
+
+\textcolor{orange}{
+Hva docker er, docker compose \\ \\
+Hvorfor man vil bruke det
+}
 
 \section{Website}
 
 This section contains an overview of the implementation of the website.
+
 
 \begin{comment}
     - Typescript & React (vite/template, code structure?)
@@ -52,27 +71,34 @@ This section contains an overview of the implementation of the website.
     - Datepicker / temporal aspect of map layers
 \end{comment}
 
-\subsection{Wireframe} % Vet ikke om dette burde være et annet sted?
+\subsection{UI Iterations} % Vet ikke om dette burde være et annet sted?
 
-A wireframe of the website was made to agree on the layout of the website and the required features. \hyperref[fig:wireframe_website_sidebars_closed]{Figure \ref*{fig:wireframe_website_sidebars_closed}} shows the basic layout of the website including the map and the date picker. In \hyperref[fig:wireframe_website_sidebars_opened]{Figure \ref*{fig:wireframe_website_sidebars_opened}} it shows the sidebars for both enabling map layers and their legends. Additionally it shows a layer being enabled and querying that feature for additional information.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.6\linewidth]{figures/wireframe_website_sidebars_closed.pdf} 
-    \caption{Wireframe of the website with no map layer enabled}
-    \label{fig:wireframe_website_sidebars_closed}
-\end{figure}
+\subsubsection*{Wireframe}
+A wireframe of the website was created to establish an agreement on its layout and core features between the group members. \autoref{fig:wireframe:closed} illustrates the basic structure, including the map view and the date picker. \autoref{fig:wireframe:opened}   shows the sidebars used for toggling map layers and viewing their legends. It also demonstrates a layer being activated and queried for additional information. 
 
 \begin{figure}[h]
-    \centering
-    \includegraphics[width=0.6\linewidth]{figures/wireframe_website_sidebars_opened.pdf}
-    \caption{Wireframe of the website with a map layer enable}
-    \label{fig:wireframe_website_sidebars_opened}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{figures/wireframe_website_sidebars_closed.pdf}
+         \caption{Sidebar closed}
+         \label{fig:wireframe:closed}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{figures/wireframe_website_sidebars_opened.pdf}
+         \caption{Sidebars opened}
+         \label{fig:wireframe:opened}
+     \end{subfigure}
+    \caption{Wireframe of the website}
+    \label{fig:wireframe}
 \end{figure}
 
-\subsection{UI Components}
+\subsubsection*{Early Iteration}
 
-\textcolor{orange}{NOE TEKST}
+When we first started implementing the website with OpenLayers, we added a few components that came with OpenLayers and seemed like they could be useful. 
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\linewidth]{figures/website_layout_v1.pdf}
@@ -80,30 +106,120 @@ A wireframe of the website was made to agree on the layout of the website and th
     \label{fig:website_layout_v1}
 \end{figure}
 
+\subsubsection*{Final UI}
+
+\textcolor{orange}{ta med flere bilder?}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/website_layout_final.pdf}
+    \caption{Final version of website}
+    \label{fig:website_layout_final}
+\end{figure}
+
+
+\textcolor{orange}{dette bilde mangler legend for skogsbilveg}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/website_layout_final_sidebars.png}
+    \caption{Final version of website with the sidebars opened}
+    \label{fig:website_layout_final_sidbars}
+\end{figure}
+
+\subsection{UI Components}
+
+As described earlier in \autoref{subsec:implementation:technologies:react}, the \acrshort{ui} is composed of multiple React components. While React allows for the reuse of pre-built components, in this application, all components were custom-built to suit specific requirements, except for a few controls provided by OpenLayers. React supports both class and function components, but for this project, we exclusively used function components. These are functions that receive props as input parameters from a parent component, and return TSX markup. Props are useful when a component requires data or functionality from its parent. TSX is a syntax extension similar to \acrshort{html}, but designed to be embedded within TypeScript functions \cite{react_component}.
+
+\autoref{lst:react_component_example} shows an example of a React function component where the OpenLayers map instance is passed as a prop. This design makes it easy to integrate the component into the map, enabling communication between the component and the map. The component returns markup, where the syntax distinguishes between standard HTML elements (e.g., \texttt{<div>}) and custom React components (e.g., \texttt{<ToggleLayers .../>}), the latter identified by their capitalized names. As shown in the example, components can also be nested within other components, allowing for a modular and hierarchical structure.
+
+\begin{figure}[h]
+\lstinputlisting[
+    caption={Example of a React component},
+    label={lst:react_component_example},
+    language=JavaScript
+]{listings/component_example.tsx}
+\end{figure}
+
+
 \subsection{Component State} % eller state management?
 
-\textcolor{orange}{NOE TEKST}
+When a user interacts with a component, it often needs to update in response. In React, this is handled using what is known as a component's state. Unlike regular variables, state values are preserved across re-renders. State can also be shared between components, a common and effective approach is to store the state in a parent component and pass it down to child components via props \cite{react_state}.
+
+In \autoref{lst:react_state_example}, the \texttt{mapInstance} state is declared using the \texttt{useState} hook. This hook returns a pair: the current state value (\texttt{mapInstance}) and a function to update it (\texttt{setMapInstance}). In this example, an OpenLayers map instance is created and stored in the \texttt{mapInstance} state. This state can then be accessed and modified by other components that interact with the map, enabling consistent and centralized control.
+
+\begin{figure}[h]
+\lstinputlisting[
+    caption={Example of a React state},
+    label={lst:react_state_example},
+    language=JavaScript
+]{listings/state_example.tsx}
+\end{figure}
+
+\subsection{Component Effects}
+
+While state enables components to store and update values across renders, many interactive behaviors require performing actions as side effects. In React, such logic is handled using the \texttt{useEffect} function. This function enables developers to run specific code after the component has rendered, and to react to changes in props, state, or other variables \cite{react_useEffect}.
+
+A common use case for \texttt{useEffect} is to coordinate state with external systems or APIs, in this case, synchronizing React state with the visibility of OpenLayers map layers. The effect shown in \autoref{lst:react_effect_example} monitors changes to the visibility state array and ensures that the corresponding OpenLayers layers are updated accordingly.
+
+\begin{figure}[h]
+\lstinputlisting[
+    caption={Synchronizing OpenLayers layer visibility with React state},
+    label={lst:react_effect_example},
+    language=JavaScript
+]{listings/effect_example.tsx}
+\end{figure}
 
 \subsection{Map Layers}
 
-\textcolor{orange}{NOE TEKST}
+\textcolor{orange}{Explain how you added the layers (e.g., OpenLayers TileLayer, VectorLayer, WMS/WFS integration).
+Describe how the user can toggle layers on/off and how layer visibility is managed.
+Mention how you handle different projections, loading states, and potential errors.}
+
+
 
 \subsection{Date Picker}
 
-The date picker is used to change the current date of the data shown on the map. This lets the user see historical and forecast data. The component consists of an \acrshort{html} date input element and buttons to change the date by day, week or year. When the user changes the date, all enabled map layers will be updated with the new date and displayed on the map as long as they have data from that specific date.
+\textcolor{orange}{What libraries or browser features did you use?
+How is the date state managed and propagated to the map layers?
+Did you implement any validation or restrictions (e.g., min/max dates)?
+Describe how button-based increments work (day, week, year) and how that affects the UI and data loading.}
+
+An important feature the Product Owner was the ability to see a forecast of the trafficability, therefore we needed a component to change the date of the data shown. The date picker is used to change the current date of the data shown on the map. This lets the user see historical and forecast data. The component consists of an \acrshort{html} date input element and buttons to change the date by day, week or year. When the user changes the date, all enabled map layers will be updated with the new date and displayed on the map as long as they have data from that specific date.
 
 \subsection{Trafficability Algorithm} 
 
+\textcolor{orange}{Summarize how the frontend integrates with the backend to retrieve and display results.
+Explain how trafficability classes are visualized (e.g., color codes on roads).
+Mention any logic that runs client-side (e.g., interpreting results or filtering displayed roads).
+If relevant, explain how user interactions can affect this (e.g., sliders or threshold testing tools).}
+\begin{figure}[H]
+\lstinputlisting[
+    caption={Clustering of forest roads},
+    label=lst:clusterforestroads,
+    language=Go
+]{listings/clusterwfsresponsetoshardedmap.go}
+\end{figure}
 % Processing Algorithm?
 The roads are displayed in green, yellow, or red, indicating their trafficability. These classifications are based on calculations that incorporate both meteorological and geological data.
 
-\textcolor{orange}{NOE TEKST}
+\subsection{Optimization}
 
-\section{Server}
+\textcolor{orange}{Optimalisering særlig for vektorlaget forestry roads. Hittil kun at man må zoom inn nok slik at det ikke blir like mange features}
 
-The backend server consists of TWO/THREE endpoints: a proxy for \Gls{wms} services, a query aggregator and the forestry road NOE. 
-% Generelt om Server
-The backend server is written in Go (REF/GLOSS) and designed as a REST API (REF/GLOSS). 
+\subsection{Accessibility}
+
+\textcolor{orange}{Did you take any steps to make the app accessible (e.g., keyboard navigation, alt texts)?
+Mention usability features such as clear tooltips, feedback on interaction, consistent styling, etc.}
+
+\subsection{Integration with Backend} % VET IKKE OM DETTE TRENGS
+
+\textcolor{orange}{How does the frontend communicate with the server (e.g., REST API calls)?
+Describe how you handle asynchronous data fetching and error handling.
+Mention the structure of responses (e.g., JSON), and how you map that data to visual layers.}
+
+\section{Server}\label{sec:implementation:server}
+
+The backend server consists of two endpoints: a proxy for \Gls{wms} services and an endpoint for the forestry road algorithm. As stated 
 
 \begin{table}[h]
     \centering
@@ -131,11 +247,15 @@ The backend server is written in Go (REF/GLOSS) and designed as a REST API (REF/
     - Algorithm for trafficability of forest roads
 \end{comment}
 
-\subsection{Forestry Road Algorithm}
+\subsection{Forestry Road Algorithm}\label{subsec:server:forestroadalgorithm}
 
-\textcolor{orange}{NOE TEKST}
+\textcolor{orange}{
+Hva det er (REST?) \\ \\
+Hvordan den funker (Hente veidata, cluster, query, send tilbake) \\ \\
+Hvorfor vi gjorde det slikt (kanskje ikke?)
+}
 
-\subsection{Proxy}\label{subsec:proxy}
+\subsection{Proxy}\label{subsec:server:proxy}
 
 As described in Section \ref{sec:systemarchitecture}, we wanted a clean architecture where all requests went through the backend server. 
 \textcolor{orange}{NOE MER TEKST... HVORDAN IMPLEMENTERT, HVORDAN BRUKES DET}
@@ -144,7 +264,7 @@ As described in Section \ref{sec:systemarchitecture}, we wanted a clean architec
 % Hva er effekten av en slik proxy
     % slik at clienten snakker med website, og website snakker med verdenen gjennom backend serveren
 
-\subsection{Optimization}
+\subsection{Optimization}\label{subsec:server:optimization}
 
 Early iterations of the forest road retrieval and processing algorithm were computationally expensive, resulting in long response times when querying the forest road layer.
 
@@ -158,7 +278,7 @@ The findings made it possible to cluster the forest roads into their closest SeN
 
 % TODO: oppdater denne listingen med bedre kode
 % (int(math.Round(coordinates[0])))????
-\begin{figure}[H]
+\begin{figure}[h]
 \lstinputlisting[
     caption={Clustering of forest roads},
     label=lst:clusterforestroads,
@@ -178,7 +298,7 @@ This was solved by downloading the superficial deposit data and reconstructing i
 \lstinputlisting[
     caption={Building of spatial index},
     label=lst:spatialindex,
-    language=Go
+    language=Go,
 ]{listings/readshapefileandbuildindex.go}
 \end{figure}
 
@@ -188,6 +308,31 @@ This was solved by downloading the superficial deposit data and reconstructing i
 
 \textcolor{orange}{Antall veier som må bli prosessert avhenger av hvor zoomet inn man er på kartet, og vil noen ganger inneholde flere tusen del-veier på en gang. Å prosessere hver av disse sekvensielt ville tatt for lang tid, så pararell prosessering måtte bli tatt i bruk. Som nevnt over i kapittelet techologies/go har go en sterk fordel med goroutines, som er lightweight multithreading. Goroutines blir brukt flere steder, som querying av løsmasser og som i code listing 5.1 for clustering av veier. }
 % Det er allikevel viktig å passe på at alle goroutines har en klar måte å exite på, eller en måte å bli signalisert til å stoppe.
+
+\subsection{Folder Structure}
+
+\textcolor{orange}{Kanskje ikke ha med dette? idk}
+
+\dirtree{%
+.1 /.
+.2 cmd/.
+.3 api/.
+.4 main.go.
+.2 data/.
+.3 Fjord/.
+.3 Losmasse/.
+.2 internal/.
+.3 config/.
+.3 constants/.
+.3 http/.
+.4 handlers/.
+.4 server/.
+.3 models/.
+.3 services/.
+.4 senorge/.
+.4 superficialdeposits/.
+.3 utils/.
+}
 
 % Hva er problemet?
 % Hva er goroutines og hvorfor er det bra for oss?

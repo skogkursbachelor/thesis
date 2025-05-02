@@ -1,4 +1,4 @@
-\chapter{Requirements}
+\chapter{Requirements}\label{chap:requirements}
 
 \textcolor{orange}{NOE TEKST}
 
@@ -157,17 +157,19 @@ The use case diagram shows all interactions the user will have with the website.
 \end{figure}
 
 \subsection{Actors}
+
 \begin{itemize}
     \item \textbf{User:} The primary user of the website, typically transport managers in the forestry industry, who interact with the system to access relevant map and logistics data.
     \item \textbf{Backend Server:} The central server that the website communicates with to retrieve all necessary map data. It aggregates, processes, and refines data from external services before delivering it to the website.
     \item \textbf{Map Server:} External services that provide map data, either through a \Gls{wms}, \Gls{wfs}, or an \acrshort{api}, which the backend server integrates into the system.
 \end{itemize}
 
-
 \subsection{Use Case Specifications}
+
 It is important to show how users interact with the system to achieve their goals. The use case specifications provide details of each use case and the basic path the user takes to achieve their goals while also capturing possible exceptions. 
 
 A high priority use case for the website is the ability to toggle a map layer, which allows users to control the visibility of different layers. The use case specification for this functionality is shown in \hyperref[tab:use_case_toggle_layer]{Table \ref*{tab:use_case_toggle_layer}}. Additional use case specifications for other features can be found in \hyperref[appendix:use_case_specifications]{Appendix \ref*{appendix:use_case_specifications}}.
+
 \begin{table}[h]
     \centering
     \begin{tabularx}{\textwidth}{|l|X|}

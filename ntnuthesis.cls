@@ -343,3 +343,11 @@
 
 % Power of two (opphøye km)
 \usepackage{siunitx}
+
+% Footnote i tabeller
+\usepackage{tablefootnote}
+
+% Directory tree
+\usepackage{dirtree}
+
+\usepackage{lstgolang}

@@ -1,4 +1,4 @@
-\chapter{Technical Design}
+\chapter{Technical Design}\label{chap:technicaldesign}
 
 \begin{comment}
     # Universal Design (Universal Utforming)
@@ -15,15 +15,6 @@
 \section{Data Flow} % e.g., how user requests move through the system).
 
 \textcolor{orange}{KANSKJE TEMP LOKASJON}
-
-% KANSKJE ENDRE "ocean and fjord" og "Glacial river" til "Marine" og "glaciofluvial" slik det er brukt i introduksjon.
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=1\linewidth]{figures/roadclassification.pdf}
-    \caption{Diagram visualizing the forestry road classification}
-    \label{fig:forestry_road_classification}
-\end{figure}
-% (fra diagram) How much soil moisture, kommer an på permeability
 
 \section{Sequence Diagram}
 \begin{figure}[h]
@@ -63,8 +54,18 @@ Choosing to implement the frontend as a web application provides several benefit
 
 Overall, the design of the website emphasizes a clean separation of concerns, efficiency in data handling, and accessibility, which together form a robust and user-friendly frontend component for the system.
 
+\subsection{Road Classification}
 
+\textcolor{orange}{
+Blablabla noe \autoref{fig:forestryroadclassification}
+}
 
+\begin{figure}[h]
+    \centering
+    \centerline{\includegraphics[width=1.2\linewidth]{figures/roadclassification.pdf}}
+    \caption{Diagram visualizing the forestry road classification}
+    \label{fig:forestryroadclassification}
+\end{figure}
 
 \subsection{Folder Structure}
 
@@ -80,129 +81,16 @@ Overall, the design of the website emphasizes a clean separation of concerns, ef
 
 \textcolor{orange}{NOE TEKST}
 
-\subsection{Golang?/Libraries}
+\subsection{Forestry Road Processing}
 
-\textcolor{orange}{NOE TEKST}
-
-\subsection{Map and Weather Services} % endre navn?
-
-% Lag tabell e.l. av alle services som brukes (WMS/API) ?
-Multiple map services were used in this project to ultimately determine the trafficability of forestry roads. Retrieving data from WMS and WFS was made easy with OpenLayers as it includes functions for this. 
-
-\textcolor{orange}{LITT USIKRE OM VI SKAL HA DETTE MED? TAR MYE PLASS}
-
-\subsubsection*{Frost Depth}
-
-\textcolor{orange}{NOE TEKST}
-% KANSKJE HA ENDA MED DETALJER? WMS PARAMETER (LAYERS, etc.)
-% SPESIFISER LOKASJON 
-\begin{table}[h]
-    \centering
-    \begin{tabularx}{\linewidth}{|l|X|}
-        \hline
-        \textbf{Service Type:} & \Gls{wms} \\
-        \hline
-        \textbf{Data Provided:} & \Gls{frost} Depth (1 x 1 km Resolution) \\
-        \hline
-        \textbf{Data Format:} & PNG \\
-        \hline
-        \textbf{Data Source:} & \Gls{nve} \\
-        \hline
-        \textbf{URL:} & \url{} \\
-        \hline
-        \textbf{Rate Limit:} & No Limit \\
-        \hline
-        \textbf{Authorization:} & No Authorization Needed \\
-        \hline
-    \end{tabularx}
-    \caption{Details about frost depth map service}
-    \label{tab:frost_map_service}
-\end{table}
-
-\subsubsection*{Soil Moisture}
-
-\textcolor{orange}{NOE TEKST}
-\begin{table}[h]
-    \centering
-    \begin{tabularx}{\linewidth}{|l|X|}
-        \hline
-        \textbf{Service Type:} &  \\
-        \hline
-        \textbf{Data Provided:} &  \\
-        \hline
-        \textbf{Data Format:} &  \\
-        \hline
-        \textbf{Data Source:} &  \\
-        \hline
-        \textbf{URL:} &  \\
-        \hline
-        \textbf{Rate Limit:} &  \\
-        \hline
-        \textbf{Authorization:} & \\
-        \hline
-    \end{tabularx}
-    \caption{Details about soil moisture map service}
-    \label{tab:soil_moisture_map_service}
-\end{table}
-
-\subsubsection*{Superficial Deposits}
-
-\textcolor{orange}{NOE TEKST}
-\begin{table}[h]
-    \centering
-    \begin{tabularx}{\linewidth}{|l|X|}
-        \hline
-        \textbf{Service Type:} & \Gls{wms} \\
-        \hline
-        \textbf{Data Provided:} & Superficial Deposits (Scale: 1:1,000,000 and 1:20,000) \\
-        \hline
-        \textbf{Data Format:} & PNG \\
-        \hline
-        \textbf{Data Source:} & \acrshort{ngu} \\
-        \hline
-        \textbf{URL:} &  \\
-        \hline
-        \textbf{Rate Limit:} & No Limit \\
-        \hline
-        \textbf{Authorization:} & No Authorization Needed\\
-        \hline
-    \end{tabularx}
-    \caption{Details about superficial deposit map service}
-    \label{tab:superficial_deposit_map_service}
-\end{table}
-
-\subsubsection*{Forestry Roads}
-
-\textcolor{orange}{NOE TEKST}
-\begin{table}[h]
-    \centering
-    \begin{tabularx}{\linewidth}{|l|X|}
-        \hline
-        \textbf{Service Type:} & WFS \\
-        \hline
-        \textbf{Data Provided:} & Forestry Roads \\
-        \hline
-        \textbf{Data Format:} & \Gls{geojson} \\
-        \hline
-        \textbf{Data Source:} & Geonorge and Kartverket \\
-        \hline
-        \textbf{URL:} &  \\
-        \hline
-        \textbf{Rate Limit:} &  \\
-        \hline
-        \textbf{Authorization:} & No Authorization Needed \\
-        \hline
-    \end{tabularx}
-    \caption{Details about forestry road map service}
-    \label{tab:forestry_road_map_service}
-\end{table}
+\subsection{Proxy}
 
 
-\subsection{Map Data Processing}
+% Multiple map services were used in this project to ultimately determine the trafficability of forestry roads. Retrieving data from WMS and WFS was made easy with OpenLayers as it includes functions for this. 
 
-\textcolor{orange}{NOE TEKST}
-\begin{comment}
-    # Concurrency (works with multiple cores, might be slower with one core?)
-\end{comment}
+
+\subsection{Folder Structure}
+
+
 
 % ANDRE DIAGRAM? sequence diagrams, component diagrams, etc.
