@@ -8,7 +8,7 @@
 
 \section{Technologies}
 
-This section provides a structured overview of the technologies employed in the project, along with a reason for their selection.
+This section outlines the key technologies used in the project, explaining both their technical roles and the reasoning behind their selection. Choices were guided by factors such as development efficiency, scalability, and compatibility with the project's geospatial and web-based requirements.
 
 \subsection{TypeScript}
 
@@ -49,7 +49,7 @@ Docker\footnote{\url{https://www.docker.com/}} is a set of technologies that use
 
 \section{Website}
 
-This section contains an overview of the implementation of the website.
+This section describes the implementation of the website, which serves as the main user interface for interacting with map data. It outlines the design and iteration of the user interface, the integration of interactive components using React and OpenLayers, and the implementation of core features such as date selection, dynamic map layers, and trafficability classification.
 
 
 \begin{comment}
@@ -62,13 +62,13 @@ This section contains an overview of the implementation of the website.
     - Datepicker / temporal aspect of map layers
 \end{comment}
 
-\subsection{UI Iterations} % Vet ikke om dette burde være et annet sted?
+\subsection{User Interface Iterations} % Vet ikke om dette burde være et annet sted?
 
 The \acrfull{ui} underwent several iterations during development before reaching its final form. This section outlines those iterations, beginning with the initial wireframe.
 
 \subsubsection*{Wireframe}
 
-A wireframe was created early in the development process to establish a shared understanding among group members of the website’s layout and core functionality.  To draw inspiration for the design, several existing map-based websites were reviewed, including SeNorge\footnote{\url{https://www.senorge.no/}} and NIBIO's Kilden\footnote{\url{https://kilden.nibio.no}}.
+A wireframe was created early in the development process to establish a shared understanding among group members of the website’s layout and core functionality. It was developed using Balsamiq, a tool well-suited for quickly creating low-fidelity wireframes. To draw inspiration for the design, several existing map-based websites were reviewed, including SeNorge\footnote{\url{https://www.senorge.no/}} and NIBIO's Kilden\footnote{\url{https://kilden.nibio.no}}.
 
 \autoref{fig:wireframe:closed} shows the basic structure, including the main map view and the date picker component. \autoref{fig:wireframe:opened} illustrates the sidebars used to toggle map layers and view their corresponding legends. It also demonstrates how a layer can be activated and queried for additional information, highlighting key interactions envisioned for the final implementation.
 
@@ -95,9 +95,11 @@ The \acrshort{ui} evolved later in the project; for instance, it was decided tha
 
 \subsubsection*{Early Iteration}
 
-When we first started implementing the website with OpenLayers, we added a few components that came with OpenLayers as it seemed like they could be useful. These were the map overview in the bottom left corner which is useful as it can be hard to see the base map layer when one or multiple map layers are added on top of that. Additionally a map scale line was added as this is a standard for most maps.
+When we first began implementing the website using OpenLayers, we included several built-in components that seemed potentially useful. One of these was the overview map in the bottom-left corner, which provides a miniature version of the map view. This was helpful for orientation, especially when one or more map layers obscured the base map. We also added a scale line, a common feature in most map applications, to give users a sense of distance and scale.
 
-In the version seen in \autoref{fig:website_layout_v1}, the user was able to query every map layer, in this instance the superficial deposit layer. We found this useful for debugging and comparing the map layers, but made the \acrshort{ui} more complex than necessary.
+In the version shown in \autoref{fig:website_layout_v1}, users could query all available map layers, such as the superficial deposit layer. While this functionality was helpful for debugging and comparing data across layers, it introduced unnecessary complexity into the \acrshort{ui}, especially from a user perspective.
+
+A geolocation button was also included, allowing users to center the map on their current location if they consented to share it. However, when deploying the website on the backend server, we discovered that this feature only works over HTTPS due to browser security policies. Since the feature was not essential to the core functionality, and the project did not include setting up a valid HTTPS certificate, it was ultimately left non-functional in the deployed version.
 
 \begin{figure}[h]
     \centering
@@ -106,9 +108,17 @@ In the version seen in \autoref{fig:website_layout_v1}, the user was able to que
     \label{fig:website_layout_v1}
 \end{figure}
 
-\subsubsection*{Final UI}
+\subsubsection*{Final User Interface}
 
-\textcolor{orange}{ta med flere bilder? Skrive at nettsiden er lagd for pc, ikke mobil}
+The final version of the \acrshort{ui} represents the \acrfull{mvp} and delivers the core functionality of the application.
+
+As shown in \autoref{fig:website_layout_final}, several aesthetic and usability improvements were made. Icons were added to interface elements, such as chevron icons for the date picker at the top of the page, improving clarity and consistency. The base layer buttons in the bottom-left corner were updated with background images to visually indicate what each layer represents, making it easier for users to select the desired base map.
+
+Based on feedback from the Product Owner, a new feature was introduced to allow users to configure thresholds used to calculate the trafficability of forestry roads. This functionality was implemented in a new sidebar, following the same design as the existing sidebars for layer selection and legends. In this configuration sidebar, users can adjust parameters such as soil saturation and frost depth thresholds. As mentioned earlier, only the forestry road layer supports querying. This design choice simplified the user interface by focusing interactions on the most relevant layer. An example of the query result is shown in \autoref{fig:website_layout_final_sidebars}, where detailed information about a selected road segment is displayed.
+
+To further improve usability, tooltips were added to interactive buttons, providing users with contextual hints about each element's purpose when hovered over.
+
+The interface is primarily designed for desktop use, with layout and controls optimized for larger screens. While some functionality may be accessible on mobile devices, full responsiveness and mobile compatibility were not prioritized in this version.
 
 \begin{figure}[h]
     \centering
@@ -117,7 +127,6 @@ In the version seen in \autoref{fig:website_layout_v1}, the user was able to que
     \label{fig:website_layout_final}
 \end{figure}
 
-
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\linewidth]{figures/website_layout_final_sidebars.png}
@@ -125,11 +134,12 @@ In the version seen in \autoref{fig:website_layout_v1}, the user was able to que
     \label{fig:website_layout_final_sidebars}
 \end{figure}
 
-\subsection{UI Components}
+
+\subsection{Components}
 
 As described earlier in \autoref{subsec:implementation:technologies:react}, the \acrshort{ui} is composed of multiple React components. While React allows for the reuse of pre-built components, in this application, all components were custom-built to suit specific requirements, except for a few controls provided by OpenLayers. React supports both class and function components, but for this project, we exclusively used function components. These are functions that receive props as input parameters from a parent component, and return TSX markup. Props are useful when a component requires data or functionality from its parent. TSX is a syntax extension similar to \acrshort{html}, but designed to be embedded within TypeScript functions \cite{react_component}.
 
-\autoref{lst:react_component_example} shows an example of a React function component where the OpenLayers map instance is passed as a prop. This design makes it easy to integrate the component into the map, enabling communication between the component and the map. The component returns markup, where the syntax distinguishes between standard HTML elements (e.g., \texttt{<div>}) and custom React components (e.g., \texttt{<ToggleLayers .../>}), the latter identified by their capitalized names. As shown in the example, components can also be nested within other components, allowing for a modular and hierarchical structure.
+\autoref{lst:react_component_example} shows an example of a React function component where the OpenLayers map instance is passed as a prop. This design makes it easy to integrate the component into the map, enabling communication between the component and the map. The component returns tsx markup, where the syntax distinguishes between standard HTML elements (e.g., \texttt{<div>}) and custom React components (e.g., \texttt{<ToggleLayers .../>}), the latter identified by their capitalized names. As shown in the example, components can also be nested within other components, allowing for a modular and hierarchical structure.
 
 \begin{figure}[h]
 \lstinputlisting[
@@ -190,16 +200,23 @@ Describe how button-based increments work (day, week, year) and how that affects
 
 An important feature the Product Owner wanted was the ability to see a forecast of the trafficability, therefore we needed a component to change the date of the data shown. The date picker is used to change the current date of the data shown on the map. This lets the user see historical and forecast data. The component consists of an \acrshort{html} date input element and buttons to change the date by day, week or year. When the user changes the date, all enabled map layers will be updated with the new date and displayed on the map as long as they have data from that specific date.
 
-\subsection{Trafficability Algorithm}
+\subsection{Trafficability Algorithm}\label{subsec:implementation:website:trafficability_algorithm}
 
-The main feature of the website is to visualize forestry roads using a color-coded system: green, yellow, or red, to indicate their current trafficability.
+As described earlier in \autoref{sec:technicaldesign:website}, the main feature of the website is to visualize forestry roads using a color-coded system: green, yellow, or red, to indicate their current trafficability.
 These classifications are based on an algorithm that incorporates both meteorological and geological data.
 
-Initially, we planned to perform these calculations on the backend to optimize performance. \texttt{skrive hvorfor perfomance blir bedre i backend?} However, later in the project, the Product Owner requested that users should be able to adjust threshold values for certain parameters dynamically using sliders. Since this would require recalculating the classifications in real time as the slider values changed, it became more efficient to move the algorithm to the frontend. This avoided repeated requests to the backend for each slider adjustment, as the map layer would only need to be fetched once and then re-styled dynamically on the client side.
+Initially, we planned to perform these calculations on the backend to maintain cohesion and centralized control over the classification logic. By keeping all data processing on the server, we could ensure that the logic was consistent, easier to maintain, and independent of client-side variations. However, later in the project, the Product Owner requested that users should be able to adjust threshold values for certain parameters dynamically using sliders. Since this would require recalculating the classifications in real time as the slider values changed, it became more efficient to move the algorithm to the frontend. This avoided repeated requests to the backend for each slider adjustment, as the map layer would only need to be fetched once and then re-styled dynamically on the client side.
 
-As shown in \autoref{lst:trafficability_algorithm}, each feature rendered on the map includes \gls{geojson} properties for relevant meteorological and geological data, specifically, frost depth, soil saturation, and superficial deposit type. These values are compared against the threshold values selected by the user to determine the color used for each road segment.
+As shown in \autoref{lst:forestryroads_styling}, each feature rendered on the map includes \gls{geojson} properties for relevant meteorological and geological data, specifically, frost depth, soil saturation, and superficial deposit type. These values are compared against the threshold values selected by the user to determine the color used for each road segment.
 
-If the frost depth exceeds the threshold, the road is classified as having good trafficability (green). If not, the soil saturation value is used to determine whether the trafficability is moderate (yellow) or poor (red), based on user-defined minimum and maximum thresholds.
+The function that determines the color of the road is shown in \autoref{lst:trafficability_algorithm}. If the frost depth exceeds the threshold, the road is classified as having good trafficability (green). If not, the soil saturation value is used to determine whether the trafficability is moderate (yellow) or poor (red), based on user-defined minimum and maximum thresholds.
+
+\begin{figure}[h]
+\lstinputlisting[
+    caption={Styling of forestry roads},
+    label={lst:forestryroads_styling}
+]{listings/forestryroads_styling.ts}
+\end{figure}
 
 \begin{figure}[h]
 \lstinputlisting[
@@ -213,11 +230,20 @@ If the frost depth exceeds the threshold, the road is classified as having good 
 \textcolor{orange}{Did you take any steps to make the app accessible (e.g., keyboard navigation, alt texts)?
 Mention usability features such as clear tooltips, feedback on interaction, consistent styling, etc.}
 
-\subsection{Integration with Backend} % VET IKKE OM DETTE TRENGS
+\subsection{Integration with Backend}
 
-\textcolor{orange}{How does the frontend communicate with the server (e.g., REST API calls)?
-Describe how you handle asynchronous data fetching and error handling.
-Mention the structure of responses (e.g., JSON), and how you map that data to visual layers.}
+All map data displayed on the website is fetched through the backend server. Each map layer is implemented using an OpenLayers object that sends requests to a specified URL. The response format depends on the type of map layer.
+
+As shown in \autoref{lst:url_example}, \texttt{TileLayer} and \texttt{ImageLayer} use either an XYZ tile URL or a \gls{wms} URL, both of which return rendered map images. In contrast, \texttt{VectorLayer} uses a \gls{wfs} URL to request raw vector features, which is returned in the \gls{geojson} format.
+
+\begin{figure}[h]
+\lstinputlisting[
+    caption={Example of OpenLayers URL configurations},
+    label={lst:url_example}
+]{listings/openlayers_url_examples.tex}
+\end{figure}
+
+To improve performance and reduce unnecessary network traffic, layers are loaded dynamically based on the user's interaction with the map, such as panning or zooming. Certain layers are only activated at specific zoom levels or within a defined spatial extent to ensure efficient resource usage.
 
 \section{Server}\label{sec:implementation:server}
 
@@ -270,7 +296,7 @@ As described in Section \ref{sec:systemarchitecture}, we wanted a clean architec
 
 Early iterations of the forest road retrieval and processing algorithm were computationally expensive, resulting in long response times when querying the forest road layer.
 
-\subsubsection{SeNorge}
+\subsubsection{SeNorge} \label{subsubsec:implementation:optimization:senorge}
 
 The backend would initially query the SeNorge API once for every road, which would quickly overload the API server leading to long processing times. Additionally, the SeNorge API would not accept multiple coordinates within each grid-cell. SeNorge uses a grid system to divide Norway into \qty{1}{\kilo\meter\squared} cells, and calculate all their climate projections as an average within each cell \cite{senorge_watermap}. 
 
@@ -301,31 +327,6 @@ This was solved by downloading the superficial deposit data and reconstructing i
 \subsubsection{Goroutines}
 
 As previously stated in \autoref{subsec:implementation:technologies:go}, Go was chosen partly due to its native concurrency functionality. This proved to be a wise decision, as Goroutines was a large part of reducing the processing times. The amount of features (forestry roads) shown on the map at once can range from zero to several thousands, depending on the zoom level used. Processing these sequentially would lead to extensive processing times, whereas use of parallel processing ensured consistently low loading times, even when handling large volumes of data. An example of how Goroutines was used can be seen in \autoref{lst:clusterforestroads}, where a wait-group and a semaphore are used to synchronize and limit the amount of Goroutines used.
-
-\subsection{Folder Structure}
-
-\textcolor{orange}{Kanskje ikke ha med dette? idk}
-
-\dirtree{%
-.1 /.
-.2 cmd/.
-.3 api/.
-.4 main.go.
-.2 data/.
-.3 Fjord/.
-.3 Losmasse/.
-.2 internal/.
-.3 config/.
-.3 constants/.
-.3 http/.
-.4 handlers/.
-.4 server/.
-.3 models/.
-.3 services/.
-.4 senorge/.
-.4 superficialdeposits/.
-.3 utils/.
-}
 
 \begin{comment}
 UTFORDRINGER OM IMPLEMENTASJON HER:

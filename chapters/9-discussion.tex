@@ -22,7 +22,8 @@ The use of GitHub for both version control and task management via the Kanban bo
 
 \subsection{Technologies}
 
-\subsubsection*{Website}
+\subsubsection{Website}
+
 We have no regrets with the technologies chosen for the website. We had little to no experience with TypeScript, React and OpenLayers before the start of this project. But given the extensive documentation, and ease of use for all of these we had no problem learning thoughout the project. 
 
 Even tough the scale of the product is not the biggest, using TypeScript instead of JavaScript felt much safer and rarely lead to any errors. 
@@ -30,6 +31,12 @@ Even tough the scale of the product is not the biggest, using TypeScript instead
 We did not have much web development before so comparing the use of React to developing with no framework is not possible. But adding and reusing components on the website felt very easy using React which probably made the process much more effective.
 
 \textcolor{orange}{OpenLayers: sammenligne med leaflet her eller tidligere i rapporten?}
+
+\subsubsection{Server}
+
+As described in \autoref{chap:implementation}, we made good use of the advantages of Go (?rewrite). 
+
+\subsubsection{Div ekstra (traggo, github org med kanban, skyhigh)}
 
 \subsection{SDLC Model / SCRUM}
 
@@ -41,7 +48,8 @@ We did not have much web development before so comparing the use of React to dev
 
 \subsection{Improvements}
 
-\textcolor{orange}{Kanskje nevne Universal Design?}
+\textcolor{orange}{Kanskje nevne Universal Design? \\ \\
+Hva mente du med improvements her? Vil ikke future work dekke? /e}
 
 \subsection{Use of AI}
 
@@ -49,7 +57,15 @@ We did not have much web development before so comparing the use of React to dev
 
 \section{Product}
 
-\textcolor{orange}{NOE TEKST}
+\subsection{Revisiting (" "/PRODUCT/RESULT) Goals}
+
+\textcolor{orange}{blabla revisit the prouct goals from \autoref{subsec:req:productgoals}}
+
+\begin{comment}
+    The primary goal of the project is to develop and test a \textbf{prototype system for fully digital modeling of forestry road load-bearing capacity under varying conditions throughout the year.} The solution will incorporate various geological and meteorological parameters, such as soil type and moisture, weather forecasts, and precipitation data, to generate an accurate classification of forest roads. This classification will be presented through an interactive map-based website. Furthermore, the system will prioritize ease of use, with an intuitive interface designed for transport managers, allowing them to make informed route choices based on real-time data and forecasts. 
+\end{comment}
+
+The primary goal of the project was to develop and test a \textbf{prototype system for fully digital modeling of forestry road load-bearing capacity under varying conditions throughout the year.} \textcolor{orange}{GOALET BLE OPPNÅDD/IKKE PGA... delmål: ease of use, intuitive, er den brukbar? (ja vi har fått feedback)}
 
 \subsection{Limitations}
 
@@ -59,7 +75,7 @@ We did not have much web development before so comparing the use of React to dev
 
 \textcolor{orange}{- Bad performance when a lot of vector features are rendered on the screen, this also differs from monitor resolution. - Not HTTPS: security issues, can't use geolocation, etc.}
 
-\subsection{Comparison with Existing Products?} 
+\subsection{Comparison with Existing Products?}
 
 \textcolor{orange}{NOE TEKST}
 
@@ -71,7 +87,7 @@ We did not have much web development before so comparing the use of React to dev
 
 \textcolor{orange}{NOE TEKST}
 
-\subsubsection*{Environmental}
+\subsubsection{Environmental}
 
 \textcolor{orange}{NOE TEKST}
 \begin{comment}
@@ -93,27 +109,40 @@ FNs Bærekraftsmål som virker relevante (KANSKJE SAMMENLIGN MED HVA NORGE GJØR
 - 15 (?)
 \end{comment}
 
-\subsubsection*{Economic}
+\subsubsection{Economic}
 
 \textcolor{orange}{NOE TEKST}
 
-\subsubsection*{Social}
+\subsubsection{Social}
 
 \textcolor{orange}{NOE TEKST}
 
 \subsection{Future Work}
+
+\begin{itemize}
+    \item \textbf{User Guide}: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    \item \textbf{Offline Mode}: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    \item \textbf{Export Data}: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    \item \textbf{Machine Learning}: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    \item \textbf{Notification System}: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    \item \textbf{Reporting System}: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    \item \textbf{Better Accessibility}: NOE MER e.g. color-blind modes
+    \item \textbf{Hour Picker}: ish noe allah: An hour picker could be useful if conditions vary a lot hourly, for example when the temperature oscillates around \qty{0}{\celsius} throughout the day. \textcolor{orange}{Noe mer om at veien blir bedre når den er kald, selvom frosten ikke er dyp.}
+    \item \textbf{Performance}: Skriv om: (WebGL for rendering of vectors (downside?: does require newer hardware/browsers), også backend opti). Performance testing flere brukere samtidig?
+    \item \textbf{Code Quality}: Kanskje ikke ha med denne, siden vi disser oss selv.
+\end{itemize}
+
 \begin{comment}
     - User Guide
     - Offline Mode (download a map with data)
-    - Mobile
+    - Mobile (har vi alt?)
     - Export Data
     - Machine Learning
     - Notification System
+    - (Condition reporting system, si at en trucker kan si at denne veien var dårlig, typ det DF mente)
     - Better Accessibility (e.g. color-blind modes)
     - Hour picker (for mer detaljert data for spesifikke tidspunk, f.eks. om en sjåfør skal kjøre om natten)
     - More Optimization?
         - WebGL for rendering of vectors (downside?: does require newer hardware/browsers)
     - Code Quality, what to add to improve?
 \end{comment}
-
-\textcolor{orange}{NOE TEKST}

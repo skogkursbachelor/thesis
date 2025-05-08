@@ -4,6 +4,21 @@
 
 \section{Docker \& Docker Compose}
 
+\textcolor{orange}{Avsnitt hvordan vi har deploya (docker compose på vm)}
+
+\textcolor{orange}{kanskje ha glossary på: made using the CI/CD tool GitHub Actions}.
+The Docker images are made using GitHub Actions\footnote{\url{https://github.com/features/actions}}. Any commit pushed to the server or website repositories will trigger the action, which then builds the image and pushes it to GitHub Container Registry\footnote{\url{https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry}}. All Docker images are built using a text document that contains all the commands a user could call on the command line to assemble an image, called a Dockerfile \cite{dockerfiledocs}. The Dockerfiles along with the GitHub Action for the website and server can be found in their respective repositories (see \autoref{tab:githubrepositories}).
+
+\textcolor{orange}{Avsnitt om hvorfor vi valgte dette? Kanskje discussion??}
+
+\textcolor{orange}{
+Avsnitt om Hva må SKogkurs gjøre for å deploye selv på egne servere? \\
+Bygge imagene selv, eller endre container reg \\
+Laste ned løsmasse og fjorddata \\
+Ha en maskin med docker som er åpent for nett
+}
+
+
 \section{OpenStack}\label{sec:deployment:openstack}
 
 \textcolor{orange}{
@@ -17,9 +32,4 @@ Hva SkyHiGh er
 
 \subsection{Backend Server}\label{subsec:deployment:docker:backendserver}
 
-\textcolor{orange}{
-Ref tilbake til implmenetation docker \\ \\
-deployed med compose \\ \\
-Hvordan vi lager docker images i actions \\ \\
-Hvorfor det er deployed med compose og ikke K8s e.l. 
-}
+\textcolor{orange}{Hvilke data man trenger, kanskje scrappe subsec back og website, ta med i docker og compose}

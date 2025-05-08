@@ -5,18 +5,38 @@
     # OpenLayers vs Leaflet (or others)
     # Openlayers TileWMS vs ImageWMS (optimalisering av kartet)
 \end{comment}
-\textcolor{orange}{NOE TEKST}
+\textcolor{orange}{
+Kanskje fjerne 3.1 System arch så flytte tekst derfra hit
+}
 
 \section{System Architecture}\label{sec:systemarchitecture}
 
-% client-server model, microservices, layers of the application ? 
-\textcolor{orange}{NOE TEKST}
+\textcolor{orange}{
+Trenger noe mer tekst her kanskje, avsnitt under er flyttet fra section website. \autoref{fig:systemarchitecture}
+}
 
-\section{Data Flow} % e.g., how user requests move through the system).
+The system follows a client-server architecture, where the website acts as a client and communicates with a backend server via a REST API. The processing of meteorological and geological data is handled on the server side, whereas frontend is responsible for requesting data, rendering maps, and presenting relevant information to the user.
 
-\textcolor{orange}{KANSKJE TEMP LOKASJON}
+The interaction between the website and the server is stateless, meaning that each request is independent and contains all the information needed to process it. This architectural choice improves system robustness and simplifies both development and deployment, particularly when it comes to scaling.
+
+\begin{comment}
+    I tillegg ville vi at nettsiden kun skulle snakke med med verden utenom brukeren gjennom serveren, via proxyer o.l. Dette førte til at requester gikk gjennom ett punkt, som ga en renere arkitektur. Også andre fordeler som mulighet for bedre sikkerhet, logging
+\end{comment}
+
+Using the server as an intermediary offers several advantages. While not all of these are utilized in this implementation, such an architecture allows for future expansion to include access control, credential protection for external services, and data filtering or transformation. It also simplifies integration with diverse external APIs by enabling consistent formatting before the data reaches the frontend.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/systemdesign.pdf}
+    \caption{BESKRIVENDE TEKST}
+    \label{fig:systemarchitecture}
+\end{figure}
+
+%\section{Data Flow} % e.g., how user requests move through the system).
+%\textcolor{orange}{KANSKJE TEMP LOKASJON}
 
 \section{Sequence Diagram}
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\linewidth]{figures/sequence_diagram.pdf}
@@ -24,7 +44,8 @@
     \label{fig:sequence_diagram}
 \end{figure}
 
-\hyperref[fig:sequence_diagram]{Figure \ref*{fig:sequence_diagram}} shows the sequence diagram for when the user toggles the forestry road map layer. The whole sequence consists of these steps:
+\autoref{fig:sequence_diagram} shows the sequence diagram for when the user toggles the forestry road map layer. The whole sequence consists of these steps:
+
 \begin{enumerate}
     \item \textbf{Toggle forestry road layer}: The user toggles the forestry road map layer on the website.
     \item \textbf{Request forestry road data}: The website sends a request to the backend server for the necessary data within the visible map area.
@@ -36,15 +57,18 @@
     \item \textbf{Display forestry road trafficability}: The forestry road layer, including trafficability, is rendered on the user's map.
 \end{enumerate}
 
-\section{Website}
+\section{Website}\label{sec:technicaldesign:website}
 
 The website serves as the user interface of the system, allowing users to visualize and interact with data related to forestry road conditions and weather-based forecasts using a dynamic map.
 
-The system follows a client-server architecture, where the website acts as a client and communicates with a backend server via a REST API. The processing of meteorological and geological data is handled on the server side. The frontend is responsible for requesting data, rendering maps, and presenting relevant information to the user.
+The classification of road trafficability is performed on the client side, as the website allows users to dynamically adjust thresholds for certain meteorological and geological parameters. A diagram detailing the classification is shown in \autoref{fig:forestryroadclassification}. Normally, this would be handled entirely by the backend server, but in order to provide immediate feedback when the user changes these thresholds, the classification logic is implemented in the frontend. This hybrid approach ensures a responsive user experience while keeping the most computationally expensive operations on the server.
 
-The classification of road trafficability is performed on the client side, as the website allows users to dynamically adjust thresholds for certain meteorological and geological parameters. Normally, this would be handled entirely by the backend server, but in order to provide immediate feedback when the user changes these thresholds, the classification logic is implemented in the frontend. This hybrid approach ensures a responsive user experience while keeping the most computationally expensive operations on the server.
-
-The interaction between the website and the server is stateless, meaning that each request is independent and contains all the information needed to process it. This architectural choice improves system robustness and simplifies both development and deployment, particularly when it comes to scaling.
+\begin{figure}[h]
+    \centering
+    \centerline{\includegraphics[width=1.2\linewidth]{figures/roadclassification.pdf}}
+    \caption{Diagram visualizing the forestry road classification}
+    \label{fig:forestryroadclassification}
+\end{figure}
 
 A central component of the website is its interactive map interface, which displays spatial data such as forestry road networks, map layers, and calculated trafficability classifications. The map is rendered dynamically in the browser using client-side resources, and data is loaded based on the user’s current viewport and zoom level. This approach ensures efficient data usage and good performance, even when dealing with large or detailed geographic datasets.
 
@@ -54,42 +78,11 @@ Choosing to implement the frontend as a web application provides several benefit
 
 Overall, the design of the website emphasizes a clean separation of concerns, efficiency in data handling, and accessibility, which together form a robust and user-friendly frontend component for the system.
 
-\subsection{Road Classification}
-
-\textcolor{orange}{
-Blablabla noe \autoref{fig:forestryroadclassification}
-}
-
-\begin{figure}[h]
-    \centering
-    \centerline{\includegraphics[width=1.2\linewidth]{figures/roadclassification.pdf}}
-    \caption{Diagram visualizing the forestry road classification}
-    \label{fig:forestryroadclassification}
-\end{figure}
-
-\subsection{Folder Structure}
-
-\textcolor{orange}{NOE TEKST}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.5\linewidth]{figures/website_folder_structure.pdf}
-    \caption{Folder structure of the website}
-    \label{fig:website_folder_structure}
-\end{figure}
-
 \section{Server}
 
-\textcolor{orange}{NOE TEKST}
-
-\subsection{Forestry Road Processing}
-
-\subsection{Proxy}
-
+The 
 
 % Multiple map services were used in this project to ultimately determine the trafficability of forestry roads. Retrieving data from WMS and WFS was made easy with OpenLayers as it includes functions for this. 
-
-
-\subsection{Folder Structure}
 
 
 

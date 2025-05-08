@@ -1,0 +1,20 @@
+OPPDATER DENNE FØR LEVERING
+ubuntu@backup:~$ ls -lg ./**
+./scripts:
+total 8
+-rwxrwxr-x 1 ubuntu 244 Jan 27 22:53 backup_repos.sh
+-rwxr-xr-x 1 ubuntu 133 Jan 29 10:26 backup_traggo.sh
+
+./skogkursbachelor:
+total 32
+drwxrwxr-x  3 ubuntu 4096 May  6 15:00 diagrams
+drwxrwxr-x  6 ubuntu 4096 Feb 20 18:00 infrastructure
+drwxrwxr-x  5 ubuntu 4096 May  2 13:52 meetingminutes
+drwxrwxr-x  6 ubuntu 4096 Feb  5 18:00 projectplan
+drwxrwxr-x  8 ubuntu 4096 May  6 15:00 server
+drwxrwxr-x 10 ubuntu 4096 Apr 11 12:00 thesis
+drwxrwxr-x  6 ubuntu 4096 Apr  2 00:00 website
+
+./traggo:
+total 132
+-rw-r--r-- 1 ubuntu 131072 May  7 08:00 traggo.db
