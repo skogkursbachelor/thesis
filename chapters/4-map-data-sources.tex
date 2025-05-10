@@ -16,8 +16,7 @@ The interactive map on the website supports multiple layers, allowing the user t
 
 \subsection{Base Layers}\label{subsec:baselayers}
 
-The user has the option to change the base layer of the map. In the current version, two options are available: the standard map from \Gls{openstreetmap}\footnote{\url{https://www.openstreetmap.org}} and the terrain map from OpenTopoMap\footnote{\url{https://opentopomap.org}}.
-% KANSKJE GI GRUNN TIL HVORFOR DET IKKE KUN ER ETT BASE LAYER VALG
+The user has the option to change the base layer of the map. In the current version, two options are available: the standard map from \gls{openstreetmap}\footnote{\url{https://www.openstreetmap.org}} and the terrain map from OpenTopoMap\footnote{\url{https://opentopomap.org}}. This flexibility allows users to choose the base layer that best suits their task. For example, the standard map shown in \autoref{fig:maplayer:standardlayer} provides a clean, general-purpose view that is ideal for navigation and overlaying vector data. In contrast, the terrain map shown in \autoref{fig:maplayers:topolayer} includes elevation and contour information, making it more suitable for geographic or environmental analysis. Offering multiple base layers enhances usability across a wider range of scenarios and user preferences.
 
 \begin{figure}[h]
      \centering
@@ -41,6 +40,8 @@ The user has the option to change the base layer of the map. In the current vers
 \subsection{Superficial Deposits}\label{subsec:superficialdeposits}
 % LEGGE INN FARGE KODER FOR LØSMASSETYPE. TRENGER IKKE FOR ALLE? KANSKJE VEDLEGG?
 The map layer showing superficial deposits is provided by \acrfull{ngu}\footnote{\url{https://www.ngu.no/en}}. The superficial deposits data provide information on the distribution of surface sediments covering bedrock, mainly formed during and after the last Ice Age. It represents the dominant soil type in the upper layers, but does not account for deeper variations. These soil types include stones, gravel, sand, clay, peat, and moraine material \cite{geonorge_losmasser}. 
+
+\textcolor{orange}{HA MED OM DE FORSKJELLIGE FARGENE? TA MED DE MEST VANLIGE? PLUSS REFERER TIL FIGUR}
 
 \begin{figure}[h]
     \centering
@@ -136,7 +137,7 @@ The backend server alters the GeoJSON by adding additional properties from the o
 
 \subsection{Soil Moisture}
 
-Soil moisture is represented as a static raster map indicating areas with the highest likelihood of increased moisture content in the ground. The map highlights zones with a higher risk of deformation of roads and potential impacts on water quality during forestry operations. It is divided into several soil moisture classes, based on the elevation difference (in centimeters) between a given point and the nearest point estimated to be saturated with water. Soil moisture levels are visualized using a graded color scale shown in \autoref{tab:soil_moisture_classification}. The map accounts for surface terrain slope but does not consider superficial deposits \cite{geonorge_soil_moisture}.
+Soil moisture provided by, \acrfull{nibio}\footnote{\url{https://www.nibio.no/}}, is represented as a static raster map indicating areas with the highest likelihood of increased moisture content in the ground. The map highlights zones with a higher risk of deformation of roads and potential impacts on water quality during forestry operations. It is divided into several soil moisture classes, based on the elevation difference (in centimeters) between a given point and the nearest point estimated to be saturated with water. Soil moisture levels are visualized using a graded color scale shown in \autoref{tab:soil_moisture_classification}. The map accounts for surface terrain slope but does not consider superficial deposits \cite{geonorge_soil_moisture}.
 
 \begin{table}[h]
     \centering
@@ -202,7 +203,7 @@ During the preliminary research phase, multiple potential data sources were foun
 
 One such potential data source was Open-Meteo\footnote{\url{https://open-meteo.com/}}. Open-Meteo is an open-source weather API that offers free access for non-commercial use \cite{openmeteo}. Open-Meteo offers an expansive range of meteorological data, including historical and forecasts of soil moisture and soil temperature. These variables are central to modeling trafficability \cite{fjeld2023trafficability}, but the spatial resolution of \qty{25}{\kilo\meter\squared} would not give an accurate representation of the conditions in each road. Additional sanity checks of critical periods like thawing and heavy rains suggested that the data could be unreliable. Although Open-Meteo offers great usability and large amounts of data, the spatial resolution and quality of our required data did not meet the application's requirements, and was ultimately left unused. 
 
-\subsection{Satelite Data}
+\subsection{Satellite Data}
 
 Copernicus som var bra, ettersom det kan si mye om bæreevne (REF DAG FJELD), men hadde for lav oppløsning og var ikke real-time, eller prognose.
 \footnote{\url{https://land.copernicus.eu/en/products/soil-moisture}}

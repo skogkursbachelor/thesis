@@ -5,6 +5,7 @@
 \section{Quality Assurance}
 
 \subsection{Documentation}
+\textcolor{orange}{kanskje fjerne denne seksjonen?}
 
 Proper documentation is crucial, as there is a possibility that others may use the code in the
 future. To address this the code is documented throughout the project. 
@@ -15,7 +16,7 @@ The website is documented using JSDoc \textcolor{orange}{skriv mer om dette ette
 All tasks will be tracked and recorded as GitHub issues, ensuring a clear
 history of the project’s progress. 
 
-\subsection{Testing} %BEDRE NAVN?
+\subsection{Code Quality} %BEDRE NAVN?
 
 \textcolor{orange}{Dette står i planen: Plan for Inspections & Testing
 • Implement CI/CD pipelines on GitHub to automate processes as much as possible, starting
@@ -32,7 +33,25 @@ critical components and an emphasis on test quality over quantity.
 • To monitor errors, identify potential availability and integrity issues, and facilitate debugging,
 a logging system will be implemented.}
 
-\section{User Testing}
+Due to the exploratory nature of the project, particularly the uncertainty around suitable map data sources and integration methods early in development, automated unit and integration testing were not prioritized. Test-driven development was deemed impractical under these conditions, as frequent changes in data formats and system architecture would have led to excessive refactoring and time loss.
+
+Despite the limited use of automated testing, the application has been thoroughly tested manually throughout the development process. Critical components, such as the trafficability classification algorithm, are covered by unit tests to ensure correctness. However, the overall automated test coverage remains low.
+
+In retrospect, a higher level of test automation, particularly end-to-end tests connecting the frontend and backend, would have been beneficial. These could have caught integration issues early, reduced the need for manual testing after each change, and improved confidence during deployment. Automated tests also facilitate easier maintenance and refactoring, which is particularly important for future development and scaling.
+
+\subsubsection*{Linting}
+
+Code linting and formatting were consistently applied to ensure readability and maintain a uniform code style across the project. In the frontend, ESLint runs automatically when files are saved, enforcing common TypeScript conventions. On the backend, Go's built-in gofmt tool is used for formatting, while golangci-lint handles static analysis and linting, both configured to run on save.
+
+\subsubsection*{Performance}
+
+Performance testing was not systematically conducted. The application has only been tested under light concurrent usage by team members. In a production scenario with multiple external users, performance bottlenecks, especially related to external API response times, could emerge. Since the system depends on several external data sources, response latency and availability issues may affect overall performance. One potential improvement would be to locally cache or store relatively static data such as superficial deposits and soil saturation layers, thereby reducing dependency on external APIs and improving load times.
+
+\subsubsection*{Logging}
+
+In the backend server a logging system was implemented \textcolor{orange}{skal dette nevnes her ?}
+
+\section{User Testing}\label{sec:quality_assurance_user_feedback:user_testing}
 
 Due to time constraints and the challenge of recruiting enough relevant participants, we were not able to conduct formal user testing during the project period. However, we recognize that user testing would be highly valuable in the future, both to improve the \acrfull{ux} and to identify additional features that transport managers would find useful in their day-to-day work.
 

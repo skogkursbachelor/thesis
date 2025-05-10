@@ -1,15 +1,17 @@
 \chapter{Deployment}\label{chap:deployment}
 
-\textcolor{orange}{From Template: This chapter should describe how your solution can be deployed on the employer's system. It should include technical details on how to set it up, as well as discussions on choices made concerning scalability, maintenance, etc.}
+This chapter describes how the application is deployed using Docker and Docker Compose on NTNU’s SkyHiGh platform. It covers the technical setup, including how Docker images are built with GitHub Actions and published to the GitHub Container Registry. The chapter also outlines what would be required for Skogkurs to deploy the system on their own infrastructure, and discusses relevant choices related to scalability and maintenance.
 
 \section{Docker \& Docker Compose}
 
 \textcolor{orange}{Avsnitt hvordan vi har deploya (docker compose på vm)}
 
-\textcolor{orange}{kanskje ha glossary på: made using the CI/CD tool GitHub Actions}.
-The Docker images are made using GitHub Actions\footnote{\url{https://github.com/features/actions}}. Any commit pushed to the server or website repositories will trigger the action, which then builds the image and pushes it to GitHub Container Registry\footnote{\url{https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry}}. All Docker images are built using a text document that contains all the commands a user could call on the command line to assemble an image, called a Dockerfile \cite{dockerfiledocs}. The Dockerfiles along with the GitHub Action for the website and server can be found in their respective repositories (see \autoref{tab:githubrepositories}).
+Throughout the project, the application has been deployed with Docker Compose on NTNU's shared cloud computing platform, SkyHiGh\footnote{\url{https://www.ntnu.no/wiki/display/skyhigh}}. As previously described in \autoref{subsec:implementation:technologies:docker}, Docker Compose is used for defining and running multi-container applications. Compose also provides configuration options like defining environment variables, mapping ports and defining networks containing containers. The application consists of two containers on the same network: website and server. \textcolor{orange}{VM'en kjører docker compose i tmux, slik at begge kan gå inn og pulle siste imagene}
 
-\textcolor{orange}{Avsnitt om hvorfor vi valgte dette? Kanskje discussion??}
+\textcolor{orange}{kanskje ha glossary på: made using the CI/CD tool GitHub Actions, eller cite noe}.
+The Docker images\footnote{A Docker image is a read-only template used to build containers \cite{dockerwikipedia}.} are made using GitHub Actions\footnote{\url{https://github.com/features/actions}}. Any commit pushed to the server or website repositories will trigger the action, which then builds the image and pushes it to GitHub Container Registry\footnote{\url{https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry}}. All Docker images are built using a text document that contains all the commands a user could call on the command line to assemble an image, called a Dockerfile \cite{dockerfiledocs}. The Dockerfiles along with the GitHub Action for the website and server can be found in their respective repositories (see \autoref{tab:githubrepositories}).
+
+This approach was chosen due to its simplicity and the low availability requirements. Docker Compose require little configuration compared to other solutions like Kubernetes\footnote{\url{https://kubernetes.io/}} and Docker Swarm\footnote{\url{https://docs.docker.com/engine/swarm/}}, which makes it easy to use and ideal for small-scale deployments. However, this simplicity comes at the cost of limited scalability and orchestration features, making it less suitable for complex, production-grade environments. Docker Compose proved to be great for our usage during the project, but is not suitable if the application were to be used at a larger scale. This will be discussed later in \autoref{chap:discussion}.
 
 \textcolor{orange}{
 Avsnitt om Hva må SKogkurs gjøre for å deploye selv på egne servere? \\
@@ -28,7 +30,9 @@ Hva SkyHiGh er
 
 \subsection{Website}\label{subsec:deployment:docker:website}
 
-\textcolor{orange}{Skrive vite?}
+Vite is a modern build tool optimized for frontend development. It offers a fast development server, which is currently used to run the website during development. Ideally, Vite would only be used to build the application for production, with a separate tool or server handling deployment \cite{vite}.
+
+Running the development server manually requires Vite, Node.js, and npm to be installed. From the project's root directory, the server can be started with the command: \texttt{npm run dev}. However, since Docker is used to containerize the application, running this command manually is unnecessary.
 
 \subsection{Backend Server}\label{subsec:deployment:docker:backendserver}
 

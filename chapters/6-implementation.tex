@@ -18,7 +18,7 @@ Although the team had limited prior experience with frontend web development, we
 
 \subsection{React}\label{subsec:implementation:technologies:react}
 
-React\footnote{\url{https://react.dev/}} is a JavaScript library designed for rendering user interfaces (UI), where everything on the screen, from buttons to images, can be broken down into small, reusable components. These components are the building blocks of React, allowing you to create, customize, and conditionally display content across your application \cite{react_component}. As your application scales, it becomes increasingly important to manage the state effectively and ensure that data flows smoothly between components. Poorly organized or redundant state can lead to bugs, so React encourages a structured approach to state management. React makes it easy to share states between components \cite{react_managing_state}. 
+React\footnote{\url{https://react.dev/}} is a JavaScript library designed for rendering user interfaces (UI), where elements on the screen, from buttons to images, can be broken down into small, reusable components. These components are the building blocks of React, allowing you to create, customize, and conditionally display content across your application \cite{react_component}. As an application scales, it becomes increasingly important to manage the state effectively and ensure that data flows smoothly between components. Poorly organized or redundant state can lead to bugs, so React encourages a structured approach to state management. React makes it easy to share states between components \cite{react_managing_state}. 
 
 Using React to develop the website improved both development speed and maintainability that was especially important given the limited timeframe of the project. React's component-based architecture allowed for modular code, easier reuse of UI elements, and better separation of concerns, which contributed to a more efficient workflow.
 
@@ -43,9 +43,10 @@ Go\footnote{\url{https://go.dev/}} is a high-level general purpose programming l
 
 The implementation of the server in written in Go. Go was chosen due the great concurrency support and group members' personal experiences with the language. Go is particularly well-suited for processing large datasets, such as forest roads, because each road can be processed independently, making it a natural fit for Go’s concurrency model. The implementation of the server will be detailed in \autoref{sec:implementation:server}.
 
-\subsection{Docker}
+\subsection{Docker}\label{subsec:implementation:technologies:docker}
 
-Docker\footnote{\url{https://www.docker.com/}} is a set of technologies that use OS-level virtualization to deliver software in packages called containers. Containerization allows for software applications to run in isolated user spaces, which enables efficient resource utilization, enhanced security, and simplified deployment across different environments \cite{containerizationwikipedia}\cite{dockerwikipedia}. Docker Compose, a tool in the Docker suite, is used for defining and running multi-container applications \cite{dockercomposedocs}. The application is deployed with Docker and Docker Compose, this will be detailed in \autoref{chap:deployment}.
+Docker\footnote{\url{https://www.docker.com/}} is a set of technologies that use OS-level virtualization to deliver software in packages called containers. Containerization allows for software applications to run in isolated user spaces, which enables efficient resource utilization, enhanced security, and simplified deployment across different environments \cite{containerizationwikipedia}\cite{dockerwikipedia}. Docker containers are built using a Docker image, which is a template that can be stored in a remote registry. Docker images are built using 
+Docker Compose, a tool in the Docker suite, is used for defining and running multi-container applications \cite{dockercomposedocs}. The application is deployed with Docker and Docker Compose, this will be detailed in \autoref{chap:deployment}.
 
 \section{Website}
 
@@ -70,9 +71,9 @@ The \acrfull{ui} underwent several iterations during development before reaching
 
 A wireframe was created early in the development process to establish a shared understanding among group members of the website’s layout and core functionality. It was developed using Balsamiq, a tool well-suited for quickly creating low-fidelity wireframes. To draw inspiration for the design, several existing map-based websites were reviewed, including SeNorge\footnote{\url{https://www.senorge.no/}} and NIBIO's Kilden\footnote{\url{https://kilden.nibio.no}}.
 
-\autoref{fig:wireframe:closed} shows the basic structure, including the main map view and the date picker component. \autoref{fig:wireframe:opened} illustrates the sidebars used to toggle map layers and view their corresponding legends. It also demonstrates how a layer can be activated and queried for additional information, highlighting key interactions envisioned for the final implementation.
+\autoref{fig:wireframe:closed} shows the basic structure, including the main map view and the date picker component at the top to change the current date. \autoref{fig:wireframe:opened} illustrates the sidebars used to toggle map layers and view their corresponding legends. It also demonstrates how a layer can be activated and queried for additional information, highlighting key interactions envisioned for the final implementation.
 
-The \acrshort{ui} evolved later in the project; for instance, it was decided that only forestry roads would support querying to focus user interaction on the most relevant data and reduce complexity.
+The \acrshort{ui} evolved later in the project, for instance, it was decided that only forestry roads would support querying to focus user interaction on the most relevant data and reduce complexity.
 
 \begin{figure}[h]
      \centering
@@ -97,7 +98,7 @@ The \acrshort{ui} evolved later in the project; for instance, it was decided tha
 
 When we first began implementing the website using OpenLayers, we included several built-in components that seemed potentially useful. One of these was the overview map in the bottom-left corner, which provides a miniature version of the map view. This was helpful for orientation, especially when one or more map layers obscured the base map. We also added a scale line, a common feature in most map applications, to give users a sense of distance and scale.
 
-In the version shown in \autoref{fig:website_layout_v1}, users could query all available map layers, such as the superficial deposit layer. While this functionality was helpful for debugging and comparing data across layers, it introduced unnecessary complexity into the \acrshort{ui}, especially from a user perspective.
+In the version shown in \autoref{fig:website_layout_v1}, users could query all available map layers, such as the superficial deposit layer. While this functionality was helpful for debugging and comparing data across layers, it introduced unnecessary complexity into the \acrshort{ui}, especially from a user perspective. \textcolor{orange}{Repetering fra forrige section?}
 
 A geolocation button was also included, allowing users to center the map on their current location if they consented to share it. However, when deploying the website on the backend server, we discovered that this feature only works over HTTPS due to browser security policies. Since the feature was not essential to the core functionality, and the project did not include setting up a valid HTTPS certificate, it was ultimately left non-functional in the deployed version.
 
@@ -139,7 +140,7 @@ The interface is primarily designed for desktop use, with layout and controls op
 
 As described earlier in \autoref{subsec:implementation:technologies:react}, the \acrshort{ui} is composed of multiple React components. While React allows for the reuse of pre-built components, in this application, all components were custom-built to suit specific requirements, except for a few controls provided by OpenLayers. React supports both class and function components, but for this project, we exclusively used function components. These are functions that receive props as input parameters from a parent component, and return TSX markup. Props are useful when a component requires data or functionality from its parent. TSX is a syntax extension similar to \acrshort{html}, but designed to be embedded within TypeScript functions \cite{react_component}.
 
-\autoref{lst:react_component_example} shows an example of a React function component where the OpenLayers map instance is passed as a prop. This design makes it easy to integrate the component into the map, enabling communication between the component and the map. The component returns tsx markup, where the syntax distinguishes between standard HTML elements (e.g., \texttt{<div>}) and custom React components (e.g., \texttt{<ToggleLayers .../>}), the latter identified by their capitalized names. As shown in the example, components can also be nested within other components, allowing for a modular and hierarchical structure.
+\autoref{lst:react_component_example} shows an example of a React function component where the OpenLayers map instance is passed as a prop. This design makes it easy to integrate the component into the map, enabling communication between the component and the map. The component returns TSX markup, where the syntax distinguishes between standard HTML elements (e.g., \texttt{<div>}) and custom React components (e.g., \texttt{<ToggleLayers .../>}), the latter identified by their capitalized names. As shown in the example, components can also be nested within other components, allowing for a modular and hierarchical structure.
 
 \begin{figure}[h]
 \lstinputlisting[
@@ -170,6 +171,17 @@ A common use case for \texttt{useEffect} is to synchronize a component's state w
 ]{listings/effect_example.tsx}
 \end{figure}
 
+\subsection{Date Picker}
+
+\textcolor{orange}{kanskje endre navnt til f.eks. time control e.l.}
+
+\textcolor{orange}{What libraries or browser features did you use?
+How is the date state managed and propagated to the map layers?
+Did you implement any validation or restrictions (e.g., min/max dates)?
+Describe how button-based increments work (day, week, year) and how that affects the UI and data loading.}
+
+An important feature the Product Owner wanted was the ability to see a forecast of the trafficability, therefore we needed a component to change the date of the data shown. The date picker is used to change the current date of the data shown on the map. This lets the user see historical and forecast data. The component consists of an \acrshort{html} date input element and buttons to change the date by day, week or year. When the user changes the date, all enabled map layers will be updated with the new date and displayed on the map as long as they have data from that specific date.
+
 \subsection{Map Integration with OpenLayers}
 
 The interactive map component of the website was implemented using the OpenLayers library. The map was initialized within a custom React component, with its lifecycle managed using React hooks to ensure proper mounting and cleanup. The following types of layers were used:
@@ -190,15 +202,6 @@ The map layers are exported from their definition modules. This allows other Rea
     label={lst:wms_example}
 ]{listings/openlayers_wms.tsx}
 \end{figure}
-
-\subsection{Date Picker}
-
-\textcolor{orange}{What libraries or browser features did you use?
-How is the date state managed and propagated to the map layers?
-Did you implement any validation or restrictions (e.g., min/max dates)?
-Describe how button-based increments work (day, week, year) and how that affects the UI and data loading.}
-
-An important feature the Product Owner wanted was the ability to see a forecast of the trafficability, therefore we needed a component to change the date of the data shown. The date picker is used to change the current date of the data shown on the map. This lets the user see historical and forecast data. The component consists of an \acrshort{html} date input element and buttons to change the date by day, week or year. When the user changes the date, all enabled map layers will be updated with the new date and displayed on the map as long as they have data from that specific date.
 
 \subsection{Trafficability Algorithm}\label{subsec:implementation:website:trafficability_algorithm}
 
@@ -225,11 +228,6 @@ The function that determines the color of the road is shown in \autoref{lst:traf
 ]{listings/trafficability_algorithm.ts}
 \end{figure}
 
-\subsection{Accessibility}
-
-\textcolor{orange}{Did you take any steps to make the app accessible (e.g., keyboard navigation, alt texts)?
-Mention usability features such as clear tooltips, feedback on interaction, consistent styling, etc.}
-
 \subsection{Integration with Backend}
 
 All map data displayed on the website is fetched through the backend server. Each map layer is implemented using an OpenLayers object that sends requests to a specified URL. The response format depends on the type of map layer.
@@ -247,7 +245,17 @@ To improve performance and reduce unnecessary network traffic, layers are loaded
 
 \section{Server}\label{sec:implementation:server}
 
-The backend server consists of two endpoints: a proxy for \Gls{wms} services and an endpoint for the forestry road algorithm. As stated 
+This section describes the implementation of the server, which serves as the source of information for the website. Additionally, key functionality and iterations will be outlined. The backend server consists of two main parts: a proxy for \Gls{wms} services and an endpoint for the forestry road algorithm. 
+
+\subsection{Forestry Road Algorithm}\label{subsec:server:forestroadalgorithm}
+
+\textcolor{orange}{
+Hva det er (api, (REST?)) \\ \\
+Hvordan den funker (Hente veidata, cluster, query, send tilbake) \\ \\
+Hvorfor vi gjorde det slikt (kanskje ikke?)
+}
+
+... An overview of the external libraries used is shown in \autoref{tab:golibraries}. ...
 
 \begin{table}[h]
     \centering
@@ -257,40 +265,25 @@ The backend server consists of two endpoints: a proxy for \Gls{wms} services and
         \hline
         joho/godotenv & Loads environment variables from .env files. \\
         rs/zerolog & Zero Allocation Logger. \\
-        tidwall/rtree & An R-tree implementation for spatial querying. \\
+        tidwall/rtree & R-tree implementation for spatial querying. \\
         twpayne/go-geom & Efficient geometry types for geospatial applications. \\
-        twpayne/go-proj & Transformation between different coordinate systems. \\
         twpayne/go-shapefile & Native Go reader for ESRI Shapefiles \\
         \hline
     \end{tabular}
     \caption{Overview of used Go libraries}
-    \label{tab:go_libraries}
+    \label{tab:golibraries}
 \end{table}
-
-\begin{comment}
-\item[Implementation:] Here you should describe the more technical details of the solution. Which tools were used (programming languages, libraries, IDEs, APIs, frameworks, etc.). It is a good idea to give some code examples. If class diagrams, database models etc. were not presented in the technical design chapter, they can be included here.
-    - Golang (libraries?)
-    - Source of map layers/ legends (endpoint, etc.)
-    - Proxy
-    - Algorithm for trafficability of forest roads
-\end{comment}
-
-\subsection{Forestry Road Algorithm}\label{subsec:server:forestroadalgorithm}
-
-\textcolor{orange}{
-Hva det er (REST?) \\ \\
-Hvordan den funker (Hente veidata, cluster, query, send tilbake) \\ \\
-Hvorfor vi gjorde det slikt (kanskje ikke?)
-}
 
 \subsection{Proxy}\label{subsec:server:proxy}
 
-As described in Section \ref{sec:systemarchitecture}, we wanted a clean architecture where all requests went through the backend server. 
-\textcolor{orange}{NOE MER TEKST... HVORDAN IMPLEMENTERT, HVORDAN BRUKES DET}
+As described in \autoref{sec:systemarchitecture}, we wanted a clean architecture where all requests are routed through the backend server. The implementation of this idea is the proxy endpoint on the server. Proxies are loaded from a JSON\footnote{\url{https://www.json.org/}} file, where each key denotes a specific proxy endpoint, and the corresponding value specifies the target URL to which requests should be forwarded. \autoref{lst:proxycreation} shows how the proxy endpoints are loaded, in addition to the creation of two endpoints for routing the base map layer requests. 
 
-% Hvordan proxien funker
-% Hva er effekten av en slik proxy
-    % slik at clienten snakker med website, og website snakker med verdenen gjennom backend serveren
+\begin{figure}[h]
+\lstinputlisting[
+    caption={Creation of proxy endpoint},
+    label=lst:proxycreation
+]{listings/proxycreation.go}
+\end{figure}
 
 \subsection{Optimization}\label{subsec:server:optimization}
 

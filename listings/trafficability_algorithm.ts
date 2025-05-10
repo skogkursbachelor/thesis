@@ -8,12 +8,11 @@ function getTrafficabilityColor(
 ): number[] {
   if (frostDepth >= frostDepthThreshold) {
     return green;
-  }
-  if (waterSaturation >= maxSaturationThreshold) {
+  } else if (waterSaturation >= maxSaturationThreshold) {
     return red;
-  }
-  if (waterSaturation >= minSaturationThreshold) {
+  } else if (waterSaturation >= minSaturationThreshold) {
     return yellow;
+  } else {
+    return green;
   }
-  return green;
 }
