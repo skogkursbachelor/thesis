@@ -132,7 +132,65 @@ The primary goal of the project was to develop and test a \textbf{prototype syst
 
 \subsubsection{Sustainability Awareness Framework}
 
-\textcolor{orange}{Skriv om analysen og prosessen. Få med både positive og negative effekter. Ta med eksempel diagram på "chain of effects" og kanskje flere i vedlegg. Etter må disse kobles på FNs SDGs i seksjonene under. Lenke til kilder \cite{ntnususaf}, \cite{linkopingssusaf}}
+To assess the sustainability of the product, a simplified version of the \acrfull{susaf} was applied. This framework serves as a tool to identify potential sustainability impacts by guiding the analysis through a series of structured questions. These questions are typically grouped into five dimensions: social, individual, environmental, economic, and technical. However, in the simplified version used here, the social and individual dimensions are combined into a single category: human sustainability \cite{ntnususaf}. Each team member reviewed relevant aspects of the product and identified possible sustainability effects by answering the structured questions and discussing the answers afterwards. One such question from the environmental dimension was: "How can it (the product) affect the need and distance for moving people or goods?" \cite{susosusaf}.
+
+After answering the questions, the next step is to construct chains of effects to understand how the product may influence sustainability over time. This involves determining the orders of effect, which categorize consequences into three levels: immediate, enabling, and structural. Immediate effects refer to direct consequences from the production, operation, use, or disposal of the system. Enabling effects are changes made possible by the system’s operation or use. Structural effects represent deeper, systemic changes, such as shifts in norms, policies, or legal frameworks, driven by the system’s ongoing presence and influence \cite{susosusaf}.
+
+Once the effects are identified and categorized, they are linked to form chains of effects, as illustrated in the Sustainability Awareness Diagram (see \autoref{fig:susafdiagram}). This diagram visualizes how one effect can lead to another, helping to uncover both short- and long-term sustainability consequences \cite{susosusaf}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/susaf.pdf}
+    \caption{Sustainability Awareness Diagram}
+    \label{fig:susafdiagram}
+\end{figure}
+
+blabla table format \autoref{tab:chain_of_effects}
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1}
+    \begin{tabularx}{\textwidth}{|l|X|l|l|l|}
+        \hline
+        \rowcolor{gray!20}
+        \textbf{ID} & \textbf{Effect} & \textbf{Level} & \textbf{Affects} & \textbf{$+/-$} \\ 
+        \hline
+         1 & Visualize and forecast trafficability of forest roads & Immediate & 4, 6, 9, 11 & $+$ \\
+         \hline
+         2 & Use of external data sources & Immediate & 3, 5, 10 & $=$ \\
+         \hline
+         3 & Potentially unreliable data & Enabling & 8, 14 & $-$ \\
+         \hline
+         4 & More efficient transport & Enabling & 7, 13 & $+$ \\
+         \hline
+         5 & Data owners could require payment & Enabling &  & $-$ \\
+         \hline
+         6 & More consistent harvesting throughout the year & Enabling & 13, 15 & $+$ \\
+         \hline
+         7 & More time on road & Enabling & & $=$ \\
+         \hline
+         8 & Deformation of roads & Enabling & & $-$ \\
+         \hline
+         9 & Less damage on roads & Enabling & 16 & $+$ \\
+         \hline
+         10 & Reuse of computationally expensive data & Enabling & & $+$ \\
+         \hline
+         11 & More efficient transport planning & Enabling & 12 & $+$ \\
+         \hline
+         12 & Spare time for other activities & Enabling & & $+$ \\
+         \hline
+         13 & Greater number of assignments delivered consistently over the year & Enabling & & $+$ \\
+         \hline
+         14 & Dangerous driving conditions & Enabling & & $-$ \\
+         \hline
+         15 & Consistent lumber prices & Structural & & $+$ \\
+         \hline
+         16 & Sustainable forestry & Structural & & $+$ \\
+         \hline
+    \end{tabularx}
+    \caption{Table showing chain of effects}
+    \label{tab:chain_of_effects}
+\end{table}
 
 \subsubsection{Environmental}
 
