@@ -41,7 +41,7 @@ In the implementation of this product, both \Gls{wms} and \Gls{wfs} are used to 
 
 Go\footnote{\url{https://go.dev/}} is a high-level general purpose programming language that is statically typed and compiled, and offers built-in memory safety, garbage collection, structural typing and concurrency. Go aims to improve programming productivity by combining the efficiency of C\footnote{\url{https://www.c-language.org/}} with the readability and usability of Python\footnote{\url{https://www.python.org/}}. Goroutines, the foundation of concurrency in Go, are lightweight execution threads that run asynchronously and are distributed across multiple CPUs, enabling parallelism in well-structured programs \cite{goproglanguage}.
 
-The implementation of the server in written in Go. Go was chosen due the great concurrency support and group members' personal experiences with the language. Go is particularly well-suited for processing large datasets, such as forest roads, because each road can be processed independently, making it a natural fit for Go’s concurrency model. The implementation of the server will be detailed in \autoref{sec:implementation:server}.
+The implementation of the server in written in Go. Go was chosen due the great concurrency support and group members' personal experiences with the language. Go is particularly well-suited for processing large datasets, such as forest roads, because each road can be processed independently, making it a natural fit for Go's concurrency model. The implementation of the server will be detailed in \autoref{sec:implementation:server}.
 
 \subsection{Docker}\label{subsec:implementation:technologies:docker}
 
@@ -69,7 +69,7 @@ The \acrfull{ui} underwent several iterations during development before reaching
 
 \subsubsection*{Wireframe}
 
-A wireframe was created early in the development process to establish a shared understanding among group members of the website’s layout and core functionality. It was developed using Balsamiq, a tool well-suited for quickly creating low-fidelity wireframes. To draw inspiration for the design, several existing map-based websites were reviewed, including SeNorge\footnote{\url{https://www.senorge.no/}} and NIBIO's Kilden\footnote{\url{https://kilden.nibio.no}}.
+A wireframe was created early in the development process to establish a shared understanding among group members of the website's layout and core functionality. It was developed using Balsamiq, a tool well-suited for quickly creating low-fidelity wireframes. To draw inspiration for the design, several existing map-based websites were reviewed, including SeNorge\footnote{\url{https://www.senorge.no/}} and NIBIO's Kilden\footnote{\url{https://kilden.nibio.no}}.
 
 \autoref{fig:wireframe:closed} shows the basic structure, including the main map view and the date picker component at the top to change the current date. \autoref{fig:wireframe:opened} illustrates the sidebars used to toggle map layers and view their corresponding legends. It also demonstrates how a layer can be activated and queried for additional information, highlighting key interactions envisioned for the final implementation.
 
@@ -289,7 +289,7 @@ As described in \autoref{sec:systemarchitecture}, we wanted a clean architecture
 
 Early iterations of the forest road retrieval and processing algorithm were computationally expensive, resulting in long response times when querying the forest road layer.
 
-\subsubsection{SeNorge} \label{subsubsec:implementation:optimization:senorge}
+\subsubsection{SeNorge}\label{subsubsec:implementation:optimization:senorge}
 
 The backend would initially query the SeNorge API once for every road, which would quickly overload the API server leading to long processing times. Additionally, the SeNorge API would not accept multiple coordinates within each grid-cell. SeNorge uses a grid system to divide Norway into \qty{1}{\kilo\meter\squared} cells, and calculate all their climate projections as an average within each cell \cite{senorge_watermap}. 
 

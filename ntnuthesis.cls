@@ -198,6 +198,7 @@
 \RequirePackage{float}
 \RequirePackage{longtable}
 \RequirePackage{threeparttable} % for table footnotes
+\RequirePackage{multirow}
 
 %% CUSTOMISATION
 
@@ -349,5 +350,3 @@
 
 % Directory tree
 \usepackage{dirtree}
-
-\usepackage{lstgolang}
