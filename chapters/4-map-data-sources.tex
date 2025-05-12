@@ -179,7 +179,7 @@ Each cell in the grid is defined by its mean elevation and the proportions of va
 
 The GWB model simulates processes including snow accumulation, moisture in the root zone, groundwater storage, evaporation, surface runoff into rivers, wetlands, and lakes, as well as frost depth and glacier dynamics. Potential evaporation is estimated using air temperature and vegetation growth during the growing season, while actual evaporation depends on the availability of soil moisture \cite{nve2025waterdata}.
 
-Each grid cell’s water balance is calculated independently. Parameters are adapted per cell to account for differences in terrain, vegetation, and soil composition, ensuring that local hydrological behavior is realistically represented \cite{nve2025waterdata}.
+Each grid cell's water balance is calculated independently. Parameters are adapted per cell to account for differences in terrain, vegetation, and soil composition, ensuring that local hydrological behavior is realistically represented \cite{nve2025waterdata}.
 
 The GWB model is also the basis for the frost depth and soil moisture saturation map layers provided by SeNorge and NVE.
 
@@ -189,7 +189,7 @@ The GWB model is also the basis for the frost depth and soil moisture saturation
 
 Various factors contribute to uncertainties in the frost depth and soil saturation maps. These include possible errors in the interpolation of meteorological and soil data, as well as limitations in how the model translates real-world conditions. These uncertainties are especially important around the freezing point (\qty{0}{\celsius}), where even minor temperature variations can influence whether precipitation falls as rain or snow, or if snow begins to melt \cite{senorge_watermap}. The frost depth map tends to provide more accurate simulations of soil freezing compared to soil thawing \cite{nve2025waterdata}.
 
-Localized weather events, such as isolated rain showers missed by nearby weather stations, may also go unnoticed. Furthermore, environmental factors like wind, humidity, and solar radiation, which are not accounted for in the model, can speed up snowmelt, causing discrepancies between the model’s predictions and actual conditions \cite{senorge_watermap}.
+Localized weather events, such as isolated rain showers missed by nearby weather stations, may also go unnoticed. Furthermore, environmental factors like wind, humidity, and solar radiation, which are not accounted for in the model, can speed up snowmelt, causing discrepancies between the model's predictions and actual conditions \cite{senorge_watermap}.
 
 The SeNorge maps (frost depth and water saturation) show daily averages, which may miss short-term variations like intense rainfall or rapid changes in temperature within a single day. The forecast maps predict up to nine days ahead, with increasing uncertainty the further into the future the prediction extends. Finally, the model's representation of vegetation and soil types may not always be accurate, potentially leading to the overestimation or underestimation of soil saturation levels \cite{senorge_watermap}.
 

@@ -63,11 +63,6 @@ Mens her kan vi snakke om hva traggo er, hvorfor vi bruker det.
 
 All project work was tracked using the self-hosted time tracking service Traggo\footnote{\url{https://traggo.net/}}. Traggo tracks work by tags making it easy to get an overview of time spent on different tasks.
 
-\section{Work Allocation}
-
-\textcolor{orange}{Kanskje ta dette med? Hvordan utviklingsjobben for forskjellige deler av system ble tildelt? \\ \\
-Se over i oransj, kanskje ta med denne+over i discussion}
-
 \section{Gantt Diagram}
 
 A Gantt chart was created, highlighting the different sprints and key milestones. It served as a high-level plan to structure the project's progression but was not intended to be followed rigidly, allowing for flexibility and adjustments along the way, which is particularly important in agile development projects. This approach provided a clear visual overview for team coordination and progress tracking. A more detailed table of all dates referenced in the Gantt chart can be found in the project plan (see \autoref{appendix:project_plan}).
@@ -85,7 +80,7 @@ For this project, the team needed to select an appropriate \acrfull{sdlc} model.
 
 The requirements provided by the Product Owner are intentionally ambiguous and flexible, allowing the team to prioritize the few fixed requirements upfront while iteratively refining the flexible ones over time. The team is composed of two members with similar experience levels, enabling close collaboration and effective decision-making. With a short project timeline of four months, a structure of 2-week sprints aligns perfectly with Scrum's iterative and adaptive approach, ensuring steady progress and regular opportunities for feedback. 
 
-Given the absence of clearly defined requirements and the need for continuous collaboration with the Product Owner, the Scrum methodology was the most appropriate framework for managing the team’s workflow and project development. Traditional methodologies like Waterfall are not suitable, as they rely on fixed requirements and a linear development process, which would limit the teams flexibility \cite{waterfall_model_enwiki:1275499744}. Extreme Programming (XP), while valuable for high-collaboration environments with strict engineering practices like pair programming and test-driven development, is not fully suitable as the project does not emphasize these practices to the same extent \cite{extreme_programming}. Similarly, Lean development focuses on minimizing waste and maximizing efficiency but is less structured in terms of iterative planning, which is needed to manage evolving requirements effectively \cite{lean_programming}. By adopting Scrum, the team can iteratively refine requirements and adapt to changes throughout development \cite{sdlc_model}. To implement Scrum effectively, several key practices are integrated into our workflow \cite{scrum_guide}.
+Given the absence of clearly defined requirements and the need for continuous collaboration with the Product Owner, the Scrum methodology was the most appropriate framework for managing the team's workflow and project development. Traditional methodologies like Waterfall are not suitable, as they rely on fixed requirements and a linear development process, which would limit the teams flexibility \cite{waterfall_model_enwiki:1275499744}. Extreme Programming (XP), while valuable for high-collaboration environments with strict engineering practices like pair programming and test-driven development, is not fully suitable as the project does not emphasize these practices to the same extent \cite{extreme_programming}. Similarly, Lean development focuses on minimizing waste and maximizing efficiency but is less structured in terms of iterative planning, which is needed to manage evolving requirements effectively \cite{lean_programming}. By adopting Scrum, the team can iteratively refine requirements and adapt to changes throughout development \cite{sdlc_model}. To implement Scrum effectively, several key practices are integrated into our workflow \cite{scrum_guide}.
 
 \begin{itemize}
     \item \textbf{Sprint Meetings:} The project is divided into 2-week sprints. At the start of each sprint, sprint meetings included sprint planning, reviews, and retrospectives. During the planning phase, the team selects tasks from the product backlog to form the sprint backlog for the upcoming sprint. The review phase focuses on evaluating progress and determining whether adjustments to the product backlog are needed. The goal of the retrospective phase is to identify areas for improvement in the Scrum process itself.
@@ -108,7 +103,7 @@ The first sprint was primarily dedicated to project planning and initial researc
 
 Given that none of the team members had prior experience with TypeScript, React, or OpenLayers, we allocated time to study their official documentation and familiarize ourselves with their concepts. In parallel, we created key system diagrams, including a use case diagram and a sequence diagram, to clarify system requirements and interactions. 
 
-As the initial work progressed faster than anticipated, we moved on to designing the website. We first created a wireframe to outline the structure and layout of the user interface, which provided a clear foundation for development. We then began implementing the website in order to start testing different map layers and ensure the chosen technologies would meet the project’s functional requirements.
+As the initial work progressed faster than anticipated, we moved on to designing the website. We first created a wireframe to outline the structure and layout of the user interface, which provided a clear foundation for development. We then began implementing the website in order to start testing different map layers and ensure the chosen technologies would meet the project's functional requirements.
 
 \subsection*{Sprint 2}
 
@@ -128,7 +123,7 @@ The main goal of this sprint was to continue improving the classification of for
 
 \subsection*{Sprint 5}
 
-After implementing several of the classification factors, we needed to define specific threshold values for the classification logic. To aid in this, we held a meeting with the Product Owner. During this sprint, we also decided to switch from using Open-Meteo data to soil saturation data from SeNorge. This decision was based on SeNorge’s higher spatial resolution and our observations that its data appeared more reliable in comparison.
+After implementing several of the classification factors, we needed to define specific threshold values for the classification logic. To aid in this, we held a meeting with the Product Owner. During this sprint, we also decided to switch from using Open-Meteo data to soil saturation data from SeNorge. This decision was based on SeNorge's higher spatial resolution and our observations that its data appeared more reliable in comparison.
 
 \textbf{The key factors identified for determining trafficability included:}
 
@@ -137,7 +132,7 @@ After implementing several of the classification factors, we needed to define sp
     \item In the absence of frost, soil saturation percentage is assessed. The threshold value depends on the type of superficial deposit, as different soil types vary in permeability and sensitivity to moisture.
 \end{itemize}
 
-Additionally, the Product Owner requested that transport managers be able to adjust these thresholds, as they can vary by location and may be informed by the users’ prior experience when comparing the map data. To enable this flexibility, we decided to implement a slider for threshold adjustment, moving the classification algorithm to the frontend. Further details on the implementation of the classification algorithm can be found in \autoref{subsec:implementation:website:trafficability_algorithm}.
+Additionally, the Product Owner requested that transport managers be able to adjust these thresholds, as they can vary by location and may be informed by the users' prior experience when comparing the map data. To enable this flexibility, we decided to implement a slider for threshold adjustment, moving the classification algorithm to the frontend. Further details on the implementation of the classification algorithm can be found in \autoref{subsec:implementation:website:trafficability_algorithm}.
 
 In collaboration with our Supervisor, we also aimed to complete the first draft of the thesis for review and feedback.
 
