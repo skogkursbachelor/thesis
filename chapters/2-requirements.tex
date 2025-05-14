@@ -14,7 +14,16 @@ This section outlines the overall goal of the project, categorized into product 
 
 \subsection{Product Goals}\label{subsec:req:productgoals}
 
-The primary goal of the project is to develop and test a \textbf{prototype system for fully digital modeling of forestry road load-bearing capacity under varying conditions throughout the year.} To accomplish this, several goals were set:
+The primary goal of the project is to develop and test a \textbf{prototype system for fully digital modeling of forestry road load-bearing capacity under varying conditions throughout the year.} 
+
+The following goals were provided by the \Gls{productowner} (see \autoref{appendix:task_description}):
+\begin{itemize}
+    \item Develop the methodology for a fully digital classification of the load-bearing capacity of forestry roads
+    \item Integrate the methodology with existing forecasts for operating conditions throughout the year
+    \item Combine these into a simple map-based visualization of the trafficability of forestry roads
+\end{itemize}
+
+While these goals establish a general direction, they are relatively high-level. To ensure a clear and focused development process, they have been expanded into a set of more concrete and actionable goals that guide the implementation and evaluation of the prototype:
 
 \begin{enumerate}
     \item \textbf{Data Collection and Integration:}
@@ -37,8 +46,8 @@ The primary goal of the project is to develop and test a \textbf{prototype syste
     
     \item \textbf{Web-Based Visual and User Interface:}
     \begin{itemize}
-        \item Design and develop an interactive map-based website for intuitive accessibility. 
-        \item Implement visualization of relevant data with real-time updates 
+        \item Design and develop an interactive, map-based website for intuitive accessibility. 
+        \item Implement a way to visualize historical and forecasted data relevant to road conditions.
         \item Ensure that the system is optimized for transport managers, with a user-friendly interface that allows efficient decision-making. 
     \end{itemize}
     
@@ -57,7 +66,7 @@ The project aims to deliver real-world value by improving decision-making proces
 
 \begin{itemize}
     \item Reduced uncertainty for transport managers when setting the routes using forest roads.
-    \item To validate the prototype's feasibility and effectiveness by conducting tests with end-users, such as transport managers, to assess its performance and usability in real-world scenarios.
+    \item To validate the prototype as a proof of concept and evaluate its feasibility and effectiveness as a foundation for a future operational system in the forestry industry.
 \end{itemize}
 
 \subsection{Learning Goals}\label{subsec:req:learninggoals}
@@ -65,8 +74,6 @@ The project aims to deliver real-world value by improving decision-making proces
 % Kanskje oppdatere med noe nytt?? WMS, GIS, osv.
 
 In addition to delivering a functional prototype, the project serves as a valuable learning experience. The goals below reflect the desired technical and professional growth for the project participants:
-
-\textcolor{orange}{SE OVER OM PUNKTENE FORTSATTE TELLER}
 
 \begin{itemize}
     \item Gaining insight in implementing interactive maps and geospatial data on web pages.
@@ -88,7 +95,7 @@ This project is subject to several constraints that have influenced the developm
 The project must be completed within a limited timeframe due to university deadlines. These deadlines affect how much functionality and polish can reasonably be achieved.
 
 \begin{itemize}
-    \item The set deadline for the final report is 20th of May.
+    \item The set deadline for the final thesis is 20th of May.
     \item The presentation of the bachelor's thesis is scheduled for 4th or 5th of June.
 \end{itemize}
 
@@ -111,9 +118,9 @@ The product is also subject to technical limitations that define the environment
 \end{itemize}
 \end{comment}
 
-\section{Target Audience}
+\section{Target Users}
 
-The primary target audience for this application is transport managers in the Norwegian forestry industry. They will use the application to plan routes and determine which forest roads should be used by drivers. Since the user group spans a wide age range, it is essential that the application is intuitive and easy to use, ensuring accessibility for all users regardless of their technical proficiency.
+The primary target users of this application are transport managers in the Norwegian forestry industry. They are responsible for planning routes and determining which forest roads should be used by drivers. Since the user group spans a wide age range, it is essential that the application is intuitive and easy to use, ensuring accessibility for all users regardless of their technical proficiency.
 
 \section{Use Case}
 
@@ -186,7 +193,6 @@ A high priority use case for the website is the ability to toggle a map layer, w
 
 \section{Universal Design}
 
-\textcolor{orange}{NOE TEKST}
 \begin{comment}
 HVA ER WCAG
 HVA ER UNIDES
@@ -198,7 +204,7 @@ SKOGKURS = IKKE OFFENTLIG, OG PROTO = INGEN WCAG! :O
     JO HA MED DENNE
     Kanskje ikke nødvendig med eget kapittel og kanskje ha det et annet sted? Passer med overgang fra Target Audience ^. SIDEN NOE OM DETTE IKKE BLE NEVNT AV SKOGKURS SÅ BURDE DET KANSKJE STÅ I DISCUSSION I STEDET.
 
-LOVVERKET OM UU: https://www.uutilsynet.no/veiledning/introduksjon-til-universell-utforming/238
+lovdata OM UU: https://lovdata.no/lov/2017-06-16-51/§17
 
 Her skriver vi at:
 SKogkurs ikke er statlig eid, produktet er ikke ment for allmineligheten,
@@ -208,3 +214,15 @@ men vi vil gjerne ha det med for å styrke brukeropplevelsen
 Så ikke stort fokus på det, men alle valg blir tatt med det i bakhaue
 Funksjonalitete > uu
 \end{comment}
+
+Universal design refers to the practice of designing products, environments, and digital solutions in a way that ensures they can be used by as many people as possible, regardless of functional ability. The goal is not to create one solution for each user group, but rather to remove barriers so that everyone can use the same solution equally \cite{uutilsynet}.
+
+In web development, universal design is often guided by the \acrfull{wcag}, currently at version 2.2. These guidelines offer a broad set of recommendations aimed at making web content more accessible for people with a variety of disabilities, including visual, auditory, motor, and cognitive impairments. WCAG also promotes general usability, which often benefits all users, not just those with disabilities. It applies across platforms and devices, from desktops and laptops to smartphones and kiosks \cite{wcag}.
+
+In Norway, the legal foundation for universal design is laid out in the Likestillings- og diskrimineringsloven (Equality and Anti-Discrimination Act), particularly in § 17–19a. These laws state that both public and private entities directed toward the general public are required to ensure their main solutions are universally designed. This includes digital solutions that are intended for users. However, the requirement does not apply if universal design would impose a disproportionate burden on the organization, considering factors such as cost, available resources, the nature of the business, and the potential benefits of removing accessibility barriers \cite{lovdata}.
+
+\textbf{Why Universal Design Was Not Prioritized}
+
+In this project, universal design was not a primary focus for several reasons. The prototype was developed on behalf of Skogkurs and the product is not aimed at the general population. As such, the legal requirement for universal design according to §17 and §18 in the law does not apply directly. Additionally, the product is still in a prototype phase and not in active use.
+
+However, we recognize the importance of universal design in creating inclusive digital services. Although not implemented in the current version, accessibility and universal design considerations have been kept in mind throughout development. Our choices have prioritized functionality and technical feasibility, but without intentionally creating barriers for users with disabilities. We consider universal design an important area for future development and discuss potential improvements in \autoref{chap:discussion}.

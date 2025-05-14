@@ -1,10 +1,7 @@
 \chapter{Implementation}\label{chap:implementation}
-\begin{comment}
-    - Github? forskjellige repo?
-    - External data / sources used for map, etc.
-\end{comment}
 
-\textcolor{orange}{NOE TEKST}
+This chapter presents the practical implementation of the system, covering both the client- and server-side components. It begins with an overview of the technologies used, including TypeScript, React, OpenLayers, Go, and Docker. The structure and functionality of the website are then described, with a focus on user interface design, map integration, and communication with the backend. Finally, the server-side implementation is detailed, including the logic behind the forestry road classification algorithm, data processing, and performance optimizations. The chapter provides a technical foundation for understanding how the prototype was built and how its components work together.
+
 
 \section{Technologies}
 
@@ -45,7 +42,7 @@ The implementation of the server in written in Go. Go was chosen due the great c
 
 \subsection{Docker}\label{subsec:implementation:technologies:docker}
 
-Docker\footnote{\url{https://www.docker.com/}} is a set of technologies that use OS-level virtualization to deliver software in packages called containers. Containerization allows for software applications to run in isolated user spaces, which enables efficient resource utilization, enhanced security, and simplified deployment across different environments \cite{containerizationwikipedia}\cite{dockerwikipedia}. Docker containers are built using a Docker image, which is a template that can be stored in a remote registry. Docker images are built using 
+Docker\footnote{\url{https://www.docker.com/}} is a set of technologies that use OS-level virtualization to deliver software in packages called containers. Containerization allows for software applications to run in isolated user spaces, which enables efficient resource utilization, enhanced security, and simplified deployment across different environments \cite{containerizationwikipedia,dockerwikipedia}. Docker containers are built using a Docker image, which is a template that can be stored in a remote registry. Docker images are built using 
 Docker Compose, a tool in the Docker suite, is used for defining and running multi-container applications \cite{dockercomposedocs}. The application is deployed with Docker and Docker Compose, this will be detailed in \autoref{chap:deployment}.
 
 \section{Website}
@@ -115,7 +112,7 @@ The final version of the \acrshort{ui} represents the \acrfull{mvp} and delivers
 
 As shown in \autoref{fig:website_layout_final}, several aesthetic and usability improvements were made. Icons were added to interface elements, such as chevron icons for the date picker at the top of the page, improving clarity and consistency. The base layer buttons in the bottom-left corner were updated with background images to visually indicate what each layer represents, making it easier for users to select the desired base map.
 
-Based on feedback from the Product Owner, a new feature was introduced to allow users to configure thresholds used to calculate the trafficability of forestry roads. This functionality was implemented in a new sidebar, following the same design as the existing sidebars for layer selection and legends. In this configuration sidebar, users can adjust parameters such as soil saturation and frost depth thresholds. As mentioned earlier, only the forestry road layer supports querying. This design choice simplified the user interface by focusing interactions on the most relevant layer. An example of the query result is shown in \autoref{fig:website_layout_final_sidebars}, where detailed information about a selected road segment is displayed.
+Based on feedback from the \gls{productowner}, a new feature was introduced to allow users to configure thresholds used to calculate the trafficability of forestry roads. This functionality was implemented in a new sidebar, following the same design as the existing sidebars for layer selection and legends. In this configuration sidebar, users can adjust parameters such as soil saturation and frost depth thresholds. As mentioned earlier, only the forestry road layer supports querying. This design choice simplified the user interface by focusing interactions on the most relevant layer. An example of the query result is shown in \autoref{fig:website_layout_final_sidebars}, where detailed information about a selected road segment is displayed.
 
 To further improve usability, tooltips were added to interactive buttons, providing users with contextual hints about each element's purpose when hovered over.
 
@@ -173,14 +170,11 @@ A common use case for \texttt{useEffect} is to synchronize a component's state w
 
 \subsection{Date Picker}
 
-\textcolor{orange}{kanskje endre navnt til f.eks. time control e.l.}
+An important feature requested by the \gls{productowner} was the ability to view forecasts of road trafficability. To support this, a date picker component was implemented, allowing the user to change the date for the data shown on the map.
 
-\textcolor{orange}{What libraries or browser features did you use?
-How is the date state managed and propagated to the map layers?
-Did you implement any validation or restrictions (e.g., min/max dates)?
-Describe how button-based increments work (day, week, year) and how that affects the UI and data loading.}
+The date picker consists of a standard \acrshort{html} date input element, along with buttons that increment or decrement the selected date by a day, a week, or a year. When the user selects a new date, all active map layers are re-queried and updated to reflect the data available for the new date. Only layers with available data for the selected date will be shown.
 
-An important feature the Product Owner wanted was the ability to see a forecast of the trafficability, therefore we needed a component to change the date of the data shown. The date picker is used to change the current date of the data shown on the map. This lets the user see historical and forecast data. The component consists of an \acrshort{html} date input element and buttons to change the date by day, week or year. When the user changes the date, all enabled map layers will be updated with the new date and displayed on the map as long as they have data from that specific date.
+The dynamic data sources include historical data dating back to September 1, 1957, and forecast data extending nine days into the future. To prevent invalid selections, the date picker is restricted to this available date range.
 
 \subsection{Map Integration with OpenLayers}
 
@@ -208,7 +202,7 @@ The map layers are exported from their definition modules. This allows other Rea
 As described earlier in \autoref{sec:technicaldesign:website}, the main feature of the website is to visualize forestry roads using a color-coded system: green, yellow, or red, to indicate their current trafficability.
 These classifications are based on an algorithm that incorporates both meteorological and geological data.
 
-Initially, we planned to perform these calculations on the backend to maintain cohesion and centralized control over the classification logic. By keeping all data processing on the server, we could ensure that the logic was consistent, easier to maintain, and independent of client-side variations. However, later in the project, the Product Owner requested that users should be able to adjust threshold values for certain parameters dynamically using sliders. Since this would require recalculating the classifications in real time as the slider values changed, it became more efficient to move the algorithm to the frontend. This avoided repeated requests to the backend for each slider adjustment, as the map layer would only need to be fetched once and then re-styled dynamically on the client side.
+Initially, we planned to perform these calculations on the backend to maintain cohesion and centralized control over the classification logic. By keeping all data processing on the server, we could ensure that the logic was consistent, easier to maintain, and independent of client-side variations. However, later in the project, the \gls{productowner} requested that users should be able to adjust threshold values for certain parameters dynamically using sliders. Since this would require recalculating the classifications in real time as the slider values changed, it became more efficient to move the algorithm to the frontend. This avoided repeated requests to the backend for each slider adjustment, as the map layer would only need to be fetched once and then re-styled dynamically on the client side.
 
 As shown in \autoref{lst:forestryroads_styling}, each feature rendered on the map includes \gls{geojson} properties for relevant meteorological and geological data, specifically, frost depth, soil saturation, and superficial deposit type. These values are compared against the threshold values selected by the user to determine the color used for each road segment.
 
@@ -250,9 +244,12 @@ This section describes the implementation of the server, which serves as the sou
 \subsection{Forestry Road Algorithm}\label{subsec:server:forestroadalgorithm}
 
 \textcolor{orange}{
-Hva det er (api, (REST?)) \\ \\
-Hvordan den funker (Hente veidata, cluster, query, send tilbake) \\ \\
-Hvorfor vi gjorde det slikt (kanskje ikke?)
+Hva det er (api, (REST?)) \\
+Hvordan den funker (Hente veidata, cluster, query, send tilbake) \\
+Hvorfor vi gjorde det slikt (kanskje ikke? \\
+Skrive at vi gikk ut ifra at veiene er lagd av løsmassene i området. Kanskje skrive om de andre... 
+) \\
+FJORDKATALOG
 }
 
 ... An overview of the external libraries used is shown in \autoref{tab:golibraries}. ...

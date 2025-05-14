@@ -1,39 +1,68 @@
 \chapter{Deployment}\label{chap:deployment}
 
-This chapter describes how the application is deployed using Docker and Docker Compose on NTNU's SkyHiGh platform. It covers the technical setup, including how Docker images are built with GitHub Actions and published to the GitHub Container Registry. The chapter also outlines what would be required for Skogkurs to deploy the system on their own infrastructure, and discusses relevant choices related to scalability and maintenance.
+This chapter describes how the application is deployed using Docker and Docker Compose on NTNU's SkyHiGh platform. It covers the technical setup, including how Docker images are built with GitHub Actions and published to the GitHub Container Registry. The chapter also outlines what would be required for Skogkurs to deploy the system on their own infrastructure.
 
-\section{Docker \& Docker Compose}
+\section{SkyHiGh}
 
-\textcolor{orange}{Avsnitt hvordan vi har deploya (docker compose på vm)}
+Throughout the latter half of the project, the application was deployed with Docker Compose on NTNU's shared cloud computing platform, SkyHiGh\footnote{\url{https://www.ntnu.no/wiki/display/skyhigh}}. SkyHiGh is IIK's installation of OpenStack\footnote{\url{https://www.openstack.org/}}, located in Gjøvik. SkyHiGh allows users to get access to either a single virtual machine with an operating system of their choice, or project where they are able to create networks, routers and virtual machines at their own will.
 
-Throughout the project, the application has been deployed with Docker Compose on NTNU's shared cloud computing platform, SkyHiGh\footnote{\url{https://www.ntnu.no/wiki/display/skyhigh}}. As previously described in \autoref{subsec:implementation:technologies:docker}, Docker Compose is used for defining and running multi-container applications. Compose also provides configuration options like defining environment variables, mapping ports and defining networks containing containers. The application consists of two containers on the same network: website and server. \textcolor{orange}{VM'en kjører docker compose i tmux, slik at begge kan gå inn og pulle siste imagene}
+The usage of SkyHiGh in the project primarly included four virtual machines. As described in \autoref{chap:developmentprocess}, we used two virtual machines for a backup server and the time tracking server. Two virtual machines was used to deploy the application, one for hosting the superficial deposit and fjord data, and one for running the application itself. A dedicated server for hosting superficial and fjord data was needed due to the large size of the files would not allow them be kept on GitHub. The usage of this virtual machine will be detailed in the coming sections. The virtual machine
+% Hvordan vi har deploya: SkyHiGh -> Ubuntu VM -> tmux -> Docker Compose
+%which is ran inside tmux\footnote{tmux is a terminal multiplexer. It lets you switch easily between several programs in one terminal, detach them (they keep running in the background) and reattach them to a different terminal.} on a virtual machine on SkyHiGh.
 
-\textcolor{orange}{kanskje ha glossary på: made using the CI/CD tool GitHub Actions, eller cite noe}.
-The Docker images\footnote{A Docker image is a read-only template used to build containers \cite{dockerwikipedia}.} are made using GitHub Actions\footnote{\url{https://github.com/features/actions}}. Any commit pushed to the server or website repositories will trigger the action, which then builds the image and pushes it to GitHub Container Registry\footnote{\url{https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry}}. All Docker images are built using a text document that contains all the commands a user could call on the command line to assemble an image, called a Dockerfile \cite{dockerfiledocs}. The Dockerfiles along with the GitHub Action for the website and server can be found in their respective repositories (see \autoref{tab:githubrepositories}).
+%The application VM was configured with Docker Compose and hosted on a virtual Ubuntu machine. To keep the application running continuously, it was executed inside a tmux\footnote{\url{https://github.com/tmux/tmux/wiki}} session, a terminal multiplexer that allows persistent and detachable command-line sessions. This setup proved sufficient for our development and demonstration purposes, given the low uptime and scalability requirements.
 
-This approach was chosen due to its simplicity and the low availability requirements. Docker Compose require little configuration compared to other solutions like Kubernetes\footnote{\url{https://kubernetes.io/}} and Docker Swarm\footnote{\url{https://docs.docker.com/engine/swarm/}}, which makes it easy to use and ideal for small-scale deployments. However, this simplicity comes at the cost of limited scalability and orchestration features, making it less suitable for complex, production-grade environments. Docker Compose proved to be great for our usage during the project, but is not suitable if the application were to be used at a larger scale. This will be discussed later in \autoref{chap:discussion}.
+This approach was chosen due to its simplicity and the low availability requirements. Docker Compose require less configuration compared to other solutions like Kubernetes\footnote{\url{https://kubernetes.io/}} and Docker Swarm\footnote{\url{https://docs.docker.com/engine/swarm/}}, which makes it easy to use and ideal for small-scale deployments. However, this simplicity comes at the cost of limited scalability and orchestration features, making it less suitable for complex, production-grade environments. This will be further discussed later in \autoref{chap:discussion}.
 
-\textcolor{orange}{
-Avsnitt om Hva må SKogkurs gjøre for å deploye selv på egne servere? \\
-Bygge imagene selv, eller endre container reg \\
-Laste ned løsmasse og fjorddata \\
-Ha en maskin med docker som er åpent for nett
-}
+\section{Docker and Docker Compose}
+%Explain the basics of Docker and Docker Compose.
+%Detail how containers are networked, how environment variables and volumes are configured.
+%Mention the docker-compose.yml structure (briefly, or refer to an appendix/code repo).
+%All Docker containers are made using a Docker image \cite{dockerwikipedia}.
+
+As previously described in \autoref{subsec:implementation:technologies:docker}, Docker Compose is used for defining and running multi-container applications. Compose also provides configuration options like defining environment variables, mapping ports and defining networks containing containers. The application consists of two containers on the same network: website and server. These two containers are deployed on the same network with Docker Compose.
 
 
-\section{OpenStack}\label{sec:deployment:openstack}
+\section{GitHub Actions}
+%Introduce GitHub Actions as a CI/CD tool.
+%Include a brief sidebar or paragraph explaining CI/CD if your audience may not know it.
+%Describe how each commit to specific branches triggers the build process.
+%Explain that images are pushed to the GitHub Container Registry automatically.
+%Reference where Dockerfiles and workflows are found in the repository.
 
-\textcolor{orange}{
-Hva openstack er \\ \\
-Hva SkyHiGh er
-}
+The Docker images used to build the application are made using GitHub Actions\footnote{\url{https://github.com/features/actions}}. 
+HVA ER ACTIONS? (CICD PIPELINE)
+-->
+Any commit pushed to the server or website repositories will trigger the action, which then builds the image and pushes it to GitHub Container Registry\footnote{\url{https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry}}. All Docker images are built using a text document that contains all the commands a user could call on the command line to assemble an image, called a Dockerfile \cite{dockerfiledocs}. The Dockerfiles along with the GitHub Action for the website and server can be found in their respective repositories (see \autoref{tab:githubrepositories}).
 
-\subsection{Website}\label{subsec:deployment:docker:website}
+\section{Building the Containers}
 
-Vite is a modern build tool optimized for frontend development. It offers a fast development server, which is currently used to run the website during development. Ideally, Vite would only be used to build the application for production, with a separate tool or server handling deployment \cite{vite}.
+\subsection{Website Container}
+%Built using Vite, a modern frontend build tool.
+%Explain the vite build process that compiles the static assets.
+%Describe how the output is served in production (e.g., using a static file server or Node.js).
+%Optionally include: why Vite was chosen over alternatives like Webpack.
 
-Running the development server manually requires Vite, Node.js, and npm to be installed. From the project's root directory, the server can be started with the command: \texttt{npm run dev}. However, since Docker is used to containerize the application, running this command manually is unnecessary.
 
-\subsection{Backend Server}\label{subsec:deployment:docker:backendserver}
+% Kanskje ikke ha med det under:
+%Vite is a modern build tool optimized for frontend development. It offers a fast development server, which is currently used to run the website during development. Ideally, Vite would only be used to build the application for production, with a separate tool or server handling deployment \cite{vite}.
+%Running the development server manually requires Vite, Node.js, and npm to be installed. From the project's root directory, the server can be started with the command: \texttt{npm run dev}. However, since Docker is used to containerize the application, running this command manually is unnecessary.
 
-\textcolor{orange}{Hvilke data man trenger, kanskje scrappe subsec back og website, ta med i docker og compose}
+\subsection{Server Container}
+%Built using the Go toolchain.
+%Mention that the server binary is compiled with go build.
+%Describe the Dockerfile setup for Go, such as using a multi-stage build (if applicable).
+%Highlight efficiency in build times, static binaries, etc.
+
+
+
+\section{Deployment by Skogkurs}
+%Provide clear steps required for external deployment:
+%Downloading necessary datasets.
+%Preprocessing data using provided Python script.
+%Handling of secrets and environment variables.
+%Options for building and deploying images (CI/CD vs. local).
+%Updating the Docker Compose config.
+%Consider including a checklist-style table or bullet list to make this actionable.
+
+Several steps are required for Skogkurs to deploy the application on their own servers. First, the superficial deposit and fjord datasets must be downloaded from Kartkatalogen\footnote{\url{https://kartkatalog.geonorge.no/}}. Additionally, the fjord dataset must be preprocessed with a python file that is provided in the server repository. If Skogkurs intends to replicate the original approach to building the Docker images, datasets must be made accessible via SSH, and the relevant environment and secret variables must be configured within the CI/CD pipelines. Alternatively, the Docker images can be built locally before being pushing to a registry. In either case, the Docker Compose configuration must to be updated the new image ownership.
