@@ -1,11 +1,13 @@
 \chapter{Development Process}\label{chap:developmentprocess}
 
-\textcolor{orange}{NOE TEKST}
+This chapter outlines the key aspects of the project's development process, from technical infrastructure to workflow methodology. It begins by describing how the project was organized on GitHub and how consistent version control was maintained. The use of a backup server and time tracking tool is also detailed. Planning and coordination tools, including the Gantt chart and chosen Software Development Lifecycle model, are introduced to show how progress was structured. The chapter further explains how the Scrum framework was applied, with an overview of each sprint and its contributions. Finally, it covers meetings, stakeholder involvement, and the progression toward a Minimum Viable Product.
 
 \section{Code Repositories}
 
 % Github Organization and repos
-All code and project-related resources are stored on GitHub under a dedicated organization\footnote{\url{https://github.com/skogkursbachelor}}. Each part of the system, as well as supporting documentation, is maintained in its own repository. This modular structure facilitates collaboration and version control throughout the development process. \textcolor{orange}{Skriv om commit message conventions?}
+All code and project-related resources are stored on GitHub under a dedicated organization\footnote{\url{https://github.com/skogkursbachelor}}. Each part of the system, as well as supporting documentation, is maintained in its own repository. This modular structure facilitates collaboration and version control throughout the development process. 
+
+To ensure consistency and clarity in version control, the project group adopted a standardized format for Git commit messages \cite{commit_standard}. Each commit message follows a predefined structure, beginning with a keyword that categorizes the nature of the change, such as \texttt{feat}, \texttt{fix}, \texttt{docs}, \texttt{style}, \texttt{refactor}, \texttt{test}, or \texttt{chore}. This is followed by a concise description summarizing the purpose of the commit. By adhering to this standard, the team improved traceability, collaboration, and maintainability throughout the development process.
 
 An overview of the repositories and their respective purposes is shown in \autoref{tab:githubrepositories}.
 
@@ -30,7 +32,7 @@ An overview of the repositories and their respective purposes is shown in \autor
     \label{tab:githubrepositories}
 \end{table}
 
-\section{Backup Server}
+\section{Backup Server}\label{sec:devpro:backupserver}
 
 \textcolor{orange}{
 Hvorfor vi har backup server (3-2-1) \\
@@ -56,16 +58,11 @@ Blabla found in \autoref{lst:backupserverfiles}.
 
 \section{Time Tracking Tool}
 
-\textcolor{orange}{
-Ser salamander har "resultatet"/timene til slutt, i discussion. \\
-Mens her kan vi snakke om hva traggo er, hvorfor vi bruker det.
-}
-
-All project work was tracked using the self-hosted time tracking service Traggo\footnote{\url{https://traggo.net/}}. Traggo tracks work by tags making it easy to get an overview of time spent on different tasks.
+All project work is tracked using the self-hosted time tracking service Traggo\footnote{\url{https://traggo.net/}}. Traggo is a tag-based time tracking tool that tracks time spans. Being based on tags and times spans makes Traggo very flexible and adaptable for different users \cite{traggonet}. The tags that are used in this project are type and user, where type entails what category the work falls into (i.e. research, thesis, development).
 
 \section{Gantt Diagram}
 
-A Gantt chart was created, highlighting the different sprints and key milestones. It served as a high-level plan to structure the project's progression but was not intended to be followed rigidly, allowing for flexibility and adjustments along the way, which is particularly important in agile development projects. This approach provided a clear visual overview for team coordination and progress tracking. A more detailed table of all dates referenced in the Gantt chart can be found in the project plan (see \autoref{appendix:project_plan}).
+A Gantt chart was created during the planning of the project, highlighting the different sprints and key milestones. It serves as a high-level plan to structure the project's progression but is not intended to be followed rigidly, allowing for flexibility and adjustments along the way, which is particularly important in agile development projects. This approach provides a clear visual overview for team coordination and progress tracking. A more detailed table of all dates referenced in the Gantt chart can be found in the project plan (see \autoref{appendix:project_plan}).
 
 \begin{figure}[h]
     \centering
@@ -78,9 +75,11 @@ A Gantt chart was created, highlighting the different sprints and key milestones
 
 For this project, the team needed to select an appropriate \acrfull{sdlc} model. Key factors considered in this decision included the clarity and flexibility of the requirements, team size, project timeline, product delivery goals, and prior experience \cite{sdlc_model}. 
 
-The requirements provided by the Product Owner are intentionally ambiguous and flexible, allowing the team to prioritize the few fixed requirements upfront while iteratively refining the flexible ones over time. The team is composed of two members with similar experience levels, enabling close collaboration and effective decision-making. With a short project timeline of four months, a structure of 2-week sprints aligns perfectly with Scrum's iterative and adaptive approach, ensuring steady progress and regular opportunities for feedback. 
+The requirements provided by the \gls{productowner} are intentionally ambiguous and flexible, allowing the team to prioritize the few fixed requirements upfront while iteratively refining the flexible ones over time. The team is composed of two members with similar experience levels, enabling close collaboration and effective decision-making. With a short project timeline of four months, a structure of 2-week sprints aligns perfectly with Scrum's iterative and adaptive approach, ensuring steady progress and regular opportunities for feedback. 
 
-Given the absence of clearly defined requirements and the need for continuous collaboration with the Product Owner, the Scrum methodology was the most appropriate framework for managing the team's workflow and project development. Traditional methodologies like Waterfall are not suitable, as they rely on fixed requirements and a linear development process, which would limit the teams flexibility \cite{waterfall_model_enwiki:1275499744}. Extreme Programming (XP), while valuable for high-collaboration environments with strict engineering practices like pair programming and test-driven development, is not fully suitable as the project does not emphasize these practices to the same extent \cite{extreme_programming}. Similarly, Lean development focuses on minimizing waste and maximizing efficiency but is less structured in terms of iterative planning, which is needed to manage evolving requirements effectively \cite{lean_programming}. By adopting Scrum, the team can iteratively refine requirements and adapt to changes throughout development \cite{sdlc_model}. To implement Scrum effectively, several key practices are integrated into our workflow \cite{scrum_guide}.
+\textcolor{orange}{Avsnitt over og under er mye samme?}
+
+Given the absence of clearly defined requirements and the need for continuous collaboration with the \gls{productowner}, the Scrum methodology was the most appropriate framework for managing the team's workflow and project development. Traditional methodologies like Waterfall are not suitable, as they rely on fixed requirements and a linear development process, which would limit the teams flexibility \cite{waterfall_model_enwiki:1275499744}. Extreme Programming (XP), while valuable for high-collaboration environments with strict engineering practices like pair programming and test-driven development, is not fully suitable as the project does not emphasize these practices to the same extent \cite{extreme_programming}. Similarly, Lean development focuses on minimizing waste and maximizing efficiency but is less structured in terms of iterative planning, which is needed to manage evolving requirements effectively \cite{lean_programming}. By adopting Scrum, the team can iteratively refine requirements and adapt to changes throughout development \cite{sdlc_model}. To implement Scrum effectively, several key practices are integrated into our workflow \cite{scrum_guide}.
 
 \begin{itemize}
     \item \textbf{Sprint Meetings:} The project is divided into 2-week sprints. At the start of each sprint, sprint meetings included sprint planning, reviews, and retrospectives. During the planning phase, the team selects tasks from the product backlog to form the sprint backlog for the upcoming sprint. The review phase focuses on evaluating progress and determining whether adjustments to the product backlog are needed. The goal of the retrospective phase is to identify areas for improvement in the Scrum process itself.
@@ -99,7 +98,7 @@ For more details about the sprints, the meeting minutes from each sprint meeting
 
 \subsection*{Sprint 1}
 
-The first sprint was primarily dedicated to project planning and initial research.  To determine the trafficability of forestry roads, we needed to identify reliable and relevant sources of map and geospatial data. In early discussions with the Product Owner, several potential sources were identified, including SeNorge, GeoNorge, NGU, and NIBIO. We also explored additional datasets from ESA and NASA, however these were ultimately found to have too coarse a resolution for our purposes, as forestry roads are densely distributed and require more detailed spatial data.
+The first sprint was primarily dedicated to project planning and initial research.  To determine the trafficability of forestry roads, we needed to identify reliable and relevant sources of map and geospatial data. In early discussions with the \gls{productowner}, several potential sources were identified, including SeNorge, GeoNorge, NGU, and NIBIO. We also explored additional datasets from ESA and NASA, however these were ultimately found to have too coarse a resolution for our purposes, as forestry roads are densely distributed and require more detailed spatial data.
 
 Given that none of the team members had prior experience with TypeScript, React, or OpenLayers, we allocated time to study their official documentation and familiarize ourselves with their concepts. In parallel, we created key system diagrams, including a use case diagram and a sequence diagram, to clarify system requirements and interactions. 
 
@@ -109,7 +108,7 @@ As the initial work progressed faster than anticipated, we moved on to designing
 
 With the website development underway, we were able to implement several key map layers, including superficial deposits, frost depth, static soil moisture, historic soil moisture, and forestry roads. The historic soil moisture data was sourced from the \acrshort{esa}, but it was ultimately deemed unfit for our use, as it lacked forecast capabilities and had a coarse resolution of $25 \times 25\text{ km}$.
 
-At this stage, the website had reached a level of functionality that allowed us to present it to the Product Owner and gather further feedback. The most significant point raised was the need to replace the ESA soil moisture layer with a more suitable, dynamic alternative. After some discussion, we decided to explore and attempt the integration of soil moisture forecast data from Open-Meteo.
+At this stage, the website had reached a level of functionality that allowed us to present it to the \gls{productowner} and gather further feedback. The most significant point raised was the need to replace the ESA soil moisture layer with a more suitable, dynamic alternative. After some discussion, we decided to explore and attempt the integration of soil moisture forecast data from Open-Meteo.
 
 \subsection*{Sprint 3}
 
@@ -123,7 +122,7 @@ The main goal of this sprint was to continue improving the classification of for
 
 \subsection*{Sprint 5}
 
-After implementing several of the classification factors, we needed to define specific threshold values for the classification logic. To aid in this, we held a meeting with the Product Owner. During this sprint, we also decided to switch from using Open-Meteo data to soil saturation data from SeNorge. This decision was based on SeNorge's higher spatial resolution and our observations that its data appeared more reliable in comparison.
+After implementing several of the classification factors, we needed to define specific threshold values for the classification logic. To aid in this, we held a meeting with the \gls{productowner}. During this sprint, we also decided to switch from using Open-Meteo data to soil saturation data from SeNorge. This decision was based on SeNorge's higher spatial resolution and our observations that its data appeared more reliable in comparison.
 
 \textbf{The key factors identified for determining trafficability included:}
 
@@ -132,27 +131,27 @@ After implementing several of the classification factors, we needed to define sp
     \item In the absence of frost, soil saturation percentage is assessed. The threshold value depends on the type of superficial deposit, as different soil types vary in permeability and sensitivity to moisture.
 \end{itemize}
 
-Additionally, the Product Owner requested that transport managers be able to adjust these thresholds, as they can vary by location and may be informed by the users' prior experience when comparing the map data. To enable this flexibility, we decided to implement a slider for threshold adjustment, moving the classification algorithm to the frontend. Further details on the implementation of the classification algorithm can be found in \autoref{subsec:implementation:website:trafficability_algorithm}.
+Additionally, the \gls{productowner} requested that transport managers be able to adjust these thresholds, as they can vary by location and may be informed by the users' prior experience when comparing the map data. To enable this flexibility, we decided to implement a slider for threshold adjustment, moving the classification algorithm to the frontend. Further details on the implementation of the classification algorithm can be found in \autoref{subsec:implementation:website:trafficability_algorithm}.
 
 In collaboration with our Supervisor, we also aimed to complete the first draft of the thesis for review and feedback.
 
 \subsection*{Sprints 6–8}
 
-The final sprints were primarily dedicated to writing the thesis and incorporating feedback from our supervisor. All suggested revisions were implemented to improve the structure and clarity of the report.
+The final sprints were primarily dedicated to writing the thesis and incorporating feedback from our supervisor. All suggested revisions were implemented to improve the structure and clarity of the thesis.
 
-During this period, we also held two stakeholder meetings. The first involved the Product Owner and two representatives from the Norwegian Forest Owners' Federation. We presented the product and received positive feedback, particularly on its potential value to the forestry industry.
+During this period, we also held two stakeholder meetings. The first involved the \gls{productowner} and two representatives from the Norwegian Forest Owners' Federation. We presented the product and received positive feedback, particularly on its potential value to the forestry industry.
 
-The second meeting included the Product Owner and two transport managers, where we discussed the practical applications of the system in day-to-day logistics and planning.
+The second meeting included the \gls{productowner} and two transport managers, where we discussed the practical applications of the system in day-to-day logistics and planning.
 
 For further details about these meetings, see \autoref{sec:quality_assurance_user_feedback:user_testing}.
 
-\section{Meetings}
+\section{Meetings}\label{sec:devpro:meetings}
 
-In addition to internal sprint meetings, the team held regular meetings with both the Supervisor and the Product Owner. Weekly meetings with the Supervisor offered opportunities to ask questions, receive technical guidance, and get constructive feedback, both on the product and the written thesis.
+In addition to internal sprint meetings, the team held regular meetings with both the Supervisor and the \gls{productowner}. Weekly meetings with the Supervisor offered opportunities to ask questions, receive technical guidance, and get constructive feedback, both on the product and the written thesis.
 
-Meetings with the Product Owner were held on an as-needed basis rather than at fixed intervals. Most of these meetings were conducted digitally via Microsoft Teams. They were particularly valuable for clarifying requirements, discussing design decisions, and showcasing progress through product demos.
+Meetings with the \gls{productowner} were held on an as-needed basis rather than at fixed intervals. Most of these meetings were conducted digitally via Microsoft Teams. They were particularly valuable for clarifying requirements, discussing design decisions, and showcasing progress through product demos.
 
-Minutes from all meetings with the Supervisor and the Product Owner can be found in \autoref{appendix:meeting_minutes}.
+Minutes from all meetings with the Supervisor and the \gls{productowner} can be found in \autoref{appendix:meeting_minutes}.
 
 \section{Minimum Viable Product}
 
@@ -160,7 +159,7 @@ A Minimum Viable Product (\acrshort{mvp}) is a concept that focuses on learning 
 
 \textcolor{orange}{BLE IKKE NOE MMP. Skrev om under litt: user testing -> reviews med PO, fjernet "Further details about the user testing process and findings are discussed in a later chapter."}
 
-During the development of the website, we conducted reviews with the Product Owner to gain insights into how the target audience (transport managers) would interact with the product and identify any missing features or necessary improvements. For the \acrshort{mvp}, we prioritized implementing the core functionalities users would need, as illustrated in the use case diagram in \autoref{fig:use_case_diagram}.
+During the development of the website, we conducted reviews with the \gls{productowner} to gain insights into how the target audience (transport managers) would interact with the product and identify any missing features or necessary improvements. For the \acrshort{mvp}, we prioritized implementing the core functionalities users would need, as illustrated in the use case diagram in \autoref{fig:use_case_diagram}.
 
 \section{Minimum Marketable Product}
 

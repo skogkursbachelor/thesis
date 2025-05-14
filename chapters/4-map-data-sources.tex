@@ -89,8 +89,7 @@ An example of the frost depth map layer as it appears on the website is shown in
 
 \subsection{Soil Saturation}\label{subsec:soilsaturation}
 
-% Glossary groundwater & root zone
-The soil saturation data, provided by \acrshort{nve}, represents the ratio between the current simulated water content in the groundwater and root zone and the highest value observed during the historical reference period from 1981 to 2010 \cite{nve2025waterdata}. For example, a soil saturation level of \qty{70}{\percent} indicates that the soil currently holds \qty{70}{\percent} of the maximum water content recorded during that period. An example of how to soil saturation map layer looks like is shown in \autoref{fig:maplayer:soilsaturation}.
+The soil saturation data, provided by \acrshort{nve}, represents the ratio between the current simulated water content in the \gls{groundwater} and \gls{rootzone} and the highest values observed during the historical reference period from 1981 to 2010 \cite{nve2025waterdata}. The groundwater zone refers to the soil level that is fully saturated, while the root zone lies above it and is typically not fully saturated. For example, a soil saturation level of \qty{70}{\percent} indicates that the soil currently holds \qty{70}{\percent} of the maximum water content recorded during the reference period. An example of how to soil saturation map layer looks like is shown in \autoref{fig:maplayer:soilsaturation}.
 
 \begin{figure}[h]
     \centering
@@ -124,9 +123,9 @@ Soil saturation can be used to assess \gls{trafficability}, which in this contex
 
 \subsection{Forestry Roads}
 
-The forestry roads map layer is the only layer that is altered by the backend server. The backend server uses a vector dataset retrieved via a \Gls{wfs} service in GeoJSON format, provided by GeoNorge\footnote{\url{https://www.geonorge.no/en}} and Kartverket\footnote{\url{https://www.kartverket.no/en}}. In the GeoJSON, forestry roads are represented as geometric LineString features, where each LineString defines a segment between two coordinates. A single road is often divided into multiple such features. The GeoJSON also includes properties of each features such as road number, municipality number, and feature length. An example of how the forestry roads map layer could look like is shown in \autoref{fig:maplayer:forestryroads}.
+The forestry roads map layer is the only layer that is altered by the backend server. The backend server uses a vector dataset retrieved via a \Gls{wfs} service in \gls{geojson} format, provided by GeoNorge\footnote{\url{https://www.geonorge.no/en}} and Kartverket\footnote{\url{https://www.kartverket.no/en}}. In the \gls{geojson}, forestry roads are represented as geometric LineString features, where each LineString defines a segment between two coordinates. A single road is often divided into multiple such features. The \gls{geojson} also includes properties of each features such as road number, municipality number, and feature length. An example of how the forestry roads map layer could look like is shown in \autoref{fig:maplayer:forestryroads}.
 
-The backend server alters the GeoJSON by adding additional properties from the other map layers mentioned earlier (\ref{subsec:superficialdeposits}, \ref{subsec:frostdepth}, \ref{subsec:soilsaturation}). In addition to the other map layers, Fjordkatalogen\footnote{\url{https://kartkatalog.miljodirektoratet.no/MapService/Details/fjordkatalogen}} from the Norwegian Environment Agency\footnote{\url{https://www.environmentagency.no/}} is another data source that is used by the Forestry Roads map layer. The implementation of the Forestry Roads service will be explained later in \autoref{chap:implementation}. 
+The backend server alters the \gls{geojson} by adding additional properties from the other map layers mentioned earlier (\ref{subsec:superficialdeposits}, \ref{subsec:frostdepth}, \ref{subsec:soilsaturation}). In addition to the other map layers, Fjordkatalogen\footnote{\url{https://kartkatalog.miljodirektoratet.no/MapService/Details/fjordkatalogen}} from the Norwegian Environment Agency\footnote{\url{https://www.environmentagency.no/}} is another data source that is used by the Forestry Roads map layer. The implementation of the Forestry Roads service will be explained later in \autoref{chap:implementation}. 
 
 \begin{figure}[h]
     \centering
@@ -195,9 +194,9 @@ The SeNorge maps (frost depth and water saturation) show daily averages, which m
 
 \section{Unused Data Sources}\label{sec:unuseddatasources}
 
-\textcolor{orange}{Kanskje punktliste istedenfor subsec}
+\textcolor{orange}{KANSKJE NEVNE ANDRE SENORGE KART}
 
-During the preliminary research phase, multiple potential data sources were found in addition to what the ones the Product Owner had knowledge of. \textcolor{orange}{/showed us? personlig så bad}
+During the preliminary research phase, multiple potential data sources were found in addition to what the ones the \gls{productowner} had knowledge of. \textcolor{orange}{/showed us? personlig så bad}
 
 \subsection{Open-Meteo}
 
@@ -213,3 +212,5 @@ Copernicus som var bra, ettersom det kan si mye om bæreevne (REF DAG FJELD), me
 
 Thredds med bra data, men bare 66 timer prognose. Disse hadde mye forskjellige data med høy oppløsning med bra oppløsning
 \footnote{\url{https://thredds.met.no/}}
+
+\textcolor{orange}{legge til grunnvanntilstand?}
