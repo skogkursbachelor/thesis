@@ -1,6 +1,6 @@
 \chapter{Implementation}\label{chap:implementation}
 
-This chapter presents the practical implementation of the system, covering both the client- and server-side components. It begins with an overview of the technologies used, including TypeScript, React, OpenLayers, Go, and Docker. The structure and functionality of the website are then described, with a focus on user interface design, map integration, and communication with the backend. Finally, the server-side implementation is detailed, including the logic behind the forestry road classification algorithm, data processing, and performance optimizations. The chapter provides a technical foundation for understanding how the prototype was built and how its components work together.
+Building on the development process described in the previous chapter, this chapter presents the practical implementation of the system, covering both the client- and server-side components. It begins with an overview of the technologies used, including \textbf{TypeScript}, \textbf{React}, \textbf{OpenLayers}, \textbf{Go}, and \textbf{Docker}. The structure and functionality of the website are then described, with a focus on user interface design, map integration, and communication with the backend. Finally, the server-side implementation is detailed, including the logic behind the forestry road classification algorithm, data processing, and performance optimizations. The chapter provides a technical foundation for understanding how the prototype was built and how its components work together.
 
 
 \section{Technologies}
@@ -11,7 +11,7 @@ This section outlines the key technologies used in the project, explaining both 
 
 TypeScript\footnote{\url{https://www.typescriptlang.org/}} is a statically typed superset of JavaScript that adds type annotations and other features to improve code quality and maintainability. While JavaScript is popular for both frontend and backend development, it lacks built-in mechanisms to express relationships between components as applications grow. This often leads to runtime errors, many of which are related to incorrect or unexpected types. TypeScript addresses these issues by providing a static type system that checks for such errors during development, before the code is executed. By catching mistakes early and offering better tooling and autocomplete support, TypeScript makes large-scale JavaScript applications easier to develop, refactor, and maintain \cite{typescript_handbook}. 
 
-Although the team had limited prior experience with frontend web development, we aimed to use a language that was both easy to learn and valuable beyond the project, particularly given its widespread use in industry. TypeScript was therefore chosen for the website implementation. It offered full compatibility with JavaScript-based libraries such as OpenLayers and React, while also providing static typing and enhanced code reliability.
+Although the team had limited prior experience with frontend web development, we aimed to use a language that was both easy to learn and valuable beyond the project, particularly given its widespread use in industry. TypeScript was therefore chosen for the website implementation. It offered full compatibility with JavaScript-based libraries such as \textbf{OpenLayers} and \textbf{React}, while also providing static typing and enhanced code reliability.
 
 \subsection{React}\label{subsec:implementation:technologies:react}
 
@@ -174,7 +174,7 @@ An important feature requested by the \gls{productowner} was the ability to view
 
 The date picker consists of a standard \acrshort{html} date input element, along with buttons that increment or decrement the selected date by a day, a week, or a year. When the user selects a new date, all active map layers are re-queried and updated to reflect the data available for the new date. Only layers with available data for the selected date will be shown.
 
-The dynamic data sources include historical data dating back to September 1, 1957, and forecast data extending nine days into the future. To prevent invalid selections, the date picker is restricted to this available date range.
+As mentioned in \autoref{sec:maplayers}, the dynamic data sources include historical data dating back to September 1, 1957, and forecast data extending nine days into the future. To prevent invalid selections, the date picker is restricted to this available date range.
 
 \subsection{Map Integration with OpenLayers}
 
@@ -244,12 +244,13 @@ This section describes the implementation of the server, which serves as the sou
 \subsection{Forestry Road Algorithm}\label{subsec:server:forestroadalgorithm}
 
 \textcolor{orange}{
-Hva det er (api, (REST?)) \\
+Hva det er (ref tilbake til tech design (rest api)) \\
 Hvordan den funker (Hente veidata, cluster, query, send tilbake) \\
 Hvorfor vi gjorde det slikt (kanskje ikke? \\
 Skrive at vi gikk ut ifra at veiene er lagd av løsmassene i området. Kanskje skrive om de andre... 
 ) \\
-FJORDKATALOG
+FJORDKATALOG \\
+Hente WFS -> Cluster \& Superficial deposit -> Parallel(Frost \& Soil Moisture) -> Bearbeide -> Return
 }
 
 ... An overview of the external libraries used is shown in \autoref{tab:golibraries}. ...
@@ -317,17 +318,3 @@ This was solved by downloading the superficial deposit data and reconstructing i
 \subsubsection{Goroutines}
 
 As previously stated in \autoref{subsec:implementation:technologies:go}, Go was chosen partly due to its native concurrency functionality. This proved to be a wise decision, as Goroutines was a large part of reducing the processing times. The amount of features (forestry roads) shown on the map at once can range from zero to several thousands, depending on the zoom level used. Processing these sequentially would lead to extensive processing times, whereas use of parallel processing ensured consistently low loading times, even when handling large volumes of data. An example of how Goroutines was used can be seen in \autoref{lst:clusterforestroads}, where a wait-group and a semaphore are used to synchronize and limit the amount of Goroutines used.
-
-\begin{comment}
-UTFORDRINGER OM IMPLEMENTASJON HER:
-    - Kilder
-        - Senorge dårlig dokumentasjon til API
-            - Bruker annen endpoint istedenfor
-    - Finne gode og nøyaktige data
-    - Gjøre om data til WMS/noe vi kan vise
-    - Gjøre om WMS/kartdata til rød, grønn eller gule veier
-    - Konvertering av koordinater, f.eks. fra epsg:3857 til epsg:25833
-    - Klassifisering av skogsbilveger
-        - Hente teledyp data for flere veger (WMS vs. REST API)
-        - Teletyp var vanskeligere enn forventet siden API-en brukte et dårlig dokumentert grid-system.
-\end{comment}
