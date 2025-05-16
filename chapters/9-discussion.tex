@@ -2,21 +2,17 @@
 
 % TODO: SKRIV OM INGEN MMP, REF TILBAKE TIL DEVPRO MMP
 %OPPDATER MED GOAL ASSESMENT
-This chapter presents a reflection on both the development process and the final product. It examines how the project evolved in relation to the original goals, highlighting what worked well, what could have been improved, and the challenges encountered along the way. The chapter discusses the choice of technologies, project management practices, and team collaboration. It also evaluates the effectiveness and limitations of the final solution, comparing it with existing alternatives and identifying unexpected findings. Broader considerations, such as sustainability and the role of AI in the project, are explored. Finally, the chapter outlines potential directions for future work and improvements to both the product and the project approach.
+With the application implemented and tested, this chapter provides a reflection on both the development process and the final product. It explores how the project evolved in relation to the original goals, highlighting what worked well, what could have been improved, and the challenges encountered along the way. The chapter discusses the choice of technologies, project management practices, and team collaboration. It also evaluates the effectiveness and limitations of the final solution, comparing it with existing alternatives and identifying unexpected findings. Broader considerations, such as sustainability and the role of AI in the project, are explored. Finally, the chapter outlines potential directions for future work and improvements to both the product and the project approach.
 
 \section{Goal Assessment}
 
-This section evaluates whether the goals defined at the beginning of the project have been achieved and identifies any gaps. The goal categories from \autoref{chap:requirements}, which include product goals, impact goals, and learning goals, are reviewed in turn. Each goal is presented in \textit{\textbf{bold}}, followed by an assessment of the extent to which it was achieved.
+This section evaluates whether the goals defined at the beginning of the project have been achieved and identifies gaps. The goal categories from \autoref{chap:requirements}, which include \textbf{product goals}, \textbf{impact goals}, and \textbf{learning goals}, are reviewed in turn. Each goal is presented in \textit{\textbf{bold}}, followed by an assessment of the extent to which it was achieved.
 
 \subsection{Product Goals}
 
 The primary goal of the project was to develop and test a \textbf{prototype system for fully digital modeling of forestry road load-bearing capacity under varying conditions throughout the year}. The following are the goals that were set to achieve this and their assessment.   
 
-\\ \textcolor{orange}{Siden det ikke var satte krav for produktet annet en det over, valgte vi å definere tasks selv som ville gi en pekepin på hva vi har oppnådd med sluttproduktet: marked in \textbf{bold}}
-
-\textbf{\textit{Gather relevant geological and meteorological data, which includes
-superficial deposits, soil moisture, ground water, ground frost, and
-forestry roads.}}
+\textbf{\textit{Gather relevant geological and meteorological data, including superficial deposits, soil moisture, ground water, ground frost, and forestry roads.}}
 
 The product integrates various geological and meteorological data sources, as described in \autoref{chap:mapdatasources}. Frost depth and soil moisture are available alongside superficial deposit data. From discussing with the \Gls{productowner} we concluded that the soil saturation data is better and more relevant than groundwater data as the soil saturation includes both \gls{groundwater} and \gls{rootzone}. 
 
@@ -31,11 +27,11 @@ A classification of road trafficability was developed using the relevant data as
 
 \textbf{\textit{Implement a traffic-light classification system.}}
 
-The forestry roads are shown in the colors, green, yellow, and red to indicate the trafficability.
+The forestry roads are visually represented using a color scheme to indicate their trafficability status: green indicates safe conditions, yellow signifies a cautionary state, and red represents unsafe conditions.
 
-\textbf{\textit{Extend the model to provide a forecast of road conditions at least a week in advance.}}
+\textbf{\textit{Extend the model to provide a forecast of road conditions at least one week in advance.}}
 
-The model not only provides nine days of forecast, but can show historic data all the way back to 1957.
+The model exceeds the original goal of one week forecast, by providing nine days of forecast. In addition to this, it includes an extensive archive of historical data, which can be used for testing and model validation.
 
 \textbf{\textit{Design and develop an interactive map-based website for intuitive accessibility.}}
 
@@ -45,7 +41,7 @@ An interactive map-based website was developed. While the \acrshort{ui} was gene
 
 OpenLayers was used to display all relevant data as map layers. These layers are dynamically updated when the user changes the selected date, allowing for visualization of both historical and forecasted conditions.
 
-\textbf{\textit{Ensure that the system is optimized for transport managers, with a user-friendly interface that allows efficient decision-making.}}
+\textbf{\textit{Ensure that the system is optimized for transport managers, with a user-friendly interface that enables efficient decision-making.}}
 
 Feedback indicated that the system was intuitive and had the potential to improve route planning efficiency. However, some desired features were missing, such as the ability to filter by specific roads or locations, and to save road configurations.
 
@@ -61,34 +57,44 @@ Although no formal user testing was conducted, the application was presented to 
 
 The feedback gathered during the later presentations with stakeholders was not incorporated into the project due to time constraints and the stage of development. However, feedback from the Product Owner was consistently integrated throughout the project's development.
 
-
 \subsection{Impact Goals}
 
 The project aimed to provide real-world value by enhancing decision-making processes related to the use of forestry roads. Below are the impact goals and their assessments:
 
-\textbf{\textit{Reduced uncertainty for transport managers when setting the routes using forest roads.}}
+\textbf{\textit{Reduced uncertainty for transport managers when setting the routes using forestry roads.}}
 
 The application provides clear information about the current and predicted trafficability of forestry roads, with forecasts extending nine days ahead. This helps transport managers make more informed routing decisions and reduces uncertainty caused by changing weather and ground conditions.
 
 \textbf{\textit{To validate the prototype as a proof of concept and evaluate its feasibility and effectiveness as a foundation for a future operational system in the forestry industry.}}
 
-Through internal testing and feedback from stakeholders, the prototype has demonstrated both feasibility and effectiveness in addressing the needs of the forestry industry, particularly in the route planning process. The system shows potential for integration into existing workflows, offering tangible benefits in terms of improved decision-making. Furthermore, there is clear potential to enhance the model’s accuracy by incorporating additional data factors, making it adaptable for more comprehensive applications in the future.
+Through internal testing and feedback from stakeholders, the prototype has demonstrated both feasibility and effectiveness in addressing the needs of the forestry industry, particularly in the route planning process. The system shows potential for integration into existing workflows, offering tangible benefits in terms of improved decision-making. Furthermore, there is clear potential to enhance the model's accuracy by incorporating additional data factors, making it adaptable for more comprehensive applications in the future.
 
 \subsection{Learning Goals}
 
-In addition to delivering a functional prototype, the project served as a valuable learning experience. The goals below reflect the desired technical and professional growth for the project participants:
+As previously outlined, the project was designed not only to produce a functional prototype but also to foster meaningful learning and development. This section assesses the achievement of the learning goals, organized into two main categories: technical goals and project management goals.
 
+\textbf{Technical Goals}
 \begin{itemize}
-    \item Gaining insight in implementing interactive maps and geospatial data on web pages.
-    \item Leveraging RESTful APIs for efficient data integration.
-    \item Acquiring hands-on experience collaborating with real-world companies and products.
-    \item Gaining experience working in a team environment, improving collaboration and communication skills.
-    \item Conducting user tests and implementing feedback. XXX
-    \item Developing a deeper understanding of the software development life cycle while actively practicing agile methodologies, like Scrum and Kanban.
+    \item Gaining insight in implementing interactive maps and geospatial data on websites.
+    \item Leveraging \acrshort{rest}ful \acrshort{api}s for efficient data integration.
     \item Enhancing application performance by implementing concurrency and optimizing parallel processing.
     \item Expanding proficiency in containerization techniques, particularly through hands-on experience with Docker.
 \end{itemize}
 
+All of the expected technical learning goals were achieved. Developing the website provided valuable insight and hands-on experience with implementing interactive maps and handling geospatial data. The development of the backend server contributed to experience with RESTful APIs, concurrent processing, and containerization using Docker.
+
+\textbf{Project Management Goals}
+\begin{itemize}
+    \item Acquiring hands-on experience collaborating with real-world companies and products.
+    \item Gaining experience working in a team environment, improving collaboration and communication skills.
+    \item Conducting user tests and implementing feedback. 
+    \item Developing a deeper understanding of the software development life cycle while actively practicing agile methodologies, like Scrum and Kanban.
+\end{itemize}
+
+Most of the project management goals were achieved, but as reasoned in \autoref{sec:quality_assurance_user_feedback:user_testing}, we did not conduct user tests. This is a central part of any development project, so the lack of it is a noticeable shortcoming. Other forms of feedback were however implemented, but did not make up for the insight we would have gained from user tests. This remains a central part of future work.
+
+Rewrite, ha noe positivt også,, men den er mongooos
+Overall, the project has given us valuable insight into collaboration with real-world companies, good experience from working in a team over a prolonged project, 
 
 \section{Process}\label{sec:discussion:process}
 
@@ -133,7 +139,7 @@ The use of GitHub for both version control and task management via the Kanban bo
 Using Traggo for time tracking made it straightforward to categorize work using tags. As a self-hosted and free solution, it did not require creating additional user accounts, which made access simple and efficient. It included all the core features we needed, though it lacked some useful extras, such as the ability to filter by multiple tags at once. For example, it was not possible to easily see how much time a specific user spent on a particular task.
 
 % Kanskje glossary på skyhigh, men er ikke fagbegreg så kanskje ikke
-Having access to SkyHiGh, combined with using Docker, allowed us to easily deploy and update our application. In addition to hosting the application, SkyHiGh was utilized in different ways, like hosting Traggo and taking backups of project files. \textcolor{orange}{MER?}
+Having access to SkyHiGh, combined with using Docker, allowed us to easily deploy and update our application. In addition to hosting the application, SkyHiGh was utilized in different ways, like hosting Traggo and taking backups of project files. 
 
 \subsection{Development Model}
 
@@ -149,14 +155,15 @@ Compared to other software development lifecycle models, Scrum offered the right
 
 Communication among the team members remained consistently effective throughout the project. Having known each other prior to the project enabled us to engage in direct and clear discussions, which contributed to a collaborative environment that was both calm and efficient.
 
-Constructive communication was also maintained with both the \gls{ProductOwner} and our supervisor. As described in \autoref{sec:devpro:meetings}, we held weekly in-person meetings with our supervisor to discuss both project progress and thesis-related matters. Interactions with the \gls{ProductOwner} were primarily conducted virtually and focused on the application's functionality and design. \textcolor{orange}{Legge til om vi likte denne løsning?}
+Constructive communication was also maintained with both the \gls{productowner} and our supervisor. As described in \autoref{sec:devpro:meetings}, we held weekly in-person meetings with our supervisor to discuss both project progress and thesis-related matters. Interactions with the \gls{productowner} were primarily conducted virtually and focused on the application's functionality and design. \textcolor{orange}{Legge til om vi likte denne løsning?}
 
 \subsection{Work Allocation}
 
-\textcolor{orange}{Sammenligne med hva vi forventet/vanlig jobb tid? om vi kunne jobbet mer/ kunne jobbet gjevnt, hvis det ble veldig mye mer tid brukt på slutten av prosjektet?}
+\autoref{tab:timetrackedbymember} shows the total number of hours worked each month by the two group members. As the team aimed to prioritize close collaboration, it is notable that the total hours worked by each member remained very similar throughout the project. The even distribution of hours indicates a well-balanced collaboration, with both members contributing consistently throughout the project.
 
-\autoref{tab:timetrackedbymember} shows the total time of work for each month by the two members.
+The table also shows a clear increase in total hours worked as the project progressed, peaking in April. This trend likely reflects the natural progression of the project, where the workload increased due to implementation tasks, integration of components, and the finalization of the thesis.
 
+\textcolor{orange}{Oppdater tabell helt til slutt!}
 \begin{table}[h]
     \centering
     \begin{tabular}{c|c|c|c}
@@ -167,18 +174,16 @@ Constructive communication was also maintained with both the \gls{ProductOwner} 
         February & 80h 6m   & 79h 17m   & 159h 24m  \\
         March    & 88h 4m   & 88h 20m   & 176h 24m  \\
         April    & 99h 40m  & 102h 38m  & 202h 18m  \\
-        May      &        &        &        \\
+        May      & 72h 52m  & 73h 0m    & 145h 52m  \\
         \hline
-        Total & & & \\
+        Total    & 402h 21m & 406h 13m  & 808h 34m  \\
         \hline
     \end{tabular}
     \caption{Tracked time by month and group member}
     \label{tab:timetrackedbymember}
 \end{table}
 
-% Skriv mer om time fordeling, f.eks. hvorfor mer timer i mars enn januar etc.
-
-\autoref{fig:traggostackedbarchart} shows the total time of work for each month by the two members.
+\autoref{fig:traggostackedbarchart} illustrates the distribution of hours per work category across each month. In January, most time was allocated to planning and establishing the project structure. February saw a significant focus on research and preparation, as the team explored relevant technologies and existing literature. As the project advanced into March and April, the focus shifted toward development and implementation tasks, culminating in a strong emphasis on thesis writing in the final months.
 
 \begin{figure}[h]
     \centering
@@ -193,38 +198,79 @@ Constructive communication was also maintained with both the \gls{ProductOwner} 
 
 \subsection{Use of AI}
 
-\textcolor{orange}{NOE TEKST}
+AI tools, particularly large language models (LLMs), were used throughout the development and documentation process. These tools supported the group in a range of tasks, from learning new technologies to improving written communication. The group agreed that while code generation using AI can sometimes be helpful, it is generally unreliable and must be used with caution. In many cases, relying too heavily on such tools can introduce subtle errors or result in additional work later due to misunderstandings or incorrect assumptions.
 
-\subsubsection{Learning}
+\subsubsection{Support for Learning and Understanding}
 
-\subsubsection{Inspiration}
+Throughout the project, we encountered several new frameworks, libraries, and technologies. In these situations, AI tools were occasionally used to obtain quick explanations or examples. This often accelerated the learning process, especially during the initial stages. However, we also found that the answers provided could be outdated, overly simplified, or even incorrect. As a result, official documentation and trusted sources proved to be more reliable, particularly for critical or complex issues.
 
-\subsubsection{Spellcheck}
+\subsubsection{Idea Generation and Inspiration}
 
+During the early phases of the project, LLMs were especially useful for brainstorming and exploring potential approaches. By providing quick overviews of different implementation strategies or listing the advantages and disadvantages of architectural decisions, AI contributed to more efficient discussions and helped the group arrive at well-founded ideas more quickly. We also made use of AI for generating ideas related to the presentation of the thesis, such as potential titles. However, the suggestions from AI were always treated as starting points and were critically evaluated before being incorporated into the project.
+
+\subsubsection{Spelling and Grammar Assistance}
+
+When writing the thesis, LLMs were useful for checking grammar, spelling, and sentence structure. This helped streamline the writing process and contributed to a more professional tone. Nonetheless, we found that AI-generated text often introduced excessive wording or altered the intended meaning. Preserving the technical accuracy and original intent of the writing was essential, so all suggestions were reviewed carefully and adjusted as needed.
+
+\subsubsection{Automation of Repetitive Tasks}
+
+AI tools were also used to automate certain repetitive tasks, which helped improve overall efficiency. For example, generating LaTeX table structures, formatting reference lists, or converting raw data into structured formats were tasks that benefited from AI assistance. This reduced manual effort and allowed us to focus more on the core aspects of the work.
 
 \section{Product}
 
+This section presents a detailed discussion of the product created throughout this project. The discussion includes an analysis of the product's current limitations and explores the practical aspects of deployment. Additionally, the product is compared with existing solutions to highlight its unique contributions and potential advantages. Key challenges encountered during development are examined to understand their impact on the final outcome. Considerations related to the sustainability of the product are also addressed, with specific reference to how the product aligns with the United Nations Sustainable Development Goals. Finally, the section outlines possible directions for future improvements and extensions to further enhance the system's capabilities.
 
 \subsection{Limitations}
 
 % Feilkilder (kartdata) e.g. https://www.senorge.no/WaterMap
-% Vanskelig å få tilgang til satellittdata fra SMAP & SENTINENTAL-1. For å få prognose må man ha en modell for å regne ut.
 % Lite availability med docker compose! (er sagt at vi skriver om det i discussion)
 % mangel på universell utforming, gå tilbake til hva som er skrevet i requirements. nevn enkelte forbedringer som er prioritert.
 
-\textcolor{orange}{- Bad performance when a lot of vector features are rendered on the screen, this also differs from monitor resolution. - Not HTTPS: security issues, can't use geolocation, etc.}
+While the product achieves its primary goal, there are still several limitations and areas for improvement.
+
+One notable limitation is related to performance when displaying the forestry road map layer. This layer can contain above 130,000 features depending on the zoom level, which causes rendering issues and reduced performance in the browser. In some cases, not all features are displayed due to the browser's limitations. To address this, the current implementation requires users to zoom in before the roads become visible. However, this approach is not fully reliable, as the visibility threshold may vary across different screen sizes and display resolutions. A more robust solution would be to load the features as tiles, fetching only the visible data from the backend. Alternatively, using WebGL for rendering could significantly improve performance by leveraging GPU acceleration, although this may not be supported on older hardware.
+
+The website currently uses HTTP instead of HTTPS, which poses a security risk. This also disables certain features, such as the geolocation button that centers the map on the user's current position. If the prototype were to evolve into a production-ready application, it would need to be hosted on a dedicated domain with the appropriate security certificates.
+
+As mentioned in \autoref{sec:mapdatasources:sourcesofuncertainty}, several sources of uncertainty in the external simulations affect our results, including missing or imprecise input data. These uncertainties can lead to less accurate predictions and reduce the reliability of the trafficability classifications. Since these data sources are external, we have no control over the models they use. However, by incorporating additional data sources, it may be possible to reduce the overall uncertainty and improve the accuracy of the classifications.
+
+Accessibility is another area where the product can be improved. Although the interface has been designed to be intuitive and easy to use, it lacks several important features related to universal design. One example is the difficulty in distinguishing forestry roads from the background map due to similar colors. This issue could be addressed by introducing alternative color schemes or color modes optimized for various types of color blindness, making the map easier to interpret for all users.
+
+Other features that could enhance accessibility include keyboard navigation for all interactive elements, allowing users to operate the interface without a mouse. Adding text alternatives for icons and non-text content would help users who rely on screen readers. Ensuring proper contrast ratios between text and background colors would improve readability, especially for users with visual impairments. Finally, implementing resizable text and a responsive layout that adapts well to different screen sizes and zoom levels would make the website more accessible across devices and user preferences.
 
 \subsection{Deployment}%KANSKJE TEMP
 
 Docker Compose proved to be great for our usage during the project, but is not suitable if the application were to be used at a larger scale.
 
-\subsection{Comparison with Existing Products?}
+\subsection{Comparison with Existing Solutions}
 
-\textcolor{orange}{NOE TEKST}
+As mentioned in the Introduction, the only existing solution identified that provides trafficability information for forestry vehicles is \textit{Harvester Seasons}. However, this platform has several limitations. Most importantly, it does not provide trafficability data for Norway, which makes it unsuitable for Norwegian users. In addition, its visualization of trafficability is less intuitive than our system, which employs a traffic-light color scheme for clear and immediate interpretation.
 
-\subsection{Unexpected Findings} % Kanskje fjern?
+In contrast, our application introduces a novel and user-friendly approach by visualizing trafficability through a simple, color-coded interface. This intuitive design allows users to quickly assess the condition of forestry roads, supporting more informed decision-making for transport managers. Currently, our system is the only known solution that presents trafficability data in this accessible format, positioning it as an innovative contribution to the field.
 
-\textcolor{orange}{NOE TEKST}
+\subsection{Challenges During Development}
+
+\begin{comment} FRA 6-IMPLEMENTATION 14.05
+UTFORDRINGER OM IMPLEMENTASJON HER:
+    - Kilder
+        - Senorge dårlig dokumentasjon til API
+    - Finne gode og nøyaktige data
+    - Gjøre om data til WMS/noe vi kan vise
+    - Gjøre om WMS/kartdata til rød, grønn eller gule veier
+    - Konvertering av koordinater, f.eks. fra epsg:3857 til epsg:25833
+    - Klassifisering av skogsbilveger
+        - Hente teledyp data for flere veger (WMS vs. REST API)
+        - Teletyp var vanskeligere enn forventet siden API-en brukte et dårlig dokumentert grid-system.
+\end{comment}
+
+\textcolor{orange}{Trengs denne seksjonen? Det har blitt nevnt tidligere i teksten (f.eks. i \autoref{subsec:server:optimization})}
+
+Several challenges arose during the development of the application.
+
+The most significant difficulties were related to the data sources used for the trafficability model. Finding reliable and high-quality sources of data proved to be challenging. This issue appeared early in the project, as we did not have a clear choice of data source before starting development. Many of the sources recommended by the Product Owner lacked straightforward implementation options and often had a resolution that was too low for our intended use.
+
+In addition, some data sources were poorly documented, which led to delays during implementation. This was particularly evident when working with SeNorge's API, where unclear usage guidelines made integration more time-consuming than expected.
+
 
 \subsection{Sustainability}\label{subsec:discussion:product:sustainability}
 
@@ -232,7 +278,7 @@ This section explores the sustainability implications of the developed product, 
 
 \subsubsection{Sustainability Awareness Framework}\label{subsubsec:discussion:product:sustainability:susaf}
 
-To assess the sustainability of the product, a simplified version of the \acrfull{susaf} was applied. This framework serves as a tool to identify potential sustainability impacts by guiding the analysis through a series of structured questions. These questions are typically grouped into five dimensions: social, individual, environmental, economic, and technical. However, in the simplified version used here, the social and individual dimensions are combined into a single category: human sustainability \cite{ntnususaf}. Each team member reviewed relevant aspects of the product and identified possible sustainability effects by answering the structured questions and selecting the most important effects by likelihood and impact. \textcolor{orange}{One such.... høres ut som man skal utdype noe om det spørsmålet, kanskje?}. One such question from the environmental dimension was: "How can the product or service create or destroy monetary value?" \cite{susosusaf}.
+To assess the sustainability of the product, a simplified version of the \acrfull{susaf} was applied. This framework serves as a tool to identify potential sustainability impacts by guiding the analysis through a series of structured questions. These questions are typically grouped into five dimensions: social, individual, environmental, economic, and technical. However, in the simplified version used here, the social and individual dimensions are combined into a single category: human sustainability \cite{ntnususaf}. Each team member reviewed relevant aspects of the product and identified possible sustainability effects by answering the structured questions and selecting the most important effects by likelihood and impact. An example from the environmental dimension was: "How can the product or service create or destroy monetary value?" \cite{susosusaf}.
 
 The next step is to construct chains of effects to understand how the product may influence sustainability over time. This involves determining the orders of effect, which categorize consequences into three levels: immediate, enabling, and structural. Immediate effects refer to direct consequences from the production, operation, use, or disposal of the system. Enabling effects are changes made possible by the system's operation or use. Structural effects represent deeper, systemic changes, such as shifts in norms, policies, or legal frameworks, driven by the system's ongoing presence and influence \cite{susosusaf}.
 
@@ -296,7 +342,7 @@ Some potentially negative chains of effects were also identified. The reliance o
     \label{tab:chain_of_effects}
 \end{table}
 
-From this analysis, the product's effect on sustainability can also be related to the UN \acrshort{sdg}s. These goals are split into three dimensions, economic, social, and environmental. \textcolor{orange}{nevne at wedding cake er brukt?}
+From this analysis, the product's effect on sustainability can also be related to the UN \acrshort{sdg}s. These goals are split into three dimensions, economic, social, and environmental.
 
 \begin{comment}
 LENKE FRA PETER: https://www.ntnu.edu/web/excited/sustainability-in-computing-education
@@ -324,28 +370,23 @@ FNs Bærekraftsmål som virker relevante (KANSKJE SAMMENLIGN MED HVA NORGE GJØR
 %\textcolor{orange}{SDG: 8 (8.2, 8.4), 9 (9.5)}
 %\textcolor{orange}{Your product contributes directly to improved economic productivity by making forestry logistics more data-driven and efficient (effects 1, 4, 6, 11, 13). By enabling better forecasting of trafficability, it supports more consistent harvesting and delivery schedules, which benefits forestry operations financially and operationally. This aligns with Goal 8.2, as you're using digital innovation to enhance productivity in a traditional sector.\\ The reuse of data (effect 10) and reduction in road damage (effect 9) both support resource efficiency (Goal 8.4), helping reduce unnecessary fuel usage, road maintenance, and inefficient trips.\\The system as a whole enhances technological capability within the forestry sector, directly aligning with Goal 9.5.}
 
-Visualizing the trafficability of forestry roads enhances the efficiency of lumber transport from logging sites by facilitating better planning and decision-making. It reduces uncertainty about the trafficability of specific roads, also helping to prevent damage and deformation caused by driving during unsuitable conditions. These improvements align closely with the United Nations' \acrshort{sdg}s, particularly Goal 8 (Decent Work and Economic Growth) and Goal 9 (Industry, Innovation, and Infrastructure). 
+Visualizing the trafficability of forestry roads enhances the efficiency of lumber transport from logging sites by facilitating better planning and decision-making. It reduces uncertainty about the trafficability of specific roads, also helping to prevent damage and deformation caused by driving during unsuitable conditions. These improvements align closely with the United Nations' \acrshort{sdg}s, particularly \textbf{Goal 8 (Decent Work and Economic Growth)} and \textbf{Goal 9 (Industry, Innovation, and Infrastructure)}. 
 
 Target 8.2 is the following: "Achieve higher levels of economic productivity through diversification, technological upgrading and innovation, including through a focus on high-value added and labour-intensive sectors", with the indicator of annual growth rate of real GDP per employed person \cite{sdgsgoals}. Effect number 4, 6, and 12 (see \autoref{tab:chain_of_effects}) are relevant to this indicator by making parts of the forestry industry more efficient, by upgrading the technological tools used. Similarly, target 9.5 is: "Enhance scientific research, upgrade the technological capabilities of industrial sectors in all countries, ...", with the indicators of research and development expenditure and amount of researchers per million inhabitants \cite{sdgsgoals}. A possible side-effect of all positive effects is that they inspire industrial sectors to increase expenditure and focus on research and development of data-driven tools make specific tasks more effective, as described in effect 15.
 
 \subsubsection{Social}
 
-\textcolor{orange}{Kanskje si man mangler her, og nevn hvordan det kunne forbedres. SDG: 10 (10.2 [usability]), 3.6 [trafikkulykker], 8 [stable life-work balance?] skriv om første setning?}
-
-By making the planning of transport routes more efficient the product may contribute to more predictable work schedules and a reduced need for overtime, leading to a better work-life balance, as described in effect number 14. These improvements relate to both \acrshort{sdg} 8 (Decent Work and Economic Growth) and \acrshort{sdg} 3 (Good Health and Well-Being). A better work-life balance supports healthier working conditions and can improve mental well-being. This is especially relevant in Norway, where recent editions of the World Happiness Report indicate a decline in overall happiness. Increased stress at work can negatively affect mental health and, by extension, impact national well-being scores \cite{sdg3no}.
+By making the planning of transport routes more efficient the product may contribute to more predictable work schedules and a reduced need for overtime, leading to a better work-life balance, as described in effect number 14. These improvements relate to both \textbf{\acrshort{sdg} 8 (Decent Work and Economic Growth)} and \textbf{\acrshort{sdg} 3 (Good Health and Well-Being)}. A better work-life balance supports healthier working conditions and can improve mental well-being. This is especially relevant in Norway, where recent editions of the World Happiness Report indicate a decline in overall happiness. Increased stress at work can negatively affect mental health and, by extension, impact national well-being scores \cite{sdg3no}.
 
 \subsubsection{Environmental}
 
-\textcolor{orange}{SDG: 15 (15.2, 15.b), 12 (12.2). Nevnt mulig "Rebound effect" fra at det blir lettere å frakte tømmer, kanskje?}
+As Effect 6 from the \acrshort{susaf} says, the product contributes to more consistent harvesting and reforestation practices, supporting the development of sustainable forestry. This aligns with the United Nations' \textbf{\acrshort{sdg} 15 (Life on Land)}, specifically target 15.2, which focuses on promoting sustainable management of all types of forests \cite{sdgsgoals}.
 
-As Effect 6 from the \acrshort{susaf} says, the product contributes to more consistent harvesting and reforestation practices, supporting the development of sustainable forestry. This aligns with the United Nations' \acrshort{sdg} 15.2, which focuses on promoting sustainable management of all types of forests \cite{sdgsgoals}.
+Furthermore, the product supports \textbf{\acrshort{sdg} 12 (Responsable Consumption and Production)}, particularly target 12.2, which emphasizes the sustainable management and efficient use of natural resources \cite{sdgsgoals}. By reducing road damage through better trafficability planning (effect 8), the product also helps prevent unnecessary wear on transport vehicles and minimizes environmental disturbance caused by repeated repairs or rerouting.
 
-Furthermore, the product supports \acrshort{sdg} 12, particularly target 12.2, which emphasizes the sustainable management and efficient use of natural resources \cite{sdgsgoals}. By reducing road damage through better trafficability planning (effect 8), the product also helps prevent unnecessary wear on transport vehicles and minimizes environmental disturbance caused by repeated repairs or rerouting.
+In addition to aligning with the UN's sustainability goals, the product also supports several of \textit{Skogkurs'} national objectives for forestry operations. These include lowering fuel consumption and promoting smarter driving with forestry machinery, reducing operator strain, minimizing terrain damage, and increasing productivity. By improving planning and decision support in forestry logistics, the product contributes to these goals by enabling more efficient routes, reducing unnecessary transport, and supporting more targeted operations \cite{skogkurs_baerekraft}.
 
 As stated in \autoref{subsubsec:discussion:product:sustainability:economic}, the product may inspire further innovation in the forestry sector. This applies to \acrshort{sdg} 15.b, which calls for mobilizing resources to finance sustainable forest management and promote the development of related technologies and initiatives \cite{sdgsgoals}.
-
-% Jevons paradox https://en.wikipedia.org/wiki/Jevons_paradox
-% Mer effektiv, mer etterspørsel -> Mer hogst -> if {ikke blir planta ny skog} = unsustaiable forestry
 
 Not all aspects of the product necessarily contribute to greater sustainability. A relevant consideration is the Jevons paradox, which  occurs when technological advancements make a resource more efficient to use, however, as the cost of using the resource drops, if the price is highly elastic, this results in overall demand increasing, causing total resource consumption to rise \cite{jevonsparadoxwiki}. In this context, by making lumber harvesting more efficient, the product may contribute to lower prices and increased demand for lumber. If this demand is not met with a corresponding increase in reforestation efforts, it could result in unsustainable forestry practices.
 
@@ -368,5 +409,14 @@ Throughout the project, the application has evolved with the most prioritized fe
     \item \textbf{Integrate with Existing Solutions}: Use with existing solutions like VSYS. 
     \item \textbf{Filtering}: Better ways of filtering by roads and locations, e.g., by municipalities.
     \item \textbf{Polygon Selector}: Polygon-based selection tool, allowing users to manually draw custom areas of interest on the map.
-    \item \textbf{Show timber storage}: Including timber storage locations directly in the map interface to improve logistical planning.
+    \item \textbf{Show Timber Storage}: Including timber storage locations directly in the map interface to improve logistical planning.
+    \item \textcolor{orange}{LEGGE TIL VEIKONSTRUKSJONS MATRIALE: knust fjell, sortert grus, stedegne masser}
 \end{itemize}
+
+
+\textcolor{orange}{
+Skriv om den viktigste her.... \\
+Ideer: \\ 
+AI med flere parametere som f.eks. kamera på transportbiler, mer værdata \\
+Bruke satelitt data siden det er nice (ref fjeld), copernicus kommer med ny sensor i 2028, tror også nasa skal ha ny \\
+}

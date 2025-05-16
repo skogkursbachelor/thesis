@@ -350,3 +350,11 @@
 
 % Directory tree
 \usepackage{dirtree}
+
+\usepackage{makecell}
+
+% Abstract
+\usepackage{totcount}
+\AtBeginDocument{
+    \regtotcounter{chapter}
+}

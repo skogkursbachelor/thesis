@@ -1,6 +1,6 @@
 \chapter{Requirements}\label{chap:requirements}
 
-This chapter presents the requirements provided the \gls{productowner} ...
+Understanding the foundation for what the system aims to achieve is essential for guiding development. The following chapter presents a structured overview of the project's intentions, including the goals it seeks to fulfill, the constraints it operates under, and the needs of its intended users. These requirements were gathered in collaboration with the product owner and refined to ensure clarity and feasibility. They include high-level objectives such as product, impact, and learning goals. In addition, the chapter outlines limitations, use cases, and considerations for universal design. Together, these elements define the scope, purpose, and direction of the project and form a basis for implementation, testing, and evaluation.
 
 \begin{comment}
 BRA: (fra discussion)
@@ -10,25 +10,26 @@ BRA: (fra discussion)
 
 \section{Project Goals}
 
-This section outlines the overall goal of the project, categorized into product goals, impact goals, and learning goals. Together, these objectives defines the purpose, intended outcomes, and the knowledge expected to be gained through the project process. \textcolor{orange}{"expected to be gained" eller bare "gained"}
-
+This section outlines the overall goal of the project, categorized into \textbf{product goals}, \textbf{impact goals}, and \textbf{learning goals}. Together, these objectives defines the purpose, intended outcomes, and the knowledge expected to be gained through the project process.
 \subsection{Product Goals}\label{subsec:req:productgoals}
 
 The primary goal of the project is to develop and test a \textbf{prototype system for fully digital modeling of forestry road load-bearing capacity under varying conditions throughout the year.} 
 
 The following goals were provided by the \Gls{productowner} (see \autoref{appendix:task_description}):
 \begin{itemize}
-    \item Develop the methodology for a fully digital classification of the load-bearing capacity of forestry roads
-    \item Integrate the methodology with existing forecasts for operating conditions throughout the year
-    \item Combine these into a simple map-based visualization of the trafficability of forestry roads
+    \item Develop the methodology for a fully digital classification of the load-bearing capacity of forestry roads.
+    \item Integrate the methodology with existing forecasts for operating conditions throughout the year.
+    \item Combine these into a simple map-based visualization of the trafficability of forestry roads.
 \end{itemize}
 
-While these goals establish a general direction, they are relatively high-level. To ensure a clear and focused development process, they have been expanded into a set of more concrete and actionable goals that guide the implementation and evaluation of the prototype:
+While these goals establish a general direction, they are relatively high-level. To ensure a clear and focused development process, they have been expanded into a set of more concrete and actionable goals that cover both functional and nonfunctional aspects and guide the implementation and evaluation of the prototype: 
+
+\textcolor{orange}{Burde man spesifisere hvilke som er functional og non-functional goals?}
 
 \begin{enumerate}
     \item \textbf{Data Collection and Integration:}
     \begin{itemize}
-        \item Gather relevant geological and meteorological data, which includes superficial deposits, soil moisture, ground water, ground frost, and forestry roads.
+        \item Gather relevant geological and meteorological data, including superficial deposits, soil moisture, groundwater, ground frost, and forestry roads.
         \item Identify and implement suitable data sources and APIs for continuous updates.
     \end{itemize}
     
@@ -41,14 +42,14 @@ While these goals establish a general direction, they are relatively high-level.
             \item Yellow = Caution
             \item Red = Unsafe
         \end{itemize}
-        \item Extend the model to provide a forecast of road conditions at least a week in advance. 
+        \item Extend the model to provide a forecast of road conditions at least one week in advance. 
     \end{itemize}
     
     \item \textbf{Web-Based Visual and User Interface:}
     \begin{itemize}
         \item Design and develop an interactive, map-based website for intuitive accessibility. 
         \item Implement a way to visualize historical and forecasted data relevant to road conditions.
-        \item Ensure that the system is optimized for transport managers, with a user-friendly interface that allows efficient decision-making. 
+        \item Ensure that the system is optimized for transport managers, with a user-friendly interface that enables efficient decision-making. 
     \end{itemize}
     
     \item \textbf{Testing, Validation and Refinement}:
@@ -65,38 +66,50 @@ While these goals establish a general direction, they are relatively high-level.
 The project aims to deliver real-world value by improving decision-making processes related to forestry road usage. The following impact goals outline the intended benefits for end-users and stakeholders:
 
 \begin{itemize}
-    \item Reduced uncertainty for transport managers when setting the routes using forest roads.
+    \item Reduced uncertainty for transport managers when setting the routes using forestry roads.
     \item To validate the prototype as a proof of concept and evaluate its feasibility and effectiveness as a foundation for a future operational system in the forestry industry.
 \end{itemize}
 
 \subsection{Learning Goals}\label{subsec:req:learninggoals}
-% Kanskje korte ned litt på dette
-% Kanskje oppdatere med noe nytt?? WMS, GIS, osv.
 
-In addition to delivering a functional prototype, the project serves as a valuable learning experience. The goals below reflect the desired technical and professional growth for the project participants:
+In addition to delivering a functional prototype, the project serves as a valuable learning experience. The goals below reflect the desired technical and professional growth for the project participants and are categorized into \textbf{technical goals} and \textbf{project management goals}.
 
+\textbf{Technical Goals}
 \begin{itemize}
-    \item Gaining insight in implementing interactive maps and geospatial data on web pages.
-    \item Leveraging RESTful APIs for efficient data integration.
-    \item Acquiring hands-on experience collaborating with real-world companies and products.
-    \item Gaining experience working in a team environment, improving collaboration and communication skills.
-    \item Conducting user tests and implementing feedback. 
-    \item Developing a deeper understanding of the software development life cycle while actively practicing agile methodologies, like Scrum and Kanban.
+    \item Gaining insight in implementing interactive maps and geospatial data on websites.
+    \item Leveraging \acrshort{rest}ful \acrshort{api}s for efficient data integration.
     \item Enhancing application performance by implementing concurrency and optimizing parallel processing.
     \item Expanding proficiency in containerization techniques, particularly through hands-on experience with Docker.
 \end{itemize}
 
+\textbf{Project Management Goals}
+\begin{itemize}
+    \item Acquiring hands-on experience collaborating with real-world companies and products.
+    \item Gaining experience working in a team environment, improving collaboration and communication skills.
+    \item Conducting user tests and implementing feedback. 
+    \item Developing a deeper understanding of the software development life cycle while actively practicing agile methodologies, like Scrum and Kanban.
+\end{itemize}
+
+\section{Limitations}
+
+\textcolor{orange}{Kan kanskje kalles, "Scope". Da må man skrive både hva systemet er og hva det ikke er.}
+
+Applikasjonen fokuserer på norge og er på norsk. For å utvide måtte man ha brukt andre kilder i tilegg da, datakildene brukt er kun fra norge.
+
+Klassifiseringen av veier går ut i fra at alle er konstruert med stedegne løsmasser, men dersom man får tilgang til veikonstruksjonsdata så kan man legge til dette som faktor (knust fjell -> sortert grus -> stedegne løsmasser).
+
+
 \section{Constraints}
 
-This project is subject to several constraints that have influenced the development process and final product. These include temporal limitations related to fixed academic deadlines and product-related constraints tied to technical and environmental requirements.
+This project is subject to several constraints that have influenced the development process and final product. These include \textbf{temporal constraints} related to fixed academic deadlines and \textbf{product-related constraints} tied to technical and environmental requirements.
 
 \subsection{Temporal Constraints}
 
 The project must be completed within a limited timeframe due to university deadlines. These deadlines affect how much functionality and polish can reasonably be achieved.
 
 \begin{itemize}
-    \item The set deadline for the final thesis is 20th of May.
-    \item The presentation of the bachelor's thesis is scheduled for 4th or 5th of June.
+    \item The set deadline for the final thesis is the 20th of May.
+    \item The presentation of the bachelor's thesis is scheduled for the 4th of June.
 \end{itemize}
 
 \subsection{Product Constraints}
@@ -120,18 +133,18 @@ The product is also subject to technical limitations that define the environment
 
 \section{Target Users}
 
-The primary target users of this application are transport managers in the Norwegian forestry industry. They are responsible for planning routes and determining which forest roads should be used by drivers. Since the user group spans a wide age range, it is essential that the application is intuitive and easy to use, ensuring accessibility for all users regardless of their technical proficiency.
+The primary target users of this application are \textbf{transport managers in the Norwegian forestry industry}. They are responsible for planning routes and determining which forest roads should be used by drivers. The application is primarily intended to be used in an office setting during the planning phase. Since the user group spans a wide age range, it is essential that the application is intuitive and easy to use, ensuring accessibility for all users regardless of their technical proficiency.
+
 
 \section{Use Case}
 
-Use cases provide a clear overview of what a system will and will not do. They enable effective scope management and incremental development, making them well-suited for agile methodologies \cite{jacobson_use_case}. 
+Use cases provide a clear overview of what a system will do. They enable effective scope management and incremental development, making them well-suited for agile methodologies \cite{jacobson_use_case}. 
 
 This section will present the use case diagram of the system and provide an example of a use case specification.
 
 \subsection{Use Case Diagram}
 % DOBBELSJEKK AT SERVEREN IKKE SKAL KOBLES TIL USE CASENE I DIAGRAMMET
-The use case diagram (\autoref{fig:use_case_diagram}) shows all interactions the user will have with the website. It also features the application server and its relationship with the external map servers.
-
+The use case diagram (\autoref{fig:use_case_diagram}) provides an overview of the system's core functionality by showing all user interactions with the website. It also depicts how the application server communicates with external map services.
 
 
 \begin{figure}[h]
@@ -144,9 +157,9 @@ The use case diagram (\autoref{fig:use_case_diagram}) shows all interactions the
 \subsection{Actors}
 
 \begin{itemize}
-    \item \textbf{User:} The primary user of the website, typically transport managers in the forestry industry, who interact with the system to access relevant map and logistics data.
+    \item \textbf{User:} The primary user of the website, typically transport managers in the Norwegian forestry industry, who interact with the system to access relevant map and logistics data.
     \item \textbf{Backend Server:} The central server that the website communicates with to retrieve all necessary map data. It aggregates, processes, and refines data from external services before delivering it to the website.
-    \item \textbf{Map Server:} External services that provide map data, either through a Web Map Service (\Gls{wms}), Web Feature Service (\Gls{wfs}), or an \acrshort{api}, which the backend server integrates into the system.
+    \item \textbf{Map Server:} External services that provide map data, either through a Web Map Service (\Gls{wms}), Web Feature Service (\Gls{wfs}), or an \acrshort{api}. These services are integrated into the system by the backend server.
 \end{itemize}
 
 \subsection{Use Case Specifications}
@@ -164,13 +177,13 @@ A high priority use case for the website is the ability to toggle a map layer, w
         \hline
         \textbf{Actor(s)} & User \\
         \hline
-        \textbf{Description} & The user can toggle specific map layers to control the visibility of different map layers. This functionality allows users to select from various map layers. The selected layer is then displayed, and relevant information is shown in the map legend sidebar. \\
+        \textbf{Description} & The user can toggle the visibility of individual map layers using checkboxes in the map layer menu. This allows users to control which layers are shown on the map, and relevant information about the visible layers is displayed in the legend sidebar. \\
         \hline
         \textbf{Priority} & High \\
         \hline
         \textbf{Pre-Condition(s)} & The user must have a stable internet connection and the website open. The website, server and external map servers must be deployed and running.\\
         \hline
-        \textbf{Post-Condition(s)} & The map will be updated with the specific map layer that was toggled. The map legend will also be visible in the legend sidebar. \\
+        \textbf{Post-Condition(s)} & The selected map layer is displayed or hidden based on the user's input. The map legend updates accordingly in the legend sidebar. \\
         \hline
         \textbf{Basic Path} &  
         \begin{enumerate}[label=,left=0pt]
@@ -217,11 +230,11 @@ Funksjonalitete > uu
 
 Universal design refers to the practice of designing products, environments, and digital solutions in a way that ensures they can be used by as many people as possible, regardless of functional ability. The goal is not to create one solution for each user group, but rather to remove barriers so that everyone can use the same solution equally \cite{uutilsynet}.
 
-In web development, universal design is often guided by the \acrfull{wcag}, currently at version 2.2. These guidelines offer a broad set of recommendations aimed at making web content more accessible for people with a variety of disabilities, including visual, auditory, motor, and cognitive impairments. WCAG also promotes general usability, which often benefits all users, not just those with disabilities. It applies across platforms and devices, from desktops and laptops to smartphones and kiosks \cite{wcag}.
+In web development, universal design is often guided by the \acrfull{wcag}\footnote{\url{https://www.w3.org/WAI/standards-guidelines/wcag/}}, currently at version 2.2. These guidelines offer a broad set of recommendations aimed at making web content more accessible for people with a variety of disabilities, including visual, auditory, motor, and cognitive impairments. WCAG also promotes general usability, which often benefits all users, not just those with disabilities. It applies across platforms and devices, from desktops and laptops to smartphones and kiosks \cite{wcag}.
 
-In Norway, the legal foundation for universal design is laid out in the Likestillings- og diskrimineringsloven (Equality and Anti-Discrimination Act), particularly in § 17–19a. These laws state that both public and private entities directed toward the general public are required to ensure their main solutions are universally designed. This includes digital solutions that are intended for users. However, the requirement does not apply if universal design would impose a disproportionate burden on the organization, considering factors such as cost, available resources, the nature of the business, and the potential benefits of removing accessibility barriers \cite{lovdata}.
+In Norway, the legal foundation for universal design is laid out in the Equality and Anti-Discrimination Act (Likestillings- og diskrimineringsloven), particularly in § 17–19a. These laws state that both public and private entities directed toward the general public are required to ensure their main solutions are universally designed. This includes digital solutions that are intended for users. However, the requirement does not apply if universal design would impose a disproportionate burden on the organization, considering factors such as cost, available resources, the nature of the business, and the potential benefits of removing accessibility barriers \cite{lovdata}.
 
-\textbf{Why Universal Design Was Not Prioritized}
+\textbf{Rationale for Not Prioritizing Universal Design}
 
 In this project, universal design was not a primary focus for several reasons. The prototype was developed on behalf of Skogkurs and the product is not aimed at the general population. As such, the legal requirement for universal design according to §17 and §18 in the law does not apply directly. Additionally, the product is still in a prototype phase and not in active use.
 

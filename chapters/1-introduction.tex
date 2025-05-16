@@ -44,16 +44,16 @@ One such organization is Skogkurs\footnote{\url{https://skogkurs.no/}}, a non-go
 
 \section{Problem Definition}
 % Legge til en figur? Evt. fra denne: https://nibio.brage.unit.no/nibio-xmlui/bitstream/handle/11250/3037571/NIBIO_RAPPORT_2022_8_147.pdf?sequence=1
-The Nordic forestry industry faces increasing challenges in ensuring stable timber transport throughout the year. Changes in climate have extended the snow-free season, creating variability in forest road conditions due to shifts between frozen, dry, and rainy periods. Addressing these challenges requires digital tools that can assess which forest roads are accessible during different weather conditions. A schematic illustration of forest road conditions is shown in \autoref{fig:yearlytimeline}.
+The Nordic forestry industry faces increasing challenges in ensuring stable timber transport throughout the year. Changes in climate have extended the snow-free season, creating variability in forest (\textcolor{orange}{eller forestry?}) road conditions due to shifts between frozen, dry, and rainy periods. Addressing these challenges requires digital tools that can assess which forest roads are accessible during different weather conditions. A schematic illustration of forest road conditions throughout the year is shown in \autoref{fig:yearlytimeline}.
 
 \begin{figure}[h]
     \centering
-    \centerline{\includegraphics[width=1.3\linewidth]{figures/yearlytimeline.pdf}}
+    \centerline{\includegraphics[width=1.1\linewidth]{figures/yearlytimeline.pdf}}
     \caption{Schematic illustration of trafficability and soil moisture throughout the year}
     \label{fig:yearlytimeline}
 \end{figure}
 
-Recent research has focused on developing methodologies for digitally classifying forest road load-bearing capacities based on soil types and weather conditions. For example, a nationwide pilot study demonstrated that soil types, such as well-drained materials like \gls{glaciofluvial deposit}s, are more suitable for year-round use, while finer sediments require specific conditions like frost or dry periods. A plot showing different soil types' load-bearing capacity dependent on the amount of water in the soil is shown in \autoref{fig:load_to_drought_graph}. These findings support the potential for fully digital solutions to predict road accessibility based on a combination of weather patterns and road construction characteristics \cite{fjeld2023trafficability}.
+Recent research has focused on developing methodologies for digitally classifying forest road load-bearing capacities based on soil types and weather conditions. For example, a nationwide pilot study by \textcite{fjeld2023trafficability} demonstrated that soil types, such as well-drained materials like \gls{glaciofluvial deposit}s, are more suitable for year-round use, while finer sediments require specific conditions like frost or dry periods. A plot showing different soil types' load-bearing capacity dependent on the amount of water in the soil is shown in \autoref{fig:load_to_drought_graph}. These findings support the potential for fully digital solutions to predict road accessibility based on a combination of weather patterns and road construction characteristics \cite{fjeld2023trafficability}.
 
 \begin{figure}[h]
     \centering
@@ -70,14 +70,6 @@ One example is Harvester Seasons\footnote{\url{https://harvesterseasons.com/}}, 
 
 The current process of scheduling operations for transport managers is based on weather conditions and road \gls{trafficability}, responding either to constraints (e.g., wet conditions) or taking advantage of favorable circumstances (e.g., dry periods). These decisions rely on factors such as seasonal temperature trends, regional precipitation, and local experience. Surface deposits and their \gls{permeability} also affect transport timing and road usability, with adverse weather and poor road \gls{trafficability} posing significant challenges to wood supply and transport logistics \cite[p.~2]{fjeld2023trafficability}. The primary tool used for managing these logistics is VSYS Transport, developed by Skogdata\footnote{\url{https://www.skogdata.no/digitale-produkter}}. VSYS supports forestry logistics by offering functionalities for transport order management, route planning, assignment tracking, deviation handling, freight documentation, and settlement processing for carriers, but lacks features for easily assessing road trafficability \cite{skogdata2024vsys}.
 
-\section{Framework}
-
-\textcolor{orange}{NOE TEKST}
-
-\section{Project Organization}
-
-\textcolor{orange}{NOE TEKST}
-
 \section{Thesis Structure}
 
 \begin{comment}
@@ -88,18 +80,19 @@ The current process of scheduling operations for transport managers is based on 
     Ikke Ivar, men CoPScE@NTNU (?), template
 \end{comment}
 
-This thesis uses a template by CoPCSE@NTNU\footnote{\url{https://github.com/COPCSE-NTNU/thesis-NTNU}} blabla added \autoref{chap:mapdatasources} (Map Data Sources) due to its importance in the project.
+The following is an overview of the ten chapters:
 
 \begin{enumerate}
-    \item \textbf{\hyperref[chap:introduction]{Introduction}:}
-    \item \textbf{\hyperref[chap:requirements]{Requirements}:}
-    \item \textbf{\hyperref[chap:technicaldesign]{Technical Design}:}
-    \item \textbf{\hyperref[chap:mapdatasources]{Map Data Sources}:}
-    \item \textbf{\hyperref[chap:developmentprocess]{Development Process}:}
-    \item \textbf{\hyperref[chap:implementation]{Implementation}:}
-    \item \textbf{\hyperref[chap:deployment]{Deployment}:}
-    \item \textbf{\hyperref[chap:qualityassuranceanduserfeedback]{Quality Assurance and User Feedback}:}
-    \item \textbf{\hyperref[chap:discussion]{Discussion}:}
-    \item \textbf{\hyperref[chap:conclusion]{Conclusion}:}
+    \item \textbf{\hyperref[chap:introduction]{Introduction}:} Provides an introduction to the problem, existing solutions giving the reader the background of the thesis.
+    \item \textbf{\hyperref[chap:requirements]{Requirements}:} Defines the functional and non-functional requirements that guided the system's design, helping the reader understand the foundation of the solution.
+    \item \textbf{\hyperref[chap:technicaldesign]{Technical Design}:} Describes the system architecture and design choices, offering insight into how the components were structured to meet the requirements.
+    \item \textbf{\hyperref[chap:mapdatasources]{Map Data Sources}:} Explains the various geospatial and meteorological data sources used, showing the data basis for the application's core functionality.
+    \item \textbf{\hyperref[chap:developmentprocess]{Development Process}:} Details the steps taken during development, giving the reader an understanding of how the project evolved from concept to prototype.
+    \item \textbf{\hyperref[chap:implementation]{Implementation}:} Walks through the actual code and system logic, allowing technically inclined readers to see how the design was realized in practice.
+    \item \textbf{\hyperref[chap:deployment]{Deployment}:} Describes how the system was made available for use, including the infrastructure and configuration required to run it.
+    \item \textbf{\hyperref[chap:qualityassuranceanduserfeedback]{Quality Assurance and User Feedback}:} Presents testing procedures and feedback from users, demonstrating how reliability and usability were validated and improved.
+    \item \textbf{\hyperref[chap:discussion]{Discussion}:} Analyzes the results, limitations, and potential improvements, helping the reader critically assess the system's effectiveness and future potential.
+    \item \textbf{\hyperref[chap:conclusion]{Conclusion}:} Summarizes the work, highlights key findings, and reflects on the project's impact, leaving the reader with a clear understanding of its contributions.
 \end{enumerate}
 
+Together, these chapters aim to guide the reader through the entire development journey, from problem statement to final reflections, offering both technical depth and contextual insight.
