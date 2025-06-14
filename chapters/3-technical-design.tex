@@ -5,7 +5,7 @@ Building on the goals, constraints, and use cases defined earlier, this chapter 
 
 \section{System Architecture}\label{sec:systemarchitecture}
 
-The system follows a client-server architecture, where the website acts as a client and communicates with a backend server via a \acrshort{rest}ful \acrshort{api}. The processing of meteorological and geological data is handled on the server side, whereas frontend is responsible for requesting data, rendering maps, and presenting relevant information to the user. A simplified diagram of the system architecture is shown in \autoref{fig:systemarchitecture}.
+The system follows a client-server architecture, where the website acts as a client and communicates with a backend server via a \acrshort{rest}ful \acrshort{api}. The processing of meteorological and geological data is handled on the server side, whereas the frontend is responsible for requesting data, rendering maps, and presenting relevant information to the user. A simplified diagram of the system architecture is shown in \autoref{fig:systemarchitecture}.
 
 \begin{figure}[h]
     \centering
@@ -48,7 +48,7 @@ A sequence diagram illustrates how components interact over time to carry out an
 
 The website serves as the user interface of the system, allowing users to visualize and interact with data related to forestry road conditions and weather-based forecasts using a dynamic map.
 
-The classification of road trafficability is performed on the client side, as the website allows users to dynamically adjust thresholds for certain meteorological and geological parameters. A diagram detailing the classification is shown in \autoref{fig:forestryroadclassification}. Normally, this would be handled entirely by the backend server, but in order to provide immediate feedback when the user changes these thresholds, the classification logic is implemented in the frontend. This hybrid approach ensures a responsive user experience while keeping the most computationally expensive operations on the server.
+The classification of road trafficability is performed on the client side, as the website allows users to dynamically adjust thresholds for certain meteorological and geological parameters. A diagram detailing the classification and the resulting colors of the roads is shown in \autoref{fig:forestryroadclassification}. Normally, this would be handled entirely by the backend server, but in order to provide immediate feedback when the user changes these thresholds, the classification logic is implemented in the frontend. This hybrid approach ensures a responsive user experience while keeping the most computationally expensive operations on the server.
 
 \begin{figure}[h]
     \centering
@@ -65,12 +65,11 @@ Choosing to implement the frontend as a web application provides several benefit
 
 Overall, the design of the website emphasizes a clean separation of concerns, efficiency in data handling, and accessibility, which together form a robust and user-friendly frontend component for the system.
 
-% Backend Server, Backend Server ..., Server Design, Server Architecture
 \section{Server-Side}
 
 The server serves as the source of information for the website, providing map data for the website to visualize. This includes aggregation of different map data sources to create the forestry road layer, as well as forwarding \gls{wms} to the website.
 
-As described above, the road classification is performed on the client side, and not in the backend server. This was done to decrease the amount of requests handled by the server, as the requests are aggregating data from multiple different sources, making them computationally expensive. As visualized in \autoref{fig:serverarchitecture}, the forestry roads endpoint fetches forestry road data for the from both an \acrshort{api} and \acrshort{wfs} server, in addition to local superficial deposit data.
+As described above, the road classification is performed on the client side, and not in the backend server. This was done to decrease the amount of requests handled by the server, as the requests are aggregating data from multiple different sources, making them computationally expensive. As visualized in \autoref{fig:serverarchitecture}, the forestry roads endpoint fetches forestry road data for the from both an \acrshort{api} and \gls{wfs} server, in addition to local superficial deposit data.
 
 \begin{figure}[h]
     \centering
@@ -83,4 +82,4 @@ As briefly mentioned in \autoref{sec:systemarchitecture}, the server is designed
 
 Two of these constrains are specifically relevant to the design of the backend server. Statelessness is employed in the system, making each request contain as much information that is needed to fulfill it. This simplifies server logic and scalability, as the backend server does not need to store information between requests. The backend server is a layered system as it designed to be both an intermediary and the source, as there are proxies in addition to the forestry roads endpoint (see \autoref{fig:serverarchitecture}).
 
-Using the server as an intermediary offers several advantages. While not all of these are utilized in this implementation, such an architecture allows for future expansion to include access control, credential protection for external services, and data filtering or transformation. It also simplifies integration with diverse external APIs by enabling consistent formatting before the data reaches the website.
+Using the server as an intermediary offers several advantages. While not all of these are utilized in this implementation, such an architecture allows for future expansion to include access control, credential protection for external services, and data filtering or transformation. It also simplifies integration with diverse external \acrshort{api}s by enabling consistent formatting before the data reaches the website.

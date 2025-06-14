@@ -1,8 +1,6 @@
 \chapter{Discussion}\label{chap:discussion}
 
-% TODO: SKRIV OM INGEN MMP, REF TILBAKE TIL DEVPRO MMP
-%OPPDATER MED GOAL ASSESMENT
-With the application implemented and tested, this chapter provides a reflection on both the development process and the final product. It explores how the project evolved in relation to the original goals, highlighting what worked well, what could have been improved, and the challenges encountered along the way. The chapter discusses the choice of technologies, project management practices, and team collaboration. It also evaluates the effectiveness and limitations of the final solution, comparing it with existing alternatives and identifying unexpected findings. Broader considerations, such as sustainability and the role of AI in the project, are explored. Finally, the chapter outlines potential directions for future work and improvements to both the product and the project approach.
+With the application implemented and tested, this chapter provides a reflection on both the development process and the final product. It explores how the project evolved in relation to the original goals, highlighting what worked well, what could have been improved, and the challenges encountered along the way. The chapter discusses the choice of technologies, project management practices, and team collaboration. It also evaluates the effectiveness and limitations of the final solution, comparing it with existing alternatives and identifying unexpected findings. Broader considerations, such as sustainability and the role of \acrfull{ai} in the project, are explored. Finally, the chapter outlines potential directions for future work and improvements to both the product and the project approach.
 
 \section{Goal Assessment}
 
@@ -14,10 +12,9 @@ The primary goal of the project was to develop and test a \textbf{prototype syst
 
 \textbf{\textit{Gather relevant geological and meteorological data, including superficial deposits, soil moisture, ground water, ground frost, and forestry roads.}}
 
-The product integrates various geological and meteorological data sources, as described in \autoref{chap:mapdatasources}. Frost depth and soil moisture are available alongside superficial deposit data. From discussing with the \Gls{productowner} we concluded that the soil saturation data is better and more relevant than groundwater data as the soil saturation includes both \gls{groundwater} and \gls{rootzone}. 
+The product integrates various geological and meteorological data sources, as described in \autoref{chap:mapdatasources}. Frost depth and soil moisture are available alongside superficial deposit data. From discussing with the \Gls{productowner} we concluded that the soil saturation data is better and more relevant than \gls{groundwater} data as the soil saturation includes both \gls{groundwater} and the \gls{rootzone}. 
 
-\textbf{\textitsection{Identify and implement suitable data sources and APIs for continuous
-updates.}} 
+\textbf{\textitsection{Identify and implement suitable data sources and APIs for continuous updates.}} 
 
 As described in \autoref{chap:implementation}, data is sourced from various providers which required different approaches to incorporate in the application. 
 
@@ -55,7 +52,7 @@ Although no formal user testing was conducted, the application was presented to 
 
 \textbf{\textit{Incorporate potential user feedback.}}
 
-The feedback gathered during the later presentations with stakeholders was not incorporated into the project due to time constraints and the stage of development. However, feedback from the Product Owner was consistently integrated throughout the project's development.
+The feedback gathered during the later presentations with stakeholders was not incorporated into the project due to time constraints and the stage of development. However, feedback from the \gls{productowner} was consistently integrated throughout the project's development.
 
 \subsection{Impact Goals}
 
@@ -74,6 +71,7 @@ Through internal testing and feedback from stakeholders, the prototype has demon
 As previously outlined, the project was designed not only to produce a functional prototype but also to foster meaningful learning and development. This section assesses the achievement of the learning goals, organized into two main categories: technical goals and project management goals.
 
 \textbf{Technical Goals}
+
 \begin{itemize}
     \item Gaining insight in implementing interactive maps and geospatial data on websites.
     \item Leveraging \acrshort{rest}ful \acrshort{api}s for efficient data integration.
@@ -84,6 +82,7 @@ As previously outlined, the project was designed not only to produce a functiona
 All of the expected technical learning goals were achieved. Developing the website provided valuable insight and hands-on experience with implementing interactive maps and handling geospatial data. The development of the backend server contributed to experience with RESTful APIs, concurrent processing, and containerization using Docker.
 
 \textbf{Project Management Goals}
+
 \begin{itemize}
     \item Acquiring hands-on experience collaborating with real-world companies and products.
     \item Gaining experience working in a team environment, improving collaboration and communication skills.
@@ -93,20 +92,21 @@ All of the expected technical learning goals were achieved. Developing the websi
 
 Most of the project management goals were achieved, but as reasoned in \autoref{sec:quality_assurance_user_feedback:user_testing}, we did not conduct user tests. This is a central part of any development project, so the lack of it is a noticeable shortcoming. Other forms of feedback were however implemented, but did not make up for the insight we would have gained from user tests. This remains a central part of future work.
 
-Rewrite, ha noe positivt også,, men den er mongooos
-Overall, the project has given us valuable insight into collaboration with real-world companies, good experience from working in a team over a prolonged project, 
+Working closely with the \gls{productowner} throughout the project and presenting the product to both the \gls{productowner} and other stakeholders provided valuable experience in communication, collaboration, and adapting to a realistic, professional work environment. The flexible requirements made the project well-suited for applying agile methodologies and offered a practical opportunity to gain experience with the Scrum and Kanban frameworks.
+
+Overall, the project has given us valuable insight into collaboration with real-world companies, good experience from working in a team over a prolonged project.
 
 \section{Process}\label{sec:discussion:process}
 
-This section provides a reflection on the project's development process, covering both planning and execution. It examines how the initial project plan guided the work, the technologies that were selected, and the software development methodology that was followed. The section also evaluates the collaboration within the group, including how communication was handled and how responsibilities were distributed. In addition, it highlights areas where the process could have been improved, and describes how AI tools were used throughout the project to support development, planning, or writing tasks.
+This section provides a reflection on the project's development process, covering both planning and execution. It examines how the initial project plan guided the work, the technologies that were selected, and the software development methodology that was followed. The section also evaluates the collaboration within the group, including how communication was handled and how responsibilities were distributed. In addition, it highlights areas where the process could have been improved, and describes how \acrshort{ai} tools were used throughout the project to support development, planning, or writing tasks.
 
 \subsection{Project Plan}\label{subsec:discussion:process:projectplan}
 
-Looking back, we were able to mostly follow the project plan, but there were certain tasks that either were rescheduled or removed entirely for practical reasons. The most difficult part of planning was knowing how much time to allocate to each part of the project. There were multiple times where we had either worked faster than expected or had to postpone tasks due to unforeseen issues. Using tools like Planning Poker could have made this easier. The goal of the method is to make estimations individually without being influenced by the other group members \cite{planningpokerwiki}. Additionally, our time estimations were based on high-level task descriptions, which proved too abstract. Breaking tasks down into more granular, concrete sub-tasks could have led to more accurate and realistic estimates.
+Looking back, we were able to mostly follow the project plan, but there were certain tasks that either were rescheduled or removed entirely for practical reasons. The most difficult part of planning was knowing how much time to allocate to each part of the project. There were multiple times where we had either worked faster than expected or had to postpone tasks due to unforeseen issues. Using tools like Planning Poker could have made this easier. The goal of this method is to make estimations individually without being influenced by the other group members \cite{planningpokerwiki}. Additionally, our time estimations were based on high-level task descriptions, which proved too abstract. Breaking tasks down into more granular, concrete sub-tasks could have led to more accurate and realistic estimates.
 
 One of the biggest strengths of the project plan was the structure provided by Scrum and the use of sprints. The plan's division into eight sprints allowed us to stay focused and iterative, and it gave us frequent opportunities to re-evaluate priorities and progress. However, we found that the sprint content sometimes had to be adjusted mid-way through to accommodate emerging challenges, such as unexpected bugs, changes between data sources, or new feature requests from the \gls{productowner}. Knowing this, the sprint length could potentially have been shorter, e.g., the first few sprints were 1-week then the later ones could have been 2-weeks. 
 
-Our Gantt chart helped define clear milestones, like the MVP, and these helped us stay aligned with deliverables. Nevertheless, actual progress often did not align perfectly with the chart. For instance, early on we had a whole sprint for research, data collection and system design. In hindsight we only needed half a sprint for this and therefore we started designing the website which was planned for the next sprint. In later sprints we had planned user tests which kept getting pushed back, and in the end the formal user tests were replaced with feedback from the \gls{productowner} and a presentation of the product for potential stakeholders.
+Our Gantt chart helped define clear milestones, like the MVP, and these helped us stay aligned with deliverables. Nevertheless, actual progress often did not align perfectly with the chart. For instance, early on we had a whole sprint for research, data collection and system design. In hindsight we only needed half a sprint for this and therefore started designing the website which was planned for the next sprint. In later sprints we had planned user tests which kept getting pushed back, and in the end the formal user tests were replaced with feedback from the \gls{productowner} and presentations of the product for potential stakeholders.
 
 The inclusion of the vacation in the plan was helpful, and having accountability measures, like compensating for delays by using it as a buffer, proved valuable in practice. The group contract and routine rules also helped maintain consistent effort and communication.
 
@@ -114,23 +114,23 @@ Another challenge we faced was scope control. As anticipated in the risk analysi
 
 \subsection{Technologies}
 
-This section contains a reflection of the different technologies and tools used throughout the project. We discuss both the client-side and server-side components, as well as supporting tools that contributed to collaboration, version control, and project management. The chosen technologies were selected based on factors such as ease of integration, documentation quality, performance, and our team's familiarity with them, or lack thereof.
+This section contains a reflection of the different technologies and tools used throughout the project. We discuss both the client-side and server-side components, as well as supporting tools that contributed to collaboration, version control, and project management. The chosen technologies were selected based on factors such as ease of integration, documentation quality, performance, and our team's familiarity with them.
 
 \subsubsection{Website}
 
-The chosen technologies for the website, TypeScript, React, and OpenLayers, proved to be well-suited for the project. Although we had little prior experience with these tools, their extensive documentation allowed us to quickly learn them throughout the development process.
+The chosen technologies for the website, \textbf{TypeScript}, \textbf{React}, and \textbf{OpenLayers}, proved to be well-suited for the project. Although we had little prior experience with these tools, their extensive documentation allowed us to quickly learn them throughout the development process.
 
 While the overall scope of the application is moderate, using TypeScript instead of JavaScript improved type safety and reduced the likelihood of runtime errors. This added confidence during development and helped maintain code quality.
 
 We had limited prior experience with web development, so we cannot directly compare React to building a website without a similar library. However, React's component-based structure made it easy to build and reuse interface elements, which likely made the development process more efficient and maintainable.
 
-When selecting a map library, we evaluated several options, including more widely used ones like Leaflet and Mapbox. While these libraries are known for their ease of use and strong community support, we ultimately chose OpenLayers due to its built-in GIS functionality and flexibility. Unlike MapBox, OpenLayers is fully open-source and free to use, without licensing restrictions. In hindsight, while OpenLayers has a steeper learning curve, its comprehensive feature set allowed us to implement advanced functionality, such as WMS layers and raster overlays, without relying on third-party plugins, as would have been necessary with Leaflet.
+When selecting a map library, we evaluated several options, including more widely used ones like Leaflet\footnote{\url{https://leafletjs.com/}} and Mapbox\footnote{\url{https://www.mapbox.com/}}. While these libraries are known for their ease of use and strong community support, we ultimately chose OpenLayers due to its built-in GIS functionality and flexibility. Unlike MapBox, OpenLayers is fully open-source and free to use, without licensing restrictions. In hindsight, while OpenLayers has a steeper learning curve, its comprehensive feature set allowed us to implement advanced functionality, such as WMS layers and raster overlays, without relying on third-party plugins, as would have been necessary with Leaflet.
 
 \subsubsection{Server}
 
 As described in \autoref{chap:implementation}, we made good use of the advantages of Go. Our prior experience with Go allowed us to implement advanced optimization techniques like multi threading and clustering. Consequently, the time spent developing the server was shorter compared to the website, as less time was used reading documentation and exploring unfamiliar frameworks.
 
-Go's extensive package registry\footnote{\url{https://pkg.go.dev/}} of open-source libraries were vital for implementing certain functionality. Without the packages go-shapefile and go-geom, the superficial data could not have been stored locally and would have to have been sourced from an \acrshort{api}. This would lead to extensive processing times, as we query every \qty{10}{\meter} of road, and an external \acrshort{api} is considerably slower than in-memory data.
+Go's extensive package registry of open-source libraries were vital for implementing certain functionality. Without the packages go-shapefile and go-geom, the superficial data could not have been stored locally and would have to have been sourced from an \acrshort{api}. This would lead to extensive processing times, as we query every \qty{10}{\meter} of road, and an external \acrshort{api} is considerably slower than in-memory data.
 
 \subsubsection{Other Technologies}
 
@@ -138,32 +138,32 @@ The use of GitHub for both version control and task management via the Kanban bo
 
 Using Traggo for time tracking made it straightforward to categorize work using tags. As a self-hosted and free solution, it did not require creating additional user accounts, which made access simple and efficient. It included all the core features we needed, though it lacked some useful extras, such as the ability to filter by multiple tags at once. For example, it was not possible to easily see how much time a specific user spent on a particular task.
 
-% Kanskje glossary på skyhigh, men er ikke fagbegreg så kanskje ikke
 Having access to SkyHiGh, combined with using Docker, allowed us to easily deploy and update our application. In addition to hosting the application, SkyHiGh was utilized in different ways, like hosting Traggo and taking backups of project files. 
 
 \subsection{Development Model}
 
-The team chose Scrum as the software development model for this project, a choice that proved highly effective given the project's nature. The requirements provided by the \gls{Product Owner} were initially vague and evolved throughout development. Scrum allowed for the necessary flexibility to accommodate this, enabling the team to implement new features based on both our own insights and ongoing feedback from the \gls{Product Owner}.
+The team chose Scrum as the software development model for this project, a choice that proved highly effective given the project's nature. The requirements provided by the \gls{productowner} were initially vague and evolved throughout development. Scrum allowed for the necessary flexibility to accommodate this, enabling the team to implement new features based on both our own insights and ongoing feedback from the \gls{productowner}.
 
 To support task management and transparency, we integrated Kanban boards through GitHub. This provided a clear and visual overview of tasks within each sprint, contributing to a more organized and collaborative workflow.
 
 Sprint meetings were held regularly and typically included both sprint reviews and retrospectives. While reviews were consistently conducted, the retrospectives could have been more thorough. A deeper reflection on team performance and processes might have led to further improvements in our use of Scrum.
 
-Compared to other software development lifecycle models, Scrum offered the right balance of structure and adaptability. Its iterative nature and focus on collaboration made it well-suited for a project with evolving requirements and ongoing input from the \gls{Product Owner}.
+Compared to other software development lifecycle models, Scrum offered the right balance of structure and adaptability. Its iterative nature and focus on collaboration made it well-suited for a project with evolving requirements and ongoing input from the \gls{productowner}.
 
 \subsection{Communication}
 
 Communication among the team members remained consistently effective throughout the project. Having known each other prior to the project enabled us to engage in direct and clear discussions, which contributed to a collaborative environment that was both calm and efficient.
 
-Constructive communication was also maintained with both the \gls{productowner} and our supervisor. As described in \autoref{sec:devpro:meetings}, we held weekly in-person meetings with our supervisor to discuss both project progress and thesis-related matters. Interactions with the \gls{productowner} were primarily conducted virtually and focused on the application's functionality and design. \textcolor{orange}{Legge til om vi likte denne løsning?}
+Constructive communication was also maintained with both the \gls{productowner} and our supervisor. As described in \autoref{sec:devpro:meetings}, we held weekly in-person meetings with our supervisor to discuss both project progress and thesis-related matters. Interactions with the \gls{productowner} were primarily conducted virtually and focused on the application's functionality and design.
+
+In retrospect, this approach to communication had both positive and negative sides. We would have preferred to have more in-person meetings with the \gls{productowner}, but travel time made virtual meetings more efficient. Weekly meetings with the supervisor were always productive, even when we did not have a specific agenda. The supervisor's non-technical perspective was particularly valuable, as it helped identify when something was unclear or insufficiently explained in the thesis. 
 
 \subsection{Work Allocation}
 
 \autoref{tab:timetrackedbymember} shows the total number of hours worked each month by the two group members. As the team aimed to prioritize close collaboration, it is notable that the total hours worked by each member remained very similar throughout the project. The even distribution of hours indicates a well-balanced collaboration, with both members contributing consistently throughout the project.
 
-The table also shows a clear increase in total hours worked as the project progressed, peaking in April. This trend likely reflects the natural progression of the project, where the workload increased due to implementation tasks, integration of components, and the finalization of the thesis.
+The table also shows a clear increase in total hours worked as the project progressed, peaking in May. This trend likely reflects the natural progression of the project, where the workload increased due to implementation tasks, integration of components, and the finalization of the thesis.
 
-\textcolor{orange}{Oppdater tabell helt til slutt!}
 \begin{table}[h]
     \centering
     \begin{tabular}{c|c|c|c}
@@ -174,9 +174,9 @@ The table also shows a clear increase in total hours worked as the project progr
         February & 80h 6m   & 79h 17m   & 159h 24m  \\
         March    & 88h 4m   & 88h 20m   & 176h 24m  \\
         April    & 99h 40m  & 102h 38m  & 202h 18m  \\
-        May      & 72h 52m  & 73h 0m    & 145h 52m  \\
+        May      & 119h 55m & 115h 20m  & 235h 16m  \\
         \hline
-        Total    & 402h 21m & 406h 13m  & 808h 34m  \\
+        \textbf{Total} & \textbf{449h 44m} & \textbf{448h 33m} & \textbf{898h 17m} \\
         \hline
     \end{tabular}
     \caption{Tracked time by month and group member}
@@ -187,34 +187,30 @@ The table also shows a clear increase in total hours worked as the project progr
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1.1\linewidth]{figures/traggo_stackedbarchart.jpg}
+    \includegraphics[width=1\linewidth]{figures/traggo_stackedbarchart.png}
     \caption{Stacked bar chart of monthly time spent per work type}
     \label{fig:traggostackedbarchart}
 \end{figure}
 
-\textcolor{orange}{OPPDATER CHART OG TABLL FØR LEVERING, SCREEN FRA MAC!}
-
-% SKRIV OM TIDSFORDELING FOR DE FORSKJELLIGE OPPGAVENE (THESIS, DEV, osv.)
-
 \subsection{Use of AI}
 
-AI tools, particularly large language models (LLMs), were used throughout the development and documentation process. These tools supported the group in a range of tasks, from learning new technologies to improving written communication. The group agreed that while code generation using AI can sometimes be helpful, it is generally unreliable and must be used with caution. In many cases, relying too heavily on such tools can introduce subtle errors or result in additional work later due to misunderstandings or incorrect assumptions.
+\acrshort{ai} tools, particularly large language models (LLMs), were used throughout the development and documentation process. These tools supported the group in a range of tasks, from learning new technologies to improving written communication. The group agreed that while code generation using \acrshort{ai} can sometimes be helpful, it is generally unreliable and must be used with caution. In many cases, relying too heavily on such tools can introduce subtle errors or result in additional work later due to misunderstandings or incorrect assumptions.
 
 \subsubsection{Support for Learning and Understanding}
 
-Throughout the project, we encountered several new frameworks, libraries, and technologies. In these situations, AI tools were occasionally used to obtain quick explanations or examples. This often accelerated the learning process, especially during the initial stages. However, we also found that the answers provided could be outdated, overly simplified, or even incorrect. As a result, official documentation and trusted sources proved to be more reliable, particularly for critical or complex issues.
+Throughout the project, we encountered several new frameworks, libraries, and technologies. In these situations, \acrshort{ai} tools were occasionally used to obtain quick explanations or examples. This often accelerated the learning process, especially during the initial stages. However, we also found that the answers provided could be outdated, overly simplified, or even incorrect. As a result, official documentation and trusted sources proved to be more reliable, particularly for critical or complex issues.
 
 \subsubsection{Idea Generation and Inspiration}
 
-During the early phases of the project, LLMs were especially useful for brainstorming and exploring potential approaches. By providing quick overviews of different implementation strategies or listing the advantages and disadvantages of architectural decisions, AI contributed to more efficient discussions and helped the group arrive at well-founded ideas more quickly. We also made use of AI for generating ideas related to the presentation of the thesis, such as potential titles. However, the suggestions from AI were always treated as starting points and were critically evaluated before being incorporated into the project.
+During the early phases of the project, LLMs were especially useful for brainstorming and exploring potential approaches. By providing quick overviews of different implementation strategies or listing the advantages and disadvantages of architectural decisions, \acrshort{ai} contributed to more efficient discussions and helped the group arrive at well-founded ideas more quickly. We also made use of \acrshort{ai} for generating ideas related to the presentation of the thesis, such as potential titles. However, the suggestions from \acrshort{ai} were always treated as starting points and were critically evaluated before being incorporated into the project.
 
 \subsubsection{Spelling and Grammar Assistance}
 
-When writing the thesis, LLMs were useful for checking grammar, spelling, and sentence structure. This helped streamline the writing process and contributed to a more professional tone. Nonetheless, we found that AI-generated text often introduced excessive wording or altered the intended meaning. Preserving the technical accuracy and original intent of the writing was essential, so all suggestions were reviewed carefully and adjusted as needed.
+When writing the thesis, LLMs were useful for checking grammar, spelling, and sentence structure. This helped streamline the writing process and contributed to a more professional tone. Nonetheless, we found that \acrshort{ai}-generated text often introduced excessive wording or altered the intended meaning. Preserving the technical accuracy and original intent of the writing was essential, so all suggestions were reviewed carefully and adjusted as needed.
 
 \subsubsection{Automation of Repetitive Tasks}
 
-AI tools were also used to automate certain repetitive tasks, which helped improve overall efficiency. For example, generating LaTeX table structures, formatting reference lists, or converting raw data into structured formats were tasks that benefited from AI assistance. This reduced manual effort and allowed us to focus more on the core aspects of the work.
+\acrshort{ai} tools were also used to automate certain repetitive tasks, which helped improve overall efficiency. For example, generating LaTeX table structures, formatting reference lists, or converting raw data into structured formats were tasks that benefited from \acrshort{ai} assistance. This reduced manual effort and allowed us to focus more on the core aspects of the work.
 
 \section{Product}
 
@@ -222,13 +218,9 @@ This section presents a detailed discussion of the product created throughout th
 
 \subsection{Limitations}
 
-% Feilkilder (kartdata) e.g. https://www.senorge.no/WaterMap
-% Lite availability med docker compose! (er sagt at vi skriver om det i discussion)
-% mangel på universell utforming, gå tilbake til hva som er skrevet i requirements. nevn enkelte forbedringer som er prioritert.
-
 While the product achieves its primary goal, there are still several limitations and areas for improvement.
 
-One notable limitation is related to performance when displaying the forestry road map layer. This layer can contain above 130,000 features depending on the zoom level, which causes rendering issues and reduced performance in the browser. In some cases, not all features are displayed due to the browser's limitations. To address this, the current implementation requires users to zoom in before the roads become visible. However, this approach is not fully reliable, as the visibility threshold may vary across different screen sizes and display resolutions. A more robust solution would be to load the features as tiles, fetching only the visible data from the backend. Alternatively, using WebGL for rendering could significantly improve performance by leveraging GPU acceleration, although this may not be supported on older hardware.
+One notable limitation is related to performance when displaying the forestry road map layer. This layer can contain above 130,000 features depending on the zoom level, which causes rendering issues and reduced performance in the browser. In some cases, not all features are displayed due to the browser's limitations. To address this, the current implementation requires users to zoom in before the roads become visible. However, this approach is not fully reliable, as the visibility threshold may vary across different screen sizes and display resolutions. A more robust solution would be to load the features as tiles, fetching only the visible data from the backend. Alternatively, using WebGL\footnote{\url{https://get.webgl.org/}} for rendering could significantly improve performance by leveraging GPU acceleration, although this may not be supported on older hardware.
 
 The website currently uses HTTP instead of HTTPS, which poses a security risk. This also disables certain features, such as the geolocation button that centers the map on the user's current position. If the prototype were to evolve into a production-ready application, it would need to be hosted on a dedicated domain with the appropriate security certificates.
 
@@ -238,39 +230,15 @@ Accessibility is another area where the product can be improved. Although the in
 
 Other features that could enhance accessibility include keyboard navigation for all interactive elements, allowing users to operate the interface without a mouse. Adding text alternatives for icons and non-text content would help users who rely on screen readers. Ensuring proper contrast ratios between text and background colors would improve readability, especially for users with visual impairments. Finally, implementing resizable text and a responsive layout that adapts well to different screen sizes and zoom levels would make the website more accessible across devices and user preferences.
 
-\subsection{Deployment}%KANSKJE TEMP
+\subsection{Deployment}
 
-Docker Compose proved to be great for our usage during the project, but is not suitable if the application were to be used at a larger scale.
+Docker Compose proved to be great for our usage during the project, but is not ideal for large-scale applications. The Docker containers can be reused in other configurations, like Docker Swarm and Kubernetes. This will greatly increase the availability of the application. However, as the application is a small-scale prototype, this was ultimately not prioritized. 
 
 \subsection{Comparison with Existing Solutions}
 
 As mentioned in the Introduction, the only existing solution identified that provides trafficability information for forestry vehicles is \textit{Harvester Seasons}. However, this platform has several limitations. Most importantly, it does not provide trafficability data for Norway, which makes it unsuitable for Norwegian users. In addition, its visualization of trafficability is less intuitive than our system, which employs a traffic-light color scheme for clear and immediate interpretation.
 
-In contrast, our application introduces a novel and user-friendly approach by visualizing trafficability through a simple, color-coded interface. This intuitive design allows users to quickly assess the condition of forestry roads, supporting more informed decision-making for transport managers. Currently, our system is the only known solution that presents trafficability data in this accessible format, positioning it as an innovative contribution to the field.
-
-\subsection{Challenges During Development}
-
-\begin{comment} FRA 6-IMPLEMENTATION 14.05
-UTFORDRINGER OM IMPLEMENTASJON HER:
-    - Kilder
-        - Senorge dårlig dokumentasjon til API
-    - Finne gode og nøyaktige data
-    - Gjøre om data til WMS/noe vi kan vise
-    - Gjøre om WMS/kartdata til rød, grønn eller gule veier
-    - Konvertering av koordinater, f.eks. fra epsg:3857 til epsg:25833
-    - Klassifisering av skogsbilveger
-        - Hente teledyp data for flere veger (WMS vs. REST API)
-        - Teletyp var vanskeligere enn forventet siden API-en brukte et dårlig dokumentert grid-system.
-\end{comment}
-
-\textcolor{orange}{Trengs denne seksjonen? Det har blitt nevnt tidligere i teksten (f.eks. i \autoref{subsec:server:optimization})}
-
-Several challenges arose during the development of the application.
-
-The most significant difficulties were related to the data sources used for the trafficability model. Finding reliable and high-quality sources of data proved to be challenging. This issue appeared early in the project, as we did not have a clear choice of data source before starting development. Many of the sources recommended by the Product Owner lacked straightforward implementation options and often had a resolution that was too low for our intended use.
-
-In addition, some data sources were poorly documented, which led to delays during implementation. This was particularly evident when working with SeNorge's API, where unclear usage guidelines made integration more time-consuming than expected.
-
+This intuitive design allows users to quickly assess the condition of forestry roads, supporting more informed decision-making for transport managers. Currently, our system is the only known solution that presents trafficability data in this accessible format, positioning it as an innovative contribution to the field.
 
 \subsection{Sustainability}\label{subsec:discussion:product:sustainability}
 
@@ -286,7 +254,7 @@ Once the effects are identified and categorized, they are linked to form chains 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\linewidth]{figures/susaf.pdf}
+    \includegraphics[width=0.9\linewidth]{figures/susaf.pdf}
     \caption{Sustainability Awareness Diagram}
     \label{fig:susafdiagram}
 \end{figure}
@@ -344,31 +312,7 @@ Some potentially negative chains of effects were also identified. The reliance o
 
 From this analysis, the product's effect on sustainability can also be related to the UN \acrshort{sdg}s. These goals are split into three dimensions, economic, social, and environmental.
 
-\begin{comment}
-LENKE FRA PETER: https://www.ntnu.edu/web/excited/sustainability-in-computing-education
-% Står litt om skogkurs og bærekraft: https://s46339.pcdn.co/wp-content/uploads/Sluttrapport.pdf
-% OG HER: https://skogkurs.no/fagartikler/baerekraftige-metoder-og-kompetanse-i-skogsmaskinbransjen-kurs-kommer/ ->
-- mer lukkede hogstformer og mindre bruk av flatehogst 
-- **lavere drivstofforbruk og smartere kjøring med skogsmaskin** 
-    - **lavere førerbelastning**
-    - **mindre terrengslitasje**
-    - **høyere produktivitet**
-- produsere tømmer som er mest mulig tilpasset industriens behov 
-- **videreutvikle teknologi for driftsoppfølging og førerstøtte for maskinførerne** 
-
-###########################
-FNs Bærekraftsmål som virker relevante (KANSKJE SAMMENLIGN MED HVA NORGE GJØR I DAG?):
-
-- 9
-- 12 (?) VIRKER SOM DEN FOKUSERER MEST PÅ UTVIKLINGSLAND?
-- 15 (?)
-\end{comment}
-
 \subsubsection{Economic}\label{subsubsec:discussion:product:sustainability:economic}
-
-% 9.5 Enhance scientific research, upgrade the technological capabilities of industrial sectors in all countries, ...
-%\textcolor{orange}{SDG: 8 (8.2, 8.4), 9 (9.5)}
-%\textcolor{orange}{Your product contributes directly to improved economic productivity by making forestry logistics more data-driven and efficient (effects 1, 4, 6, 11, 13). By enabling better forecasting of trafficability, it supports more consistent harvesting and delivery schedules, which benefits forestry operations financially and operationally. This aligns with Goal 8.2, as you're using digital innovation to enhance productivity in a traditional sector.\\ The reuse of data (effect 10) and reduction in road damage (effect 9) both support resource efficiency (Goal 8.4), helping reduce unnecessary fuel usage, road maintenance, and inefficient trips.\\The system as a whole enhances technological capability within the forestry sector, directly aligning with Goal 9.5.}
 
 Visualizing the trafficability of forestry roads enhances the efficiency of lumber transport from logging sites by facilitating better planning and decision-making. It reduces uncertainty about the trafficability of specific roads, also helping to prevent damage and deformation caused by driving during unsuitable conditions. These improvements align closely with the United Nations' \acrshort{sdg}s, particularly \textbf{Goal 8 (Decent Work and Economic Growth)} and \textbf{Goal 9 (Industry, Innovation, and Infrastructure)}. 
 
@@ -395,28 +339,22 @@ Not all aspects of the product necessarily contribute to greater sustainability.
 Throughout the project, the application has evolved with the most prioritized features being implemented. The group has considered various ideas for additional functionality, and we have also received valuable feedback from the \gls{productowner} and other stakeholders. However, due to time constraints, several of these suggestions were not incorporated during the project period. Below is a list of some of these ideas:
 
 \begin{itemize}
-    \item \textbf{User Guide}: Include a user guide on the website on how to use it.
-    \item \textbf{Mobile Application}: Implement for better use on mobile devices.
-    \item \textbf{Offline Mode}: Download map data for a set time period and location. This requires that the application is deployed as a mobile or desktop application.
-    \item \textbf{Export Data}: Let the user export data (e.g., CSV) for use in other applications.
-    \item \textbf{Machine Learning}: Use machine learning to improve predictions about trafficability.
-    \item \textbf{Notification System}: Send notifications or webhooks for changes in trafficability or weather.
-    \item \textbf{Reporting System}: Generate reports that show the state of forestry roads in a period. Could include diagrams, statistics, etc.
-    \item \textbf{Better Accessibility}: Better universal design. Color-blind modes and accessibility controls.
-    \item \textbf{Hour Picker}: Updating the Data Picker component to also be able to select the hour of day could be useful if conditions vary a lot hourly, for example when the temperature oscillates around \qty{0}{\celsius} throughout the day. \textcolor{orange}{Noe mer om at veien blir bedre når den er kald, selvom frosten ikke er dyp.}
-    \item \textbf{Performance}: Ways of improving performance. Using WebGL for rendering of vectors. This does require newer hardware/browsers) også backend opti). Performance testing flere brukere samtidig?
-    \item \textbf{User Testing}: Conduct structured user testing.
-    \item \textbf{Integrate with Existing Solutions}: Use with existing solutions like VSYS. 
-    \item \textbf{Filtering}: Better ways of filtering by roads and locations, e.g., by municipalities.
-    \item \textbf{Polygon Selector}: Polygon-based selection tool, allowing users to manually draw custom areas of interest on the map.
-    \item \textbf{Show Timber Storage}: Including timber storage locations directly in the map interface to improve logistical planning.
-    \item \textcolor{orange}{LEGGE TIL VEIKONSTRUKSJONS MATRIALE: knust fjell, sortert grus, stedegne masser}
+    \item \textbf{Integrate road constriction materials:} Integrating a data source for materials used during constructions of the forestry roads would increase the accuracy of the application, as newer roads are often built using crushed rock or imported gravel instead of local superficial deposits.
+    \item \textbf{Machine Learning:} Use machine learning to improve predictions about trafficability, which is mentioned in detail below.
+    \item \textbf{User Testing:} Conduct structured user testing.
+    \item \textbf{Reporting System:} Generate reports that show the state of forestry roads in a period. Could include diagrams, statistics, etc.
+    \item \textbf{Better Accessibility:} Better universal design. Color-blind modes and accessibility controls.
+    \item \textbf{Integrate with Existing Solutions:} Use with existing solutions like VSYS. 
+    \item \textbf{Filtering:} Better ways of filtering by roads and locations, e.g., by municipalities.
+    \item \textbf{Polygon Selector:} Polygon-based selection tool, allowing users to manually draw custom areas of interest on the map.
+    \item \textbf{Show Timber Storage:} Including timber storage locations directly in the map interface to improve logistical planning.
+    \item \textbf{Hour Picker:} Updating the Data Picker component to also be able to select the hour of day could be useful if conditions vary a lot hourly, for example when the temperature oscillates around \qty{0}{\celsius} throughout the day. 
+    \item \textbf{Performance:} For example using WebGL for rendering of vectors can improve performance of the website. This does however require newer hardware/browsers.
+    \item \textbf{User Guide:} Include a user guide on the website on how to use it.
+    \item \textbf{Mobile Application:} Implement for better use on mobile devices.
+    \item \textbf{Offline Mode:} Download map data for a set time period and location. This requires that the application is deployed as a mobile or desktop application.
+    \item \textbf{Export Data:} Let the user export data (e.g., CSV) for use in other applications.
+    \item \textbf{Notification System:} Send notifications or webhooks for changes in trafficability or weather.
 \end{itemize}
 
-
-\textcolor{orange}{
-Skriv om den viktigste her.... \\
-Ideer: \\ 
-AI med flere parametere som f.eks. kamera på transportbiler, mer værdata \\
-Bruke satelitt data siden det er nice (ref fjeld), copernicus kommer med ny sensor i 2028, tror også nasa skal ha ny \\
-}
+ As \acrshort{ai} continues to play an increasingly important role in the technology landscape, there are promising opportunities to integrate \acrshort{ai} in future versions of the system. One such opportunity involves using machine learning models trained on ground truth data to enhance the accuracy of trafficability classification. Ground truth refers to verified, labeled data that reflects real-world conditions and is used as a benchmark for training and validating \acrshort{ai} models \cite{ibm_groundtruth}. In this context, ground truth data could include manually labeled road segments obtained from field observations, drone imagery, or high-resolution satellite photos that indicate whether roads were passable under specific conditions. This data can be used to train supervised machine learning models to classify road segments based on input features such as weather, soil moisture, and terrain. A common challenge with satellite-derived environmental data, as also encountered in our work and described in \autoref{sec:unuseddatasources}, is that it often has coarse spatial resolution and missing values. To address this, methods for imputing missing data and improving spatial resolution could be implemented. Recent research (\textcite{satellite_imputation}) has explored the use of data imputation and downscaling techniques on satellite data. One approach involves a modular spatial inference framework that incorporates terrain parameters and machine learning models, including Random Forests, which are tree-based ensemble methods, and Kernel-Weighted K-Nearest Neighbors, a distance-weighted neighbor algorithm \cite{satellite_imputation}.

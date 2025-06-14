@@ -1,6 +1,6 @@
-\chapter{Deployment}\label{chap:deployment}
+  \chapter{Deployment}\label{chap:deployment}
 
-After detailing the system implementation, this chapter describes how the application is deployed using Docker and Docker Compose on NTNU's SkyHiGh platform. It covers the technical setup, including how Docker images are built with GitHub Actions and published to the GitHub Container Registry. Moreover, the chapter outlines what would be required for Skogkurs to deploy the system on their own infrastructure.
+After detailing the system implementation, this chapter describes how the application is deployed using Docker and Docker Compose on NTNU's SkyHiGh platform. It covers the technical setup, including how Docker images are built with GitHub Actions and published to the \acrlong{ghrc}. Moreover, the chapter outlines what would be required for Skogkurs to deploy the system on their own infrastructure.
 
 \section{SkyHiGh}
 
@@ -32,7 +32,7 @@ In this project, GitHub Actions was used to automate the building and publishing
 
 \section{Deployment by Skogkurs}
 
-To deploy the application independently, Skogkurs must follow a defined set of steps. These steps ensure the correct preparation of data and environment configuration, and allow for either remote CI/CD-based deployment or local image building. The deployment process is outlined below:
+To deploy the application independently, Skogkurs must follow a defined set of steps. These steps ensure the correct preparation of data and environment configuration, and allow for either remote \acrshort{cicd}-based deployment or local image building. The deployment process is outlined below:
 
 \begin{enumerate}
     \item \textbf{Download Required Datasets:} Superficial deposit and fjord datasets must be downloaded from Kartkatalogen\footnote{\url{https://kartkatalog.geonorge.no/}}.
@@ -43,17 +43,13 @@ To deploy the application independently, Skogkurs must follow a defined set of s
 
     \item \textbf{Build Docker Images:}  
     \begin{itemize}
-        \item \textbf{Option A, Remote (CI/CD):} Push to the main branch of the relevant repository. GitHub Actions will automatically build and publish the Docker image to GHCR. This option also requires that the downloaded data is available through \acrshort{ssh}.
+        \item \textbf{Option A, Remote (\acrshort{cicd}):} Push to the main branch of the relevant repository. GitHub Actions will automatically build and publish the Docker image to \acrshort{ghrc}. This option also requires that the downloaded data is available through \acrshort{ssh}.
         \item \textbf{Option B, Local:} Build the Docker images manually using the Docker CLI and push them to a container registry accessible to the deployment server.
     \end{itemize}
 
     \item \textbf{Update Docker Compose Configuration:} Modify the Docker Compose file in the infrastructure repository to refer to the correct image names.
 
-    %Start server
     \item \textbf{Start the Server:} Given that the server allows internet access on the specified ports, the server can be started with \texttt{docker compose up}.
 \end{enumerate}
 
-\textcolor{orange}{kanskje endre på teksten under? Fjern at det står Skogkurs eller noe}
 By following these steps, Skogkurs can independently deploy and maintain the application, ensuring it operates reliably within their own infrastructure. This deployment process balances automation with flexibility, allowing both remote continuous integration workflows and local manual control as needed.
-
-%Several steps are required for Skogkurs to deploy the application on their own servers. First, the superficial deposit and fjord datasets must be downloaded from Kartkatalogen\footnote{\url{https://kartkatalog.geonorge.no/}}. Additionally, the fjord dataset must be preprocessed with a python file that is provided in the server repository. If Skogkurs intends to replicate the original approach to building the Docker images, datasets must be made accessible via SSH, and the relevant environment and secret variables must be configured within the CI/CD pipelines. Alternatively, the Docker images can be built locally before being pushing to a registry. In either case, the Docker Compose configuration must to be updated the new image ownership.
