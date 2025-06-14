@@ -4,12 +4,11 @@ This chapter outlines the key aspects of the project's development process, from
 
 \section{Code Repositories}
 
-% Github Organization and repos
 All code and project-related resources are stored on GitHub under a dedicated organization\footnote{\url{https://github.com/skogkursbachelor}}. Each part of the system, as well as supporting documentation, is maintained in its own repository. This modular structure facilitates collaboration and version control throughout the development process. 
 
 To ensure consistency and clarity in version control, the project group adopted a standardized format for Git commit messages \cite{commit_standard}. Each commit message follows a predefined structure, beginning with a keyword that categorizes the nature of the change, such as \texttt{feat}, \texttt{fix}, \texttt{docs}, \texttt{style}, \texttt{refactor}, \texttt{test}, or \texttt{chore}. This is followed by a concise description summarizing the purpose of the commit. By adhering to this standard, the team improved traceability, collaboration, and maintainability throughout the development process.
 
-An overview of the repositories and their respective purposes is shown in \autoref{tab:githubrepositories}.
+An overview of the repositories and their respective purposes is shown in \autoref{tab:githubrepositories}. The links to all GitHub repositories can be found in \autoref{appendix:github_repositories}.
 
 \begin{table}[h]
     \centering
@@ -38,9 +37,9 @@ All project work is tracked using the self-hosted time tracking service Traggo\f
 
 \section{Backup Server}\label{sec:devpro:backupserver}
 
-During the planning of the project, it was deemed necessary to have a backup server in case of data loss \autoref{appendix:project_plan}. The strategy discussed in the project plan was the 3-2-1 data strategy: \textbf{3 copies of data} on \textbf{2 different media} with \textbf{1 copy offsite}. This strategy is used to prevent total data loss by copying data to different mediums and locations, ensuring that a disaster does not destroy all copies. A total loss of project assets would be catastrophic for the project, it is therefore important to minimize this risk as much as possible.
+During the planning of the project, it was deemed necessary to have a backup server in case of data loss (see \autoref{appendix:project_plan}). The strategy discussed in the project plan was the 3-2-1 data strategy: \textbf{3 copies of data} on \textbf{2 different media} with \textbf{1 copy offsite}. This strategy is used to prevent total data loss by copying data to different mediums and locations, ensuring that a disaster does not destroy all copies. A total loss of project assets would be catastrophic for the project, it is therefore important to minimize this risk as much as possible.
 
-A backup server was therefore created early in the project timeline. The backup servers runs two backup scripts on timely intervals with crontab\footnote{\url{https://en.wikipedia.org/wiki/Cron}}, where traggo and the code repositories are backed up. Repositories are backed up by iterating over all the repositories in the GitHub organization\footnote{\url{https://github.com/orgs/skogkursbachelor/repositories}}, and pulling the latest changes. Time tracking data is backed up by copying the database with \acrfull{scp}. %TODO rewrite siste setning?
+A backup server was therefore created early in the project timeline. The backup servers runs two backup scripts on timely intervals with crontab\footnote{\url{https://en.wikipedia.org/wiki/Cron}}, where Traggo data and the code repositories are backed up. Repositories are backed up by iterating over all the repositories in the GitHub organization, and pulling the latest changes. Time tracking data is backed up by copying the database with \acrfull{scp}.
 
 This setup ensures minimal manual maintenance while offering reliable protection of key project data. The crontab and corresponding scripts are shown in \autoref{lst:backupservercron}. 
 
@@ -51,21 +50,10 @@ This setup ensures minimal manual maintenance while offering reliable protection
 ]{listings/backupserver.txt}
 \end{figure}
 
-\begin{comment}
-    % Ha med dette og figuren under or no? /E TODO
-An overview of the backup files before the thesis deadline is shown in \autoref{lst:backupserverfiles}. 
-
-\begin{figure}[h]
-\lstinputlisting[
-    caption={Files on the backup server},
-    label=lst:backupserverfiles
-]{listings/backupserverfiles.txt}
-\end{figure}
-\end{comment}
 
 \section{Gantt Diagram}
 
-A Gantt chart was created during the planning of the project, highlighting the different sprints and key milestones. It serves as a high-level plan to structure the project's progression but is not intended to be followed rigidly, allowing for flexibility and adjustments along the way, which is particularly important in agile development projects. This approach provides a clear visual overview for team coordination and progress tracking. A more detailed table of all dates referenced in the Gantt chart can be found in the project plan (see \autoref{appendix:project_plan}).
+A Gantt chart was created during the planning of the project, highlighting the different sprints and key milestones (see \autoref{fig:gantt_diagram}). It serves as a high-level plan to structure the project's progression but is not intended to be followed rigidly, allowing for flexibility and adjustments along the way, which is particularly important in agile development projects. This approach provides a clear visual overview for team coordination and progress tracking. A more detailed table of all dates referenced in the Gantt chart can be found in the project plan (see \autoref{appendix:project_plan}).
 
 \begin{figure}[h]
     \centering
@@ -76,25 +64,7 @@ A Gantt chart was created during the planning of the project, highlighting the d
 
 \section{Project Organization}
 
-% SKRIV OM
-\autoref{fig:projectorganization}
-\begin{itemize}
-    \item Simon Husås Houmb
-    \begin{itemize}
-        \item \textbf{Minutes-taker}: Tasked with documenting the proceedings for each meeting that is held.
-        \item \textbf{Developer}
-    \end{itemize}
-    \item Erik Bjørnsen
-    \begin{itemize}
-        \item \textbf{Communication}: Responsible for communicating with Product Owner and Supervisor by mail, etc.
-        \item \textbf{Developer}
-    \end{itemize}
-\end{itemize}
-
-TODO kan si istedenfor det under, at erik tok deploy+server simon tok website
-Since both group members share similar backgrounds, responsibilities for specifc aspects of the
-development are not predened. Instead, they will collaborate on all parts of the project, ensuring
-that everyone has an opportunity to learn and contribute equally.
+Since both group members share similar backgrounds, responsibilities for specific aspects of the development are not predefined. Instead, the team will collaborate on all parts of the project, ensuring that everyone has an opportunity to learn and contribute equally. The project organization is shown in \autoref{fig:projectorganization}, where both members are developers, and have assigned duties: \textit{Erik Bjørnsen} was responsible for communication, while \textit{Simon Husås Houmb} was in charge of meeting minutes.
 
 \begin{figure}[h]
     \centering
@@ -116,16 +86,17 @@ Other models have been considered. Traditional methodologies like Waterfall are 
 \begin{itemize}
     \item \textbf{Sprint Meetings:} The project is divided into 2-week sprints. At the start of each sprint, sprint meetings included sprint planning, reviews, and retrospectives. During the planning phase, the team selects tasks from the product backlog to form the sprint backlog for the upcoming sprint. The review phase focuses on evaluating progress and determining whether adjustments to the product backlog are needed. The goal of the retrospective phase is to identify areas for improvement in the Scrum process itself.
     \item \textbf{Daily Scrum Meetings:} Short daily meetings are conducted to discuss the progress of ongoing tasks, identify potential obstacles, and ensure alignment between team members. 
-    \item \textbf{Scrum Master:} Given that the team consists of only two members, we have decided to share the role of Scrum Master. Both members are responsible for ensuring adherence to the Scrum framework and continuously working to improve team efficiency. This collaborative approach allows us to maintain flexibility while upholding Scrum principles throughout the project.
+    \item \textbf{Scrum Master:} Given that the team consists of only two members, we decided to share the role of Scrum Master. Both members are responsible for ensuring adherence to the Scrum framework and continuously working to improve team efficiency. This collaborative approach allows us to maintain flexibility while upholding Scrum principles throughout the project.
     \item \textbf{Kanban:} To complement Scrum and further enhance workflow visibility, a Kanban board is utilized to track and manage tasks on GitHub. The Kanban board consists of columns representing different stages of the workflow, such as Product Backlog, Sprint Backlog, In Progress, In Review, Done, and Discarded.
 \end{itemize}
 
 \section{Sprints}
+
 A sprint is a defined time period during which the team works toward a specific goal established at the beginning of the sprint \cite{scrum_guide}. This section presents an overview of all 2-week sprints carried out during the project, highlighting the main activities and progress achieved in each phase. For further details, refer to the meeting minutes in \autoref{appendix:sprint_meetings}.
 
 \subsection*{Sprint 1: Planning and Research}
 
-The first sprint was primarily dedicated to project planning and initial research.  To determine the trafficability of forestry roads, we needed to identify reliable and relevant sources of map and geospatial data. In early discussions with the \gls{productowner}, several potential sources were identified, including SeNorge, GeoNorge, NGU, and NIBIO. We also explored additional datasets from ESA and NASA, however these were ultimately found to have too coarse a resolution for our purposes, as forestry roads are densely distributed and require more detailed spatial data.
+The first sprint was primarily dedicated to project planning and initial research.  To determine the trafficability of forestry roads, we needed to identify reliable and relevant sources of map and geospatial data. In early discussions with the \gls{productowner}, several potential sources were identified, including SeNorge, GeoNorge, \acrshort{ngu}, and \acrshort{nibio}. We also explored additional datasets from \acrshort{esa} and \acrshort{nasa}, however these were ultimately found to have too coarse a resolution for our purposes, as forestry roads are densely distributed and require more detailed spatial data.
 
 Given that none of the team members had prior experience with TypeScript, React, or OpenLayers, we allocated time to study their official documentation and familiarize ourselves with their concepts. In parallel, we created key system diagrams, including a use case diagram and a sequence diagram, to clarify system requirements and interactions. 
 
@@ -133,13 +104,13 @@ As the initial work progressed faster than anticipated, we moved on to designing
 
 \subsection*{Sprint 2: Map Layer Integration}
 
-With the website development underway, we were able to implement several key map layers, including superficial deposits, frost depth, static soil moisture, historic soil moisture, and forestry roads. The historic soil moisture data was sourced from the \acrshort{esa}, but it was ultimately deemed unfit for our use, as it lacked forecast capabilities and had a coarse resolution of $25 \times 25\text{ km}$.
+With the website development underway, we were able to implement several key map layers, including superficial deposits, frost depth, static soil moisture, historic soil moisture, and forestry roads. The historic soil moisture data was sourced from the \acrshort{esa}, but it was ultimately deemed unfit for our use, as it lacked forecast capabilities and had a coarse resolution of \qty{25}{\kilo\meter\squared}.
 
-At this stage, the website had reached a level of functionality that allowed us to present it to the \gls{productowner} and gather further feedback. The most significant point raised was the need to replace the ESA soil moisture layer with a more suitable, dynamic alternative. After some discussion, we decided to explore and attempt the integration of soil moisture forecast data from Open-Meteo.
+At this stage, the website had reached a level of functionality that allowed us to present it to the \gls{productowner} and gather further feedback. The most significant point raised was the need to replace the \acrshort{esa} soil moisture layer with a more suitable, dynamic alternative. After some discussion, we decided to explore and attempt the integration of soil moisture forecast data from Open-Meteo.
 
 \subsection*{Sprint 3: Start of Classification}
 
-During this sprint, we decided to prioritize the classification of forestry roads over the integration of Open-Meteo data, as trafficability assessment was considered more critical for delivering a functional prototype. We successfully implemented a function in the backend server to determine road trafficability, although it was initially based solely on frost depth data. Integrating the frost depth data proved more challenging than expected due to poor documentation of the API used to retrieve it. Further implementation details are provided later in \autoref{subsubsec:implementation:optimization:senorge}.
+During this sprint, we decided to prioritize the classification of forestry roads over the integration of Open-Meteo data, as trafficability assessment was considered more critical for delivering a functional prototype. We successfully implemented a function in the backend server to determine road trafficability, although it was initially based solely on frost depth data. Integrating the frost depth data proved more challenging than expected due to poor documentation of the \acrshort{api} used to retrieve it. Further implementation details are provided later in \autoref{subsubsec:implementation:optimization:senorge}.
 
 In parallel, we began outlining the thesis and taking notes for specific chapters to prepare for the documentation phase.
 
@@ -182,12 +153,12 @@ Minutes from all meetings with the Supervisor and the \gls{productowner} can be 
 
 \section{Minimum Viable Product}
 
-A Minimum Viable Product (\acrshort{mvp}) is a concept that focuses on learning about customers with minimal effort. An \acrshort{mvp} is an early version of a product designed to test whether customers will use or buy it, often taking the form of a simple prototype, landing page, or manually operated service. The key benefit of an \acrshort{mvp} is that it allows teams to validate ideas early, minimizing wasted effort on products that may not succeed \cite{agile_alliance_mvp}. 
+A \acrfull{mvp} is a concept that focuses on learning about customers with minimal effort. An \acrshort{mvp} is an early version of a product designed to test whether customers will use or buy it, often taking the form of a simple prototype, landing page, or manually operated service. The key benefit of an \acrshort{mvp} is that it allows teams to validate ideas early, minimizing wasted effort on products that may not succeed \cite{agile_alliance_mvp}. 
 
 During the development of the website, we conducted reviews with the \gls{productowner} to gain insights into how the target users (transport managers) would interact with the product and identify any missing features or necessary improvements. For the \acrshort{mvp}, we prioritized implementing the core functionalities users would need, as previously illustrated in the use case diagram in \autoref{fig:use_case_diagram}.
 
 \section{Minimum Marketable Product}
 
-A Minimum Marketable Product (\acrshort{mmp}) is the next step after an \Gls{mvp} in product development. While an \acrshort{mvp} focuses on testing assumptions and user preferences, an MMP includes essential features that meet customer needs, provide a good user experience, and generate business value. It is designed to launch quickly with must-have functionality, avoiding unnecessary features that add complexity without value. The MMP approach involves refining the product to only what is essential for success. Typically, teams first develop \acrshort{mvp}s to gather insights, then use these findings to build an \acrshort{mmp} ready for general release. In agile development, combining \acrshort{mvp} and \acrshort{mmp}s helps streamline product evolution while minimizing risk and unnecessary work \cite{wanner_mmp}. 
+A \acrfull{mmp} is the next step after an \acrshort{mvp} in product development. While an \acrshort{mvp} focuses on testing assumptions and user preferences, an \acrshort{mmp} includes essential features that meet customer needs, provides a good user experience, and generates business value. It is designed to launch quickly with must-have functionality, avoiding unnecessary features that add complexity without value. The \acrshort{mmp} approach involves refining the product to only what is essential for success. Typically, teams first develop an \acrshort{mvp} to gather insights, then use these findings to build an \acrshort{mmp} ready for general release. In agile development, combining \acrshort{mvp}s and \acrshort{mmp}s helps streamline product evolution while minimizing risk and unnecessary work \cite{wanner_mmp}. 
 
-The initial plan was to conduct user testing and incorporate the feedback to develop a Minimum Marketable Product. However, due to unforeseen circumstances, this was not realized. A detailed discussion of the reasons behind this is provided in \autoref{chap:discussion}.
+The initial plan was to conduct user testing and incorporate the feedback to develop a \acrlong{mmp}. However, due to unforeseen circumstances, this was not realized. A detailed discussion of the reasons behind this is provided in \autoref{chap:discussion}.

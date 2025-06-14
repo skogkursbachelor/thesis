@@ -1,15 +1,8 @@
 \chapter{Quality Assurance and User Feedback}\label{chap:qualityassuranceanduserfeedback}
 
-This chapter outlines the measures taken to ensure the reliability and maintainability of the developed system, as well as the process for gathering and incorporating feedback from stakeholders. It begins by discussing quality assurance practices, including manual and automated testing, code quality, and performance considerations. The second part of the chapter describes how feedback from the product owner and other stakeholders guided iterative improvements to the system throughout development.
+This chapter outlines the measures taken to ensure the reliability and maintainability of the developed system, as well as the process for gathering and incorporating feedback from stakeholders. It begins by discussing quality assurance practices, including manual and automated testing, linting, and performance considerations. The second part of the chapter describes how feedback from the \gls{productowner} and other stakeholders guided iterative improvements to the system throughout development.
 
-\section{Quality Assurance}
-
-\textcolor{orange}{noe tekst}
-
-All tasks will be tracked and recorded as GitHub issues, ensuring a clear
-history of the project's progress. 
-
-\subsection{Code Quality} %BEDRE NAVN?
+\section{Code Quality}
 
 Due to the exploratory nature of the project, particularly the uncertainty around suitable map data sources and integration methods early in development, automated unit and integration testing were not prioritized. Test-driven development was deemed impractical under these conditions, as frequent changes in data formats and system architecture would have led to excessive refactoring and time loss.
 
@@ -17,34 +10,25 @@ Despite the limited use of automated testing, the application has been thoroughl
 
 In retrospect, a higher level of test automation, particularly end-to-end tests connecting the frontend and backend, would have been beneficial. These could have caught integration issues early, reduced the need for manual testing after each change, and improved confidence during deployment. Automated tests also facilitate easier maintenance and refactoring, which is particularly important for future development and scaling.
 
-\subsubsection{Linting}
+\subsection{Linting}
 
-Code linting and formatting were consistently applied to ensure readability and maintain a uniform code style across the project. In the frontend, ESLint runs automatically when files are saved, enforcing common TypeScript conventions. On the backend, Go's built-in gofmt tool is used for formatting, while golangci-lint handles static analysis and linting, both configured to run on save.
+Code linting and formatting were consistently applied to ensure readability and maintain a uniform code style across the project. In the frontend, ESLint\footnote{\url{https://eslint.org/}} runs automatically when files are saved, enforcing common TypeScript conventions. On the backend, Go's built-in gofmt\footnote{\url{https://pkg.go.dev/cmd/gofmt}} tool is used for formatting, while golangci-lint\footnote{\url{https://golangci-lint.run/}} handles static analysis and linting, both configured to run on save.
 
-\subsubsection{Performance}
+\subsection{Performance}
 
-Performance testing was not systematically conducted. The application has only been tested under light concurrent usage by team members. In a production scenario with multiple external users, performance bottlenecks, especially related to external API response times, could emerge. Since the system depends on several external data sources, response latency and availability issues may affect overall performance. One potential improvement would be to locally cache or store relatively static data such as forestry road and soil saturation layers, thereby reducing dependency on external APIs and improving load times.
-
-forestry road => \acrshort{wfs} data 
-
-\begin{comment}
-\subsubsection*{Logging}
-
-In the backend server a logging system was implemented \textcolor{orange}{skal dette nevnes her ?}
-
-\end{comment}
+Performance testing was not systematically conducted. The application has only been tested under light concurrent usage by team members. In a production scenario with multiple external users, performance bottlenecks, especially related to external \acrshort{api} response times, could emerge. Since the system depends on several external data sources, response latency and availability issues may affect overall performance. One potential improvement would be to locally cache or store relatively static data, such as forestry road and soil saturation layers, in the same way the superficial deposit data is handled. This would reduce dependency on external \acrshort{api}s and improve load times.
 
 \section{User Testing}\label{sec:quality_assurance_user_feedback:user_testing}
 
 Due to time constraints and the challenge of recruiting a sufficient number of relevant participants, it was not possible to conduct formal user testing during the project period. Nonetheless, we acknowledge that structured user testing would be highly valuable in future development phases, both to improve the overall \acrfull{ux} and to identify features that would be particularly useful for transport managers in their daily operations.
 
-In the absence of formal testing, we adopted an iterative development process guided by regular feedback from the \gls{productowner}. This feedback proved essential, especially in shaping the functionality of the system to better meet the needs of transport managers. A key insight was the importance of flexibility, particularly the ability to adjust threshold values used in classifying road trafficability. This would allow users to tailor the system according to their own operational contexts, drawing on local experience and domain knowledge. Additionally, feedback touched on the reliability and relevance of the data sources used to assess forestry road conditions.
+In the absence of formal testing, we adopted an iterative development process guided by regular feedback from the \gls{productowner}. This feedback proved essential, especially in shaping the functionality of the system to better meet the needs of transport managers. A key insight was the importance of flexibility, particularly the ability to adjust threshold values used in classifying road trafficability. Additionally, feedback touched on the reliability and relevance of the data sources used to assess forestry road conditions.
 
 In response to this input, several targeted improvements were implemented. Most notably, we added support for customizing threshold values in the trafficability classification, enabling users to better adapt the system to their needs. We also integrated a soil moisture map layer, offering deeper insight into road conditions and supporting more informed planning decisions.
 
-Toward the end of the project, we conducted two stakeholder presentations to gather further feedback. The first presentation was held with two senior representatives from the forest owners' association. Their response was highly positive, and they expressed that the system had clear potential to serve as a valuable tool for the forestry industry. During this session, we highlighted the flexibility of the system's architecture, which allows for the future addition of new map layers or data sources to further enhance accuracy and utility.
+Toward the end of the project, we conducted two stakeholder presentations to gather further feedback. The first presentation was held with two senior representatives from the forest owners' association, giving us a \textbf{strategic} viewpoint of the application. Their response was highly positive, and they expressed that the system had clear potential to serve as a valuable tool for the forestry industry. During this session, we highlighted the flexibility of the system's architecture, which allows for the future addition of new map layers or data sources to further enhance accuracy and utility.
 
-The second presentation was held for two transport managers from Transportfellesskapet Østlandet (TFØ). Their feedback was also largely positive, noting that the solution appeared intuitive and easy to use. The traffic-light system used to visualize road trafficability was particularly well received, as it provided a clear and familiar way of presenting the trafficability. At the same time, the transport managers offered several constructive suggestions for further improvement.
+The second presentation was held for two transport managers from \acrfull{tfø}, giving us a \textbf{practical} viewpoint of the application. Their feedback was also largely positive, noting that the solution appeared intuitive and easy to use. The traffic-light system used to visualize road trafficability was particularly well received, as it provided a clear and familiar way of presenting the trafficability. At the same time, the transport managers offered several constructive suggestions for further improvement.
 
 One key suggestion was to allow customization of threshold values not only globally but also for specific roads or geographic areas, such as individual segments or municipalities. This would enable more precise calibration based on local conditions. In addition, they emphasized the importance of persisting these threshold configurations between sessions, either per user or per area, to avoid unnecessary repetition.
 
@@ -52,4 +36,4 @@ They also pointed out that transport planning currently requires a significant a
 
 From a feature perspective, they proposed replacing the current fixed bounding box used for monitoring roads with a polygon-based selection tool, allowing users to manually draw custom areas of interest on the map. Furthermore, they recommended including timber storage locations directly in the map interface to improve logistical planning.
 
-Many of these features are already present in VSYS, the system currently used by TFØ for route planning. Consequently, if this trafficability classification tool were to be integrated into VSYS, it would be logical to align its feature set accordingly to ensure consistency and user familiarity.
+Many of these features are already present in VSYS, the system currently used by \acrshort{tfø} for route planning. Consequently, if this trafficability classification tool were to be integrated into VSYS, it would be logical to align its feature set accordingly to ensure consistency and user familiarity.

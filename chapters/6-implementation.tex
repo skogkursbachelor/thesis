@@ -9,15 +9,15 @@ This section outlines the key technologies used in the project, explaining both 
 
 \subsection{TypeScript}
 
-TypeScript\footnote{\url{https://www.typescriptlang.org/}} is a statically typed superset of JavaScript that adds type annotations and other features to improve code quality and maintainability. While JavaScript is popular for both frontend and backend development, it lacks built-in mechanisms to express relationships between components as applications grow. This often leads to runtime errors, many of which are related to incorrect or unexpected types. TypeScript addresses these issues by providing a static type system that checks for such errors during development, before the code is executed. By catching mistakes early and offering better tooling and autocomplete support, TypeScript makes large-scale JavaScript applications easier to develop, refactor, and maintain \cite{typescript_handbook}. 
+TypeScript\footnote{\url{https://www.typescriptlang.org/}} is a statically typed superset of JavaScript that adds type annotations and other features to improve code quality and maintainability. While JavaScript widely used for development, it lacks built-in mechanisms to express relationships between components as applications grow. This often leads to runtime errors, many of which are related to incorrect or unexpected types. TypeScript addresses these issues by providing a static type system that checks for such errors during development, before the code is executed. By catching mistakes early and offering better tooling and autocomplete support, TypeScript makes large-scale JavaScript applications easier to develop, refactor, and maintain \cite{typescript_handbook}. 
 
 Although the team had limited prior experience with frontend web development, we aimed to use a language that was both easy to learn and valuable beyond the project, particularly given its widespread use in industry. TypeScript was therefore chosen for the website implementation. It offered full compatibility with JavaScript-based libraries such as \textbf{OpenLayers} and \textbf{React}, while also providing static typing and enhanced code reliability.
 
 \subsection{React}\label{subsec:implementation:technologies:react}
 
-React\footnote{\url{https://react.dev/}} is a JavaScript library designed for rendering user interfaces (UI), where elements on the screen, from buttons to images, can be broken down into small, reusable components. These components are the building blocks of React, allowing you to create, customize, and conditionally display content across your application \cite{react_component}. As an application scales, it becomes increasingly important to manage the state effectively and ensure that data flows smoothly between components. Poorly organized or redundant state can lead to bugs, so React encourages a structured approach to state management. React makes it easy to share states between components \cite{react_managing_state}. 
+React\footnote{\url{https://react.dev/}} is a JavaScript library designed for rendering user interfaces (UI), where elements on the screen, from buttons to images, can be broken down into small, reusable components. These components are the building blocks of React, allowing the developer to create, customize, and conditionally display content across the application \cite{react_component}. As an application scales, it becomes increasingly important to manage the state effectively and ensure that data flows smoothly between components. Poorly organized or redundant state can lead to bugs, so React encourages a structured approach to state management \cite{react_managing_state}. 
 
-Using React to develop the website improved both development speed and maintainability that was especially important given the limited timeframe of the project. React's component-based architecture allowed for modular code, easier reuse of UI elements, and better separation of concerns, which contributed to a more efficient workflow.
+Using React to develop the website improved both development speed and maintainability, which was especially important given the limited timeframe of the project. React's component-based architecture allowed for modular code, easier reuse of UI elements, and better separation of concerns, which contributed to a more efficient workflow.
 
 \subsection{OpenLayers}
 
@@ -27,46 +27,50 @@ The website uses OpenLayers to render image layers for \gls{superficial deposit}
 
 \subsection{Web Map Service and Web Feature Service}
 
-% NEVNE SPESIFIKKE FUNKSJONER (GetFeatureInfo / GetMap) ?
-Web Map Service (\Gls{wms}) and Web Feature Service (\Gls{wfs}) are both standards developed by the Open Geospatial Consortium to facilitate the distribution of geographic information over the web. A WMS generates dynamic maps from spatially referenced data, rendering them as digital images in formats such as PNG, GIF, and JPEG. WMS allows users to request maps that specify geographic regions, desired coordinate systems, and map dimensions. There are also queryable WMS services that enable users to retrieve metadata about the map and its features at specific coordinates. Additionally, \Gls{wms} supports the creation of composite maps by layering different map images, with transparency in formats like PNG and GIF, allowing the underlying maps to be visible \cite{ogc2006wms}.
+Web Map Service (\Gls{wms}) and Web Feature Service (\Gls{wfs}) are both standards developed by the Open Geospatial Consortium\footnote{\url{https://www.ogc.org/}} to facilitate the distribution of geographic information over the web. A \Gls{wms} generates dynamic maps from spatially referenced data, rendering them as digital images in formats such as PNG, GIF, and JPEG. \Gls{wms} allows users to request maps that specify geographic regions, desired coordinate systems, and map dimensions. There are also queryable \Gls{wms} services that enable users to retrieve metadata about the map and its features at specific coordinates. Additionally, \Gls{wms} supports the creation of composite maps by layering different map images, with transparency in formats like PNG and GIF, allowing the underlying maps to be visible \cite{ogc2006wms}.
 
 In contrast, a \Gls{wfs} enables the retrieval of raw geographic data, such as vector features, from a web server. Unlike \Gls{wms}, which provides static map images, \Gls{wfs} allows users to request feature-level data in formats like \Gls{geojson}, enabling more interactive and detailed analyses. \Gls{wfs} supports spatial queries and provides access to vector-based geographic features, such as points, lines, and polygons, which can be used for advanced geospatial analysis and integration into other systems. While \Gls{wms} is ideal for visualizing spatial data, \Gls{wfs} is better suited for manipulating raw geospatial data \cite{ogc2005wfs}.
 
-In the implementation of this product, both \Gls{wms} and \Gls{wfs} are used to visualize and interact with geospatial data. For example, the superficial deposits and frost depth layers utilize \Gls{wms} to display these datasets as map images on the web interface. On the other hand, the forestry road layer is implemented using \Gls{wfs}, providing access to vector-based geographic features as lines. This allows further processing, such as determining \gls{trafficability} or road conditions. Additionally, when querying a single coordinate, the Superficial Deposits layer uses the query operation to retrieve information about the specific location, ensuring that users can obtain feature data at precise geographic points.
+In the implementation of this product, both \Gls{wms} and \Gls{wfs} are used to visualize and interact with geospatial data. For example, the superficial deposits and frost depth layers utilize \Gls{wms} to display these datasets as map images on the web interface. On the other hand, the forestry road layer is implemented using \Gls{wfs}, providing access to vector-based geographic features as lines. This allows further processing, such as determining \gls{trafficability} or road conditions.
 
 \subsection{Go}\label{subsec:implementation:technologies:go}
 
 Go\footnote{\url{https://go.dev/}} is a high-level general purpose programming language that is statically typed and compiled, and offers built-in memory safety, garbage collection, structural typing and concurrency. Go aims to improve programming productivity by combining the efficiency of C\footnote{\url{https://www.c-language.org/}} with the readability and usability of Python\footnote{\url{https://www.python.org/}}. Goroutines, the foundation of concurrency in Go, are lightweight execution threads that run asynchronously and are distributed across multiple CPUs, enabling parallelism in well-structured programs \cite{goproglanguage}.
 
-The implementation of the server in written in Go. Go was chosen due the great concurrency support and group members' personal experiences with the language. Go is particularly well-suited for processing large datasets, such as forest roads, because each road can be processed independently, making it a natural fit for Go's concurrency model. The implementation of the server will be detailed in \autoref{sec:implementation:server}.
+The implementation of the server in written in Go. Go was chosen due the great concurrency support and group members' personal experiences with the language. Go is particularly well-suited for processing large datasets, such as forest roads, because each road can be processed independently, making it a natural fit for Go's concurrency model. Another reason for choosing Go was its extensive package registry\footnote{\url{https://pkg.go.dev/}} of open-source libraries, allowing us to reuse code to save time. An overview of the external libraries used is shown in \autoref{tab:golibraries}. 
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l|}
+        \hline
+        \textbf{Library} & \textbf{Description} \\
+        \hline
+        joho/godotenv & Loads environment variables from .env files. \\
+        rs/zerolog & Zero Allocation Logger. \\
+        tidwall/rtree & R-tree implementation for spatial querying. \\
+        twpayne/go-geom & Efficient geometry types for geospatial applications. \\
+        twpayne/go-shapefile & Native Go reader for ESRI Shapefiles. \\
+        \hline
+    \end{tabular}
+    \caption{Overview of used Go libraries}
+    \label{tab:golibraries}
+\end{table}
 
 \subsection{Docker}\label{subsec:implementation:technologies:docker}
 
-Docker\footnote{\url{https://www.docker.com/}} is a set of technologies that use OS-level virtualization to deliver software in packages called containers. Containerization allows for software applications to run in isolated user spaces, which enables efficient resource utilization, enhanced security, and simplified deployment across different environments \cite{containerizationwikipedia,dockerwikipedia}. Docker containers are built using a Docker image, which is a template that can be stored in a remote registry. Docker images are built using 
-Docker Compose, a tool in the Docker suite, is used for defining and running multi-container applications \cite{dockercomposedocs}. The application is deployed with Docker and Docker Compose, this will be detailed in \autoref{chap:deployment}.
+Docker\footnote{\url{https://www.docker.com/}} is a set of technologies that use OS-level virtualization to deliver software in packages called containers. Containerization allows for software applications to run in isolated user spaces, which enables efficient resource utilization, enhanced security, and simplified deployment across different environments. Docker containers are built using a Docker image, which is a template that can be stored in a remote registry. Docker images are built using a Dockerfile, which is a text file containing all instructions needed to build the image \cite{containerizationwikipedia,dockerwikipedia}. Docker Compose, a tool in the Docker suite, is used for defining and running multi-container applications \cite{dockercomposedocs}. The application is deployed with Docker and Docker Compose, which will be detailed in \autoref{chap:deployment}.
 
 \section{Website}
 
 This section describes the implementation of the website, which serves as the main user interface for interacting with map data. It outlines the design and iteration of the user interface, the integration of interactive components using React and OpenLayers, and the implementation of core features such as date selection, dynamic map layers, and trafficability classification.
 
-
-\begin{comment}
-    - Typescript & React (vite/template, code structure?)
-        - Template: npm create vite@latest myapp -- --template react-ts
-    - OpenLayers
-    - GUI-elements
-    - Map layers and legends
-    - Forestry road vector layer
-    - Datepicker / temporal aspect of map layers
-\end{comment}
-
-\subsection{User Interface Iterations} % Vet ikke om dette burde være et annet sted?
+\subsection{User Interface Iterations}
 
 The \acrfull{ui} underwent several iterations during development before reaching its final form. This section outlines those iterations, beginning with the initial wireframe.
 
 \subsubsection*{Wireframe}
 
-A wireframe was created early in the development process to establish a shared understanding among group members of the website's layout and core functionality. It was developed using Balsamiq, a tool well-suited for quickly creating low-fidelity wireframes. To draw inspiration for the design, several existing map-based websites were reviewed, including SeNorge\footnote{\url{https://www.senorge.no/}} and NIBIO's Kilden\footnote{\url{https://kilden.nibio.no}}.
+A wireframe was created early in the development process to establish a shared understanding among group members of the website's layout and core functionality. It was developed using Balsamiq\footnote{\url{https://balsamiq.com/}}, a tool well-suited for quickly creating low-fidelity wireframes. To draw inspiration for the design, several existing map-based websites were reviewed, including SeNorge\footnote{\url{https://www.senorge.no/}} and NIBIO's Kilden\footnote{\url{https://kilden.nibio.no}}.
 
 \autoref{fig:wireframe:closed} shows the basic structure, including the main map view and the date picker component at the top to change the current date. \autoref{fig:wireframe:opened} illustrates the sidebars used to toggle map layers and view their corresponding legends. It also demonstrates how a layer can be activated and queried for additional information, highlighting key interactions envisioned for the final implementation.
 
@@ -91,11 +95,11 @@ The \acrshort{ui} evolved later in the project, for instance, it was decided tha
     \label{fig:wireframe}
 \end{figure}
 
-\subsubsection*{Early Iteration}
+\subsubsection{Early Iteration}
 
 When we first began implementing the website using OpenLayers, we included several built-in components that seemed potentially useful. One of these was the overview map in the bottom-left corner, which provides a miniature version of the map view. This was helpful for orientation, especially when one or more map layers obscured the base map. We also added a scale line, a common feature in most map applications, to give users a sense of distance and scale.
 
-In the version shown in \autoref{fig:website_layout_v1}, users could query all available map layers, such as the superficial deposit layer. While this functionality was helpful for debugging and comparing data across layers, it introduced unnecessary complexity into the \acrshort{ui}, especially from a user perspective. \textcolor{orange}{Repetering fra forrige section?}
+In the version shown in \autoref{fig:website_layout_v1}, users could query all available map layers, such as the superficial deposit layer. While this functionality was helpful for debugging and comparing data across layers, it introduced unnecessary complexity into the \acrshort{ui}, especially from a user perspective.
 
 A geolocation button was also included, allowing users to center the map on their current location if they consented to share it. However, when deploying the website on the backend server, we discovered that this feature only works over HTTPS due to browser security policies. Since the feature was not essential to the core functionality, and the project did not include setting up a valid HTTPS certificate, it was ultimately left non-functional in the deployed version.
 
@@ -131,7 +135,6 @@ The interface is primarily designed for desktop use, with layout and controls op
     \caption{Final version of website with the sidebars opened}
     \label{fig:website_layout_final_sidebars}
 \end{figure}
-
 
 \subsection{Components}
 
@@ -235,7 +238,7 @@ As shown in \autoref{lst:url_example}, \texttt{TileLayer} and \texttt{ImageLayer
 ]{listings/openlayers_url_examples.tex}
 \end{figure}
 
-To improve performance and reduce unnecessary network traffic, layers are loaded dynamically based on the user's interaction with the map, such as panning or zooming. Certain layers are only activated at specific zoom levels or within a defined spatial extent to ensure efficient resource usage.
+To improve performance and reduce unnecessary network traffic, layers are loaded dynamically based on the user's interaction with the map, such as panning or zooming. To ensure efficient resource usage, the forestry road and soil moisture layers are only activated at certain zoom levels or within specific spatial extents, as they contain highly detailed data.
 
 \section{Server}\label{sec:implementation:server}
 
@@ -243,34 +246,20 @@ This section describes the implementation of the server, which serves as the sou
 
 \subsection{Forestry Road Algorithm}\label{subsec:server:forestroadalgorithm}
 
-\textcolor{orange}{
-Hva det er (ref tilbake til tech design (rest api)) \\
-Hvordan den funker (Hente veidata, cluster, query, send tilbake) \\
-Hvorfor vi gjorde det slikt (kanskje ikke? \\
-Skrive at vi gikk ut ifra at veiene er lagd av løsmassene i området. Kanskje skrive om de andre... 
-) \\
-FJORDKATALOG \\
-Hente WFS -> Cluster \& Superficial deposit -> Parallel(Frost \& Soil Moisture) -> Bearbeide -> Return
-}
+The forestry road algorithm forms the core of the backend functionality and serves as a \acrshort{rest} \acrshort{api} endpoint, as described in \autoref{sec:systemarchitecture}. The concept behind the algorithm is to enrich the standard \gls{wfs} data from GeoNorge\footnote{\url{https://www.geonorge.no/}} with new data from the frost depth and soil moisture layers described in \autoref{chap:mapdatasources}. The steps of the algorithm can be divided into the following:
 
-... An overview of the external libraries used is shown in \autoref{tab:golibraries}. ...
+\begin{enumerate}
+    \item \textbf{Get forestry roads:} A VectorLayer request is received from the website, as shown in \autoref{lst:url_example}. This request is then mirrored to GeoNorge to get the forestry roads in the given bounding box, returned in \gls{geojson} format.
+    \item \textbf{Cluster roads:} Forestry roads are clustered into \qty{1}{\kilo\meter\squared} clusters. This will be detailed later in \autoref{subsubsec:implementation:optimization:senorge}.
+    \item \textbf{Get superficial deposits:} Each road is queried for superficial deposit codes every \qty{10}{\meter}, and the resulting list of codes are stored in the \gls{geojson} objects. This will be detailed in \autoref{subsubsec:impl:server:optimization:spatialquerying}.
+    \item \textbf{Get frost and soil moisture:} Each cluster center is used to query both frost depth and soil moisture in parallel. Each forestry road in each cluster is then updated with the corresponding value for the cluster center.
+    \item \textbf{Aggregate and rebuild:} The updated \gls{geojson} objects are added to the original \gls{wfs} payload.
+    \item \textbf{Return data:} The updated \gls{wfs} payload is returned to the website.
+\end{enumerate}
 
-\begin{table}[h]
-    \centering
-    \begin{tabular}{|l|l|}
-        \hline
-        \textbf{Library} & \textbf{Description} \\
-        \hline
-        joho/godotenv & Loads environment variables from .env files. \\
-        rs/zerolog & Zero Allocation Logger. \\
-        tidwall/rtree & R-tree implementation for spatial querying. \\
-        twpayne/go-geom & Efficient geometry types for geospatial applications. \\
-        twpayne/go-shapefile & Native Go reader for ESRI Shapefiles \\
-        \hline
-    \end{tabular}
-    \caption{Overview of used Go libraries}
-    \label{tab:golibraries}
-\end{table}
+Dividing the algorithm into these steps increases the flexibility of the application. The algorithm can be expanded by adding new data sources to step 4, with minimal changes to the core logic.
+
+As declared in \autoref{subsec:req:scope}, a part of the scope of the application is the assumption that all roads are constructed using local superficial deposits. In reality, this is not always the case, as newer roads are often built with crushed rock or imported gravel if the local superficial deposits are unsuitable. This assumption allowed us to simplify the application by treating all roads identically.
 
 \subsection{Proxy}\label{subsec:server:proxy}
 
@@ -285,11 +274,11 @@ As described in \autoref{sec:systemarchitecture}, we wanted a clean architecture
 
 \subsection{Optimization}\label{subsec:server:optimization}
 
-Early iterations of the forest road retrieval and processing algorithm were computationally expensive, resulting in long response times when querying the forest road layer.
+Early iterations of the forest road retrieval and processing algorithm were computationally expensive, resulting in long response times when querying the forest road layer. Some key optimizations were made to reduce the response time, while maintaining the core functionality of the server.
 
 \subsubsection{SeNorge}\label{subsubsec:implementation:optimization:senorge}
 
-The backend would initially query the SeNorge API once for every road, which would quickly overload the API server leading to long processing times. Additionally, the SeNorge API would not accept multiple coordinates within each grid-cell. SeNorge uses a grid system to divide Norway into \qty{1}{\kilo\meter\squared} cells, and calculate all their climate projections as an average within each cell \cite{senorge_watermap}. 
+The backend would initially query the SeNorge \acrshort{api} once for every road, which would quickly overload the \acrshort{api} server leading to long processing times. Additionally, the SeNorge \acrshort{api} would not accept multiple coordinates within each grid-cell. SeNorge uses a grid system to divide Norway into \qty{1}{\kilo\meter\squared} cells, and calculate all their climate projections as an average within each cell \cite{senorge_watermap}. 
 
 Lacking documentation of how the grid-cells were initially declared, in addition to a deprecated service for transforming coordinates to cell indexes, prompted further investigation into the SeNorge grid-cells. Findings showed that each grid-cell had borders that lined up with the UTM zone 33N projection system, where the latitude and longitude of each grid intersection were a multiple of \qty{1000}{}. In other words, each grid is centered on a UTM coordinate that is a multiple of $\qty{1000}{}\pm\qty{500}{}$.
 
@@ -302,11 +291,11 @@ The findings made it possible to cluster the forest roads into their closest SeN
 ]{listings/clusterwfsresponsetoshardedmap.go}
 \end{figure}
 
-\subsubsection{Spatial querying}
+\subsubsection{Spatial querying}\label{subsubsec:impl:server:optimization:spatialquerying}
 
-Another large optimization was made related to how superficial deposit along the roads were queried. Initially, the middle of each road would be used to query NGU's \Gls{wms} server\footnote{\url{https://geo.ngu.no/kart/losmasse_mobil/}}, leading to a large amount of HTTP requests. These HTTP requests would then quickly overload the \Gls{wms} server, leading to extensive response times.
+Another large optimization was made related to how superficial deposit along the roads were queried. Initially, the middle of each road would be used to query \acrshort{ngu}'s \Gls{wms} server\footnote{\url{https://geo.ngu.no/kart/losmasse_mobil/}}, leading to a large amount of HTTP requests. These HTTP requests would then quickly overload the \Gls{wms} server, leading to extensive response times.
 
-This was solved by downloading the superficial deposit data and reconstructing it into a map in-memory. The data was downloaded from GeoNorge\footnote{\url{https://kartkatalog.geonorge.no/}} and is available under the NLOD license\footnote{\url{https://data.norge.no/nlod/no/2.0}}. The reconstruction of the spatial data can be found in \autoref{lst:spatialindex}, where each record is read and reconstructed into an R-tree. An R-tree allows for effective querying of spatial data by grouping nearby objects and represent them with their bounding box in the next higher level of the tree \cite{rtreewikipedia}. Having the spatial data in-memory allowed for a greater number of queries along the road.
+This was solved by downloading the superficial deposit data in SHAPE format\footnote{\url{https://en.wikipedia.org/wiki/Shapefile}} and reconstructing it into a map in-memory. The data was downloaded from GeoNorge\footnote{\url{https://kartkatalog.geonorge.no/}} and is available under the NLOD license\footnote{\url{https://data.norge.no/nlod/no/2.0}}. The reconstruction of the spatial data can be found in \autoref{lst:spatialindex}, where each record is read and reconstructed into an R-tree. An R-tree allows for effective querying of spatial data by grouping nearby objects and represent them with their bounding box in the next higher level of the tree \cite{rtreewikipedia}. Having the spatial data in-memory allowed for a greater number of queries along the road.
 
 \begin{figure}[h]
 \lstinputlisting[
@@ -314,6 +303,8 @@ This was solved by downloading the superficial deposit data and reconstructing i
     label=lst:spatialindex
 ]{listings/readshapefileandbuildindex.go}
 \end{figure}
+
+As briefly mentioned in \autoref{subsec:mapdatasources:maplayers:forestryroads}, Fjordkatalogen\footnote{\url{https://kartkatalog.miljodirektoratet.no/MapService/Details/fjordkatalogen}} is also used in forestry roads algorithm. Fjordkatalogen is a dataset of all fjords in Norway, and is distributed in the same format as the superficial deposit data. It is rebuilt into memory identically to the superficial deposit data, but is used as a spatial mask due to shortcomings of SeNorge. Querying the SeNorge \acrshort{api} for a grid-cell outside of their coverage area results in an error. Based on observed behavior, the \acrshort{api} only returns data for land areas in Norway and does not support queries over large water bodies such as fjords. This became a challenge for coastal roads or roads near fjords, where parts of the road geometry may extend into areas SeNorge considers as ocean. Fjordkatalogen is therefore used to filter out these grid-cells before a request is sent to SeNorge, avoiding failed \acrshort{api} calls.
 
 \subsubsection{Goroutines}
 

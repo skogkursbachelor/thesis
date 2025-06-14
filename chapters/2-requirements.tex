@@ -1,19 +1,20 @@
 \chapter{Requirements}\label{chap:requirements}
 
-Understanding the foundation for what the system aims to achieve is essential for guiding development. The following chapter presents a structured overview of the project's intentions, including the goals it seeks to fulfill, the constraints it operates under, and the needs of its intended users. These requirements were gathered in collaboration with the product owner and refined to ensure clarity and feasibility. They include high-level objectives such as product, impact, and learning goals. In addition, the chapter outlines limitations, use cases, and considerations for universal design. Together, these elements define the scope, purpose, and direction of the project and form a basis for implementation, testing, and evaluation.
+Understanding the foundation for what the system aims to achieve is essential for guiding development. The following chapter presents a structured overview of the project's intentions, including the goals it seeks to fulfill, the constraints it operates under, and the needs of its intended users. These requirements were gathered in collaboration with the \gls{productowner} and refined to ensure clarity and feasibility. They include high-level objectives such as product, impact, and learning goals. In addition, the chapter outlines limitations, use cases, and considerations for universal design. Together, these elements define the scope, purpose, and direction of the project and form a basis for implementation, testing, and evaluation.
 
-\begin{comment}
-BRA: (fra discussion)
-    This chapter presents a reflection on both the development process and the final product. It examines how the project evolved in relation to the original goals, highlighting what worked well, what could have been improved, and the challenges encountered along the way. The chapter discusses the choice of technologies, project management practices, and team collaboration. It also evaluates the effectiveness and limitations of the final solution, comparing it with existing alternatives and identifying unexpected findings. Broader considerations, such as sustainability and the role of AI in the project, are explored. Finally, the chapter outlines potential directions for future work and improvements to both the product and the project approach.
-\end{comment}
+\section{Project Goals and Scope}
 
+This section outlines the overall scope and goals of the project, categorized into \textbf{product goals}, \textbf{impact goals}, and \textbf{learning goals}. Together, these objectives defines the purpose, intended outcomes, and the knowledge expected to be gained through the project process.
 
-\section{Project Goals}
+\subsection{Scope}\label{subsec:req:scope}
 
-This section outlines the overall goal of the project, categorized into \textbf{product goals}, \textbf{impact goals}, and \textbf{learning goals}. Together, these objectives defines the purpose, intended outcomes, and the knowledge expected to be gained through the project process.
+The prototype is developed for Skogkurs and is intended for use in Norway. As such, the product is in Norwegian and displays only data of Norway. Due to the large volume of data, the area surrounding Gjøvik was selected by the \gls{productowner} as the initial focus to keep the project within a manageable scope.
+
+The classification of road bearing capacity is based on the assumption that all roads are constructed using local superficial materials. In reality, this is not always the case, as newer roads are often built with crushed rock or sorted gravel if the local superficial deposits are unsuitable for road construction \cite{fjeld2023trafficability}.
+
 \subsection{Product Goals}\label{subsec:req:productgoals}
 
-The primary goal of the project is to develop and test a \textbf{prototype system for fully digital modeling of forestry road load-bearing capacity under varying conditions throughout the year.} 
+The primary goal of the project is to develop and test a \textbf{prototype system for fully digital modeling of forestry road load-bearing capacity under varying conditions throughout the year.}
 
 The following goals were provided by the \Gls{productowner} (see \autoref{appendix:task_description}):
 \begin{itemize}
@@ -23,8 +24,6 @@ The following goals were provided by the \Gls{productowner} (see \autoref{append
 \end{itemize}
 
 While these goals establish a general direction, they are relatively high-level. To ensure a clear and focused development process, they have been expanded into a set of more concrete and actionable goals that cover both functional and nonfunctional aspects and guide the implementation and evaluation of the prototype: 
-
-\textcolor{orange}{Burde man spesifisere hvilke som er functional og non-functional goals?}
 
 \begin{enumerate}
     \item \textbf{Data Collection and Integration:}
@@ -60,7 +59,6 @@ While these goals establish a general direction, they are relatively high-level.
     \end{itemize} 
 \end{enumerate}
 
-
 \subsection{Impact Goals}\label{subsec:req:impactgoals}
 
 The project aims to deliver real-world value by improving decision-making processes related to forestry road usage. The following impact goals outline the intended benefits for end-users and stakeholders:
@@ -90,15 +88,6 @@ In addition to delivering a functional prototype, the project serves as a valuab
     \item Developing a deeper understanding of the software development life cycle while actively practicing agile methodologies, like Scrum and Kanban.
 \end{itemize}
 
-\section{Limitations}
-
-\textcolor{orange}{Kan kanskje kalles, "Scope". Da må man skrive både hva systemet er og hva det ikke er.}
-
-Applikasjonen fokuserer på norge og er på norsk. For å utvide måtte man ha brukt andre kilder i tilegg da, datakildene brukt er kun fra norge.
-
-Klassifiseringen av veier går ut i fra at alle er konstruert med stedegne løsmasser, men dersom man får tilgang til veikonstruksjonsdata så kan man legge til dette som faktor (knust fjell -> sortert grus -> stedegne løsmasser).
-
-
 \section{Constraints}
 
 This project is subject to several constraints that have influenced the development process and final product. These include \textbf{temporal constraints} related to fixed academic deadlines and \textbf{product-related constraints} tied to technical and environmental requirements.
@@ -122,15 +111,6 @@ The product is also subject to technical limitations that define the environment
     \item The product needs to be deployed either locally or on a server to run.
 \end{itemize}
 
-\begin{comment}
-    \subsection{Legal Constraints}
-% VET IKKE OM DETTE SKAL VÆRE MED
-% ENDRE TIL NÅTID (THE PRODUCT COMPLIES WITH....) ?
-\begin{itemize}
-    \item The product must comply with the licensing terms and conditions of all third-party services, including map distributors, external APIs, and any code libraries, frameworks, or tools used in its development and deployment.
-\end{itemize}
-\end{comment}
-
 \section{Target Users}
 
 The primary target users of this application are \textbf{transport managers in the Norwegian forestry industry}. They are responsible for planning routes and determining which forest roads should be used by drivers. The application is primarily intended to be used in an office setting during the planning phase. Since the user group spans a wide age range, it is essential that the application is intuitive and easy to use, ensuring accessibility for all users regardless of their technical proficiency.
@@ -143,7 +123,7 @@ Use cases provide a clear overview of what a system will do. They enable effecti
 This section will present the use case diagram of the system and provide an example of a use case specification.
 
 \subsection{Use Case Diagram}
-% DOBBELSJEKK AT SERVEREN IKKE SKAL KOBLES TIL USE CASENE I DIAGRAMMET
+
 The use case diagram (\autoref{fig:use_case_diagram}) provides an overview of the system's core functionality by showing all user interactions with the website. It also depicts how the application server communicates with external map services.
 
 
@@ -205,28 +185,6 @@ A high priority use case for the website is the ability to toggle a map layer, w
 \end{table}
 
 \section{Universal Design}
-
-\begin{comment}
-HVA ER WCAG
-HVA ER UNIDES
-UUtilsynet: https://www.uutilsynet.no/veiledning/introduksjon-til-universell-utforming/238
-HVORFOR VI IKKE BRUKER DET/TATT HØYDE FOR DET
-IKKE GJORT I PROTOTYPEN, MEN KAN BLI UTVIKLET SENERE I DISCUSSION
-SKOGKURS = IKKE OFFENTLIG, OG PROTO = INGEN WCAG! :O
-
-    JO HA MED DENNE
-    Kanskje ikke nødvendig med eget kapittel og kanskje ha det et annet sted? Passer med overgang fra Target Audience ^. SIDEN NOE OM DETTE IKKE BLE NEVNT AV SKOGKURS SÅ BURDE DET KANSKJE STÅ I DISCUSSION I STEDET.
-
-lovdata OM UU: https://lovdata.no/lov/2017-06-16-51/§17
-
-Her skriver vi at:
-SKogkurs ikke er statlig eid, produktet er ikke ment for allmineligheten,
-produktet er en prototype.
-Derfor er det ikke NØDVENDIG/KRAV om wcag/UU,
-men vi vil gjerne ha det med for å styrke brukeropplevelsen
-Så ikke stort fokus på det, men alle valg blir tatt med det i bakhaue
-Funksjonalitete > uu
-\end{comment}
 
 Universal design refers to the practice of designing products, environments, and digital solutions in a way that ensures they can be used by as many people as possible, regardless of functional ability. The goal is not to create one solution for each user group, but rather to remove barriers so that everyone can use the same solution equally \cite{uutilsynet}.
 

@@ -26,17 +26,14 @@
   \renewcommand{\paging}{oneside}
 }
 
-% Bilde i title page
-\usepackage{titlepic}
-
 % Title Page
-\DeclareOption{titlepage}{
-    \AtBeginDocument{
-        \begin{titlepage}
-            \maketitle
-        \end{titlepage}
-    }
-}
+%\DeclareOption{titlepage}{
+%    \AtBeginDocument{
+%        \begin{titlepage}
+%            \maketitle
+%        \end{titlepage}
+%    }
+%}
 
 % British
 \newif\ifcapitalize
@@ -208,7 +205,7 @@
 
 % Roman page numbers from the beginning of the document
 \pagenumbering{roman}
-\setcounter{page}{3}
+\setcounter{page}{5}
 
 % Switch to Arabic page numbering at the beginning of the first numbered chapter
 \newif\iffirstchapter
@@ -347,9 +344,6 @@
 
 % Footnote i tabeller
 \usepackage{tablefootnote}
-
-% Directory tree
-\usepackage{dirtree}
 
 \usepackage{makecell}
 
